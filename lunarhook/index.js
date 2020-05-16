@@ -50,6 +50,9 @@ import taiyiHistoryPage from './src/kit/ThreechangesLib/taiyi/taiyiHistoryPage'
 import ChangesuniversePage from './src/kit/ChangesuniverseLib/ChangesuniversePage'
 import GamblePage from './src/kit/ChangesuniverseLib/GambleLib/GamblePage'
 import StarInfoPage from './src/kit/ChangesuniverseLib/GambleLib/StarInfoPage'
+import ziweiHistoryPage from './src/kit/ziwei/ziweiHistoryPage'
+import ziweiMainPage from './src/kit/ziwei/ziweiMainPage'
+import ziweiNewPage from './src/kit/ziwei/ziweiNewPage'
 //import AstroPage from './src/kit/ChangesuniverseLib/AstroLib/AstroPage'
 import TarotPage from './src/kit/ChangesuniverseLib/TarotLib/TarotPage'
 import TarotVenusPage from './src/kit/ChangesuniverseLib/TarotLib/TarotVenusPage'
@@ -229,15 +232,9 @@ const ExplorationTab = createBottomTabNavigator(
   const LunarCoursePageTab = createBottomTabNavigator(
     {
       LunarCoursePage: LunarCoursePage,
-    /*
-    LunarMasterPageFake:createStackNavigator(
-      { "LunarMasterPageFake": "训练大师" },
-      {
-        navigationOptions: ({ navigation }) => ({
-          title: RouteConfig["LunarMasterPage"].name,
-        })
-      }),
-      */
+
+
+
      CourseSearchPageFake:createStackNavigator(
       { "CourseSearchPageFake": "说文助手" },
       {
@@ -245,6 +242,13 @@ const ExplorationTab = createBottomTabNavigator(
           title: RouteConfig["CourseSearchPage"].name,
         })
       }),
+      LunarMasterPageFake:createStackNavigator(
+        { "LunarMasterPageFake": "训练大师" },
+        {
+          navigationOptions: ({ navigation }) => ({
+            title: RouteConfig["LunarMasterPage"].name,
+          })
+        }),
       /*
     LunarCourseAnswerPageFake: createStackNavigator(
       { "LunarCourseAnswerPageFake": "答疑解惑" },
@@ -377,6 +381,9 @@ const lunarhook = createStackNavigator({
   taiyiNewPage: { screen: taiyiNewPage },
   taiyiHistoryPage: { screen: taiyiHistoryPage },
   taiyiMainPage: { screen: taiyiMainPage },
+  ziweiHistoryPage:{screen:ziweiHistoryPage},
+  ziweiMainPage:{screen:ziweiMainPage},
+  ziweiNewPage:{screen:ziweiNewPage},
   ChangesuniversePage: { screen: ChangesuniversePage },
   StarInfoPage: { screen: StarInfoPage },
   GamblePage: { screen: GamblePage },
