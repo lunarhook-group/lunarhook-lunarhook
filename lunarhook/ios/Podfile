@@ -60,7 +60,6 @@ target 'lunarhook' do
 
   pod 'react-native-view-shot', :path => '../node_modules/react-native-view-shot'
 
-  pod 'RCTWeChat', :path => '../node_modules/react-native-wechat'
 
   pod 'react-native-fingerprint-scanner', :path => '../node_modules/react-native-fingerprint-scanner'
 
@@ -76,6 +75,8 @@ target 'lunarhook' do
   pod 'RNExitApp', :path => '../node_modules/react-native-exit-app'
 
 
+
+  pod 'RCTWeChat', :path => '../node_modules/react-native-wechat-lib'
 
   target 'lunarhookTests' do
     inherit! :search_paths

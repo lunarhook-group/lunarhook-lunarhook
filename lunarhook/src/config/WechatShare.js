@@ -4,7 +4,7 @@ import {Alert ,Platform,AppRegistry ,View,Image,Text,Linking,NativeModules} from
 import CameraRoll from "@react-native-community/cameraroll";
 import TabNavigator from 'react-native-tab-navigator';
 import { captureRef } from "react-native-view-shot";
-import * as WeChat from 'react-native-wechat';
+import * as WeChat from 'react-native-wechat-lib';
 import shareimg from './shareimage'
 import ScreenConfig from './ScreenConfig';
 import {StyleConfig,FontStyleConfig} from './StyleConfig';
@@ -57,7 +57,7 @@ class WechatShare extends React.Component {
       try {
         var keys = AppRegistry.getAppKeys();
         console.log("wechatshare",appinfo[keys[0]],keys,appname)
-        var ret = WeChat.registerApp(appinfo[keys[0]]);
+        var ret = WeChat.registerApp(appinfo[keys[0]], 'universalLink');
   
           apiVersion=WeChat.getApiVersion(),
           //wxAppInstallUrl:  WeChat.getWXAppInstallUrl(),
@@ -157,6 +157,7 @@ class WechatShare extends React.Component {
     this.init()
     WeChat.openWXApp();
   }
+  /*
   shareimagetotimeline(imageUrl,ds)
 	{
     this.init()
@@ -253,6 +254,7 @@ class WechatShare extends React.Component {
     })
   })
   }
+  */
 
   _checkPermission(){
       if (Platform.OS !== 'android') {
@@ -269,15 +271,57 @@ class WechatShare extends React.Component {
               return (result === true || result === PermissionsAndroid.RESULTS.GRANTED);
           });
   }
+  WechaShareShareLocalImage(imageUrl,type)
+  {
+    this.init()
+    return new Promise(resolve => { 
+      WeChat.isWXAppInstalled()
+      .then((isInstalled) => {
+        console.log(imageUrl)
+        if (isInstalled) {
+          try {
+              WeChat.ShareLocalImage({
+                imageUrl: "file://"+imageUrl,
+                scene:type
+              }).then(Response=>{
+                  console.log(Response,imageUrl)
+                  resolve("success")
+              }).catch (err => {
+                console.log(err,imageUrl)
+                resolve("failed")
+              })
+            }
+            catch(e)
+            {
+              console.log(e,imageUrl)
+              resolve("failed")
+            }
+        }
+        else {
+            Alert.alert('没有安装微信', '请先安装微信客户端在进行登录', [
+              {text: '确定'}
+            ])
+            resolve("failed")
+        }
+        
+    })
+  })
+  }
   share(img,sw,ds) {
       return new Promise(resolve => { 
         if("ttl"==sw)
         {
-          this.shareimagetotimeline(img,ds).then(v=>(resolve(v)))
+          //this.shareimagetotimeline(img,ds).then(v=>(resolve(v)))
+          this.WechaShareShareLocalImage(img,0).then(v=>(resolve(v)))
         }
         else if("session"==sw)
         {
-          this.shareimagetofriend(img,ds).then(v=>(resolve(v)))
+          //this.shareimagetofriend(img,ds).then(v=>(resolve(v)))
+          this.WechaShareShareLocalImage(img,1).then(v=>(resolve(v)))
+        }
+        else if("wechatcollect"==sw)
+        {
+          this.WechaShareShareLocalImage(img,2).then(v=>(resolve(v)))
         }
         else if("qqttl"==sw)//打开qq群
         {
@@ -349,6 +393,7 @@ class WechatShare extends React.Component {
         {text: '保存到相册', onPress: () => this.capture(ref,ds,"",rthis)},
         {text: '发送给朋友', onPress: () => this.capture(ref,ds,"session",rthis)},
         {text: '发送到朋友圈', onPress: () => this.capture(ref,ds,"ttl",rthis)},
+        {text: '微信收藏', onPress: () => this.capture(ref,ds,"wechatcollect",rthis)},
         //{text: '分享朋友圈', onPress: () => this.capture(ref,ds,"ttl")},
         {text: '取消', onPress: () => this.closeshareimage(rthis)}
       ]) 

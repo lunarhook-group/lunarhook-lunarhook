@@ -186,13 +186,13 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-wechat-lib')
     implementation project(':react-native-exit-app')
     implementation project(':react-native-safe-area-context')
     implementation project(':react-native-swisseph')
     implementation project(':@react-native-community_viewpager')
     implementation project(':@react-native-community_cameraroll')
     implementation project(':react-native-fingerprint-scanner')
-    implementation project(':react-native-wechat')
     implementation project(':react-native-view-shot')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-svg')
