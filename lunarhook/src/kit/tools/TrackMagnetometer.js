@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import {Text, View, Image, Dimensions} from "react-native";
 import CompassHeading from 'react-native-compass-heading';
 import { element } from "prop-types";
+import {StyleConfig,FontStyleConfig} from '../../config/StyleConfig';
 const {height, width} = Dimensions.get("window");
 var montain = new Array()
 //午山
@@ -238,7 +239,7 @@ export default class TrackMagnetometer extends Component {
             <Text
               style={{
                 color: "#fff",
-                fontSize: 18,
+                fontSize:FontStyleConfig.getFontApplySize()+ 18,
                 fontWeight: "bold",
               }}
             >
@@ -247,7 +248,7 @@ export default class TrackMagnetometer extends Component {
             <Text
               style={{
                 color: "#fff",
-                fontSize: 18,
+                fontSize:FontStyleConfig.getFontApplySize()+ 18,
                 fontWeight: "bold",
               }}
             >
@@ -256,7 +257,7 @@ export default class TrackMagnetometer extends Component {
             <Text
               style={{
                 color: "#fff",
-                fontSize: 18,
+                fontSize:FontStyleConfig.getFontApplySize()+ 18,
                 fontWeight: "bold",
               }}
             >
@@ -276,7 +277,7 @@ export default class TrackMagnetometer extends Component {
           <Text
             style={{
               color: "#fff",
-              fontSize: 18,
+              fontSize:FontStyleConfig.getFontApplySize()+ 18,
               width: width,
               position: "absolute",
               textAlign: "center",

@@ -7,7 +7,7 @@ import { InputItem,WhiteSpace, List ,WingBlank,Toast,Button} from '@ant-design/r
 import { ListItem } from 'react-native-elements';
 import IconConfig from '../config/IconConfig'
 import ScreenConfig from '../config/ScreenConfig';
-import StyleConfig from '../config/StyleConfig';
+import {StyleConfig,FontStyleConfig} from '../config/StyleConfig';
 import UserModule from '../config/UserModule'
 
 
@@ -267,16 +267,7 @@ var styles = StyleSheet.create ({
     paddingLeft:10,
     color:'blue'
   },
-  index:
-  {
-    lineHeight:24,
-    //marginLeft: 10,
-    //paddingLeft:10,
-    textAlign:'center', 
-    fontSize:15,
-    justifyContent: 'center', //虽然样式中设置了 justifyContent: 'center'，但无效  
-    alignItems: 'center',
-  },
+
 
   list:{
     height:45,
@@ -289,11 +280,7 @@ var styles = StyleSheet.create ({
     //textAlign:'center', 
     //textDecorationLine:'underline'
   },
-  menufont:{
-    fontSize:15,
-    color: '#333333', 
-    height:25
-  },
+
   inputpicker: {
 
     marginLeft: 35, 

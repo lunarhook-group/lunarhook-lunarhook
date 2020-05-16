@@ -9,7 +9,7 @@ import { Grid, Accordion, WhiteSpace, WingBlank, List } from '@ant-design/react-
 import {SixrandomModule} from '../SixrandomLib/SixrandomModule'
 import StorageModule from '../../../config/StorageModule'
 import ScreenConfig from '../../../config/ScreenConfig';
-import StyleConfig from '../../../config/StyleConfig';
+import {StyleConfig,FontStyleConfig} from '../../../config/StyleConfig';
 import WechatShare from '../../../config/WechatShare'
 
 var kWidth = Dimensions.get('window').width;
@@ -147,7 +147,7 @@ class SixrandomFullinfoPage extends React.Component {
   renderItem(item) {
     return (
       <View style={styles.list}>
-        <Text style={styles.rowhigth}>{item.item}</Text>
+        <Text style={[{fontSize : FontStyleConfig.getFontApplySize()+14},styles.rowhigth]}>{item.item}</Text>
       </View>
     );
   }
@@ -182,9 +182,9 @@ class SixrandomFullinfoPage extends React.Component {
                     return (
 
                       <View style={{ flexDirection: 'row', textAlign: 'left' }}>
-                        <Text style={{ width: 100 }}>{dataItem.myth}</Text>
-                        <Text style={{ width: 120 }}>{dataItem.sixrandom}</Text>
-                        <Text >{dataItem.change}</Text>
+                        <Text style={{fontSize : FontStyleConfig.getFontApplySize()+14, width: 100 }}>{dataItem.myth}</Text>
+                        <Text style={{fontSize : FontStyleConfig.getFontApplySize()+14, width: 120 }}>{dataItem.sixrandom}</Text>
+                        <Text style={{fontSize : FontStyleConfig.getFontApplySize()+14, width: 120 }}>{dataItem.change}</Text>
                       </View>
                     )
                   }
@@ -192,9 +192,9 @@ class SixrandomFullinfoPage extends React.Component {
                     return (
 
                       <View style={{ flexDirection: 'row', textAlign: 'left' }}>
-                        <Text style={{ width: 100 }}>{dataItem.myth}</Text>
-                        <Text style={{ width: 120 }}>{dataItem.sixrandom}</Text>
-                        <Text >{dataItem.change}</Text>
+                        <Text style={{fontSize : FontStyleConfig.getFontApplySize()+14, width: 100 }}>{dataItem.myth}</Text>
+                        <Text style={{fontSize : FontStyleConfig.getFontApplySize()+14, width: 120 }}>{dataItem.sixrandom}</Text>
+                        <Text style={{fontSize : FontStyleConfig.getFontApplySize()+14, width: 120 }}>{dataItem.change}</Text>
                       </View>
                     )
                   }

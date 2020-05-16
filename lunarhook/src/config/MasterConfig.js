@@ -112,8 +112,8 @@ MasterRandom['人工智能'] = [
 
   channel(){
       /*
-      delete MasterRandom['周易命理'];
-      delete Masteralllist['周易命理'];
+      delete MasterRandom['周易八卦'];
+      delete Masteralllist['周易八卦'];
       for(var key in MasterRandom){
         var element = MasterRandom[key]
         var T = new Array()
@@ -145,7 +145,7 @@ MasterRandom['人工智能'] = [
         for(var i in MasterSelectMode)
         {
           
-          if (MasterSelectMode[i].title!="周易命理" )
+          if (MasterSelectMode[i].title!="周易八卦" )
           {
             T.push(MasterSelectMode[i])
           }

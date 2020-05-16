@@ -1,13 +1,13 @@
 
 import React,{Component} from 'react';
-import {Alert ,Platform,AppRegistry ,View,Image,Text,Linking} from 'react-native';
+import {Alert ,Platform,AppRegistry ,View,Image,Text,Linking,NativeModules} from 'react-native';
 import CameraRoll from "@react-native-community/cameraroll";
 import TabNavigator from 'react-native-tab-navigator';
 import { captureRef } from "react-native-view-shot";
 import * as WeChat from 'react-native-wechat';
 import shareimg from './shareimage'
 import ScreenConfig from './ScreenConfig';
-import StyleConfig from './StyleConfig';
+import {StyleConfig,FontStyleConfig} from './StyleConfig';
 import {appinfo,appname} from './appinfo'
 //import * as QQAPI from 'react-native-qq';
 import { EventEmitter } from 'events';
@@ -19,6 +19,7 @@ class WechatError extends Error {
   constructor(resp) {
     const message = resp.errStr || resp.errCode.toString();
     super(message);
+    
     this.name = 'WechatError';
     this.code = resp.errCode;
     if (typeof Object.setPrototypeOf === 'function') {
@@ -26,7 +27,9 @@ class WechatError extends Error {
     } else {
       this.__proto__ = WechatError.prototype;
     }
+
   }
+
 }
 
 class WechatShare extends React.Component {
@@ -34,12 +37,19 @@ class WechatShare extends React.Component {
 
   constructor(props) {
     super(props);
+    this.version = ""
+    this.app = ""
     this.state = {
       apiVersion: 'waiting...',
       isWXAppSupportApi: 'waiting...',
       isWXAppInstalled: 'waiting...',
       init:false,
-		};
+    };
+    var NativePlumber = NativeModules.NativePlumber;
+    NativePlumber.PlumberGetAppVersion((error,appname,appver) => {
+      this.app = appname
+      this.version = appver
+    })
 	
   }
   init() {
@@ -369,8 +379,20 @@ class WechatShare extends React.Component {
   shareimg(ret)
   {
    
+
     if(true==ret)
     {
+      var dateDigitToString = function (num) {  
+        return num < 10 ? '0' + num : num;  
+      };  
+      var currentDate = new Date(),  
+      year = dateDigitToString(currentDate.getFullYear()),  
+      month = dateDigitToString(currentDate.getMonth() + 1),//Date.getMonth()的返回值是0-11,所以要+1  
+      date = dateDigitToString(currentDate.getDate()),  
+      hour = dateDigitToString(currentDate.getHours()),  
+      minute = dateDigitToString(currentDate.getMinutes()),  
+      second = dateDigitToString(currentDate.getSeconds()),  
+      formattedDateString = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;  
       var keys = AppRegistry.getAppKeys();
       return(
         <View style={{alignItems: 'center',justifyContent: 'center'}}>
@@ -378,10 +400,14 @@ class WechatShare extends React.Component {
         style={{width:  128, height:128}}
         source={{uri: shareimg[keys[0]]}}
         />
-        <Text style></Text>
-        <Text style>{appname[keys[0]]}</Text>
-        <Text style></Text>
-        <Text style>www.lunarhook.com</Text>
+        <Text ></Text>
+        <Text >www.lunarhook.com</Text>
+        <Text ></Text>
+        <Text >{appname[keys[0]]} {Platform.OS.toUpperCase() + " " +  this.version}</Text>
+        <Text ></Text>
+        <Text >{formattedDateString}</Text>
+     
+        
         </View>
       )
     }
@@ -406,6 +432,18 @@ class WechatShare extends React.Component {
         titleStyle={StyleConfig.menufont}>
       </TabNavigator.Item>
     </TabNavigator>
+    )
+  }
+
+  CourseShareBar(refwechatshare,refthis,refname)
+  {
+    return(
+      <TabNavigator.Item
+        title={RouteConfig["ScreenImage"].name}
+        renderIcon={() => RouteConfig["ScreenImage"].icon}
+        onPress={() => {refthis.setState({shareimg:true}),refwechatshare.snapshot(refthis.refs['location'], refname,refthis)}}
+        titleStyle={StyleConfig.menufont}>
+      </TabNavigator.Item>
     )
   }
 

@@ -98,28 +98,19 @@ import LunarCoursePage from './src/LunarCourse/LunarCoursePage';
 import LunarMasterPage from './src/LunarCourse/LunarMasterPage'
 import LunarCourseConfigPage from './src/LunarCourse/LunarCourseConfigPage'
 import LunarCourseAnswerPage from './src/LunarCourse/LunarCourseAnswerPage'
-
-import IntroAncientPage from './src/LunarCourse/Ancient/IntroAncientPage'
-import IntroThreePage from './src/LunarCourse/Three/IntroThreePage'
-import ShuoWenBookPage from './src/LunarCourse/Ancient/ShuoWenBookPage'
-
-import ErYaBookPage from './src/LunarCourse/Ancient/ErYaBookPage'
-import ShengYunBookPage from './src/LunarCourse/Ancient/ShengYunBookPage'
-
-import UniversBookPage from './src/LunarCourse/Three/UniversBookPage'
-import OldBookPage from './src/LunarCourse/Three/OldBookPage'
-import LunyuBookPage from './src/LunarCourse/Four/LunyuBookPage'
-import ZhuangBookPage from './src/LunarCourse/Three/ZhuangBookPage'
-import MengziBookPage from './src/LunarCourse/Four/MengziBookPage'
-import ZhongBookPage from './src/LunarCourse/Four/ZhongBookPage'
-import BigBookPage from './src/LunarCourse/Four/BigBookPage'
 import CourseSearchPage from './src/LunarCourse/CourseSearchPage'
+import IntroBooksPage from './src/LunarCourse/Intro/IntroBooksPage'
+
+import IntroAncientPage from './src/LunarCourse/Intro/IntroAncientPage'
+import IntroThreePage from './src/LunarCourse/Intro/IntroThreePage'
+import DetailBookPage from './src/LunarCourse/DetailBookPage'
 
 import MyPage from './src/Myconfig/MyPage'
 import AgreePage from './src/Myconfig/AgreePage'
 import PrivacyPage from './src/Myconfig/PrivacyPage'
 import MyRegister from './src/Myconfig/MyRegister'
 import MyUpdateRegister from './src/Myconfig/MyUpdateRegister'
+import MyFontConfigPage from './src/Myconfig/MyFontConfigPage'
 
 /*
 if (__DEV__) {
@@ -434,25 +425,18 @@ const lunarhook = createStackNavigator({
 
   LunarCoursePageTab:LunarCoursePageTab,    
   LunarCourseConfigPage:{screen:LunarCourseConfigPage} ,
-
+  CourseSearchPage:{screen:CourseSearchPage},
   LunarMasterPage:{screen:LunarMasterPage},
   IntroAncientPage:{screen:IntroAncientPage},
   IntroThreePage:{screen:IntroThreePage},
-  ShuoWenBookPage:{screen:ShuoWenBookPage},
-  ErYaBookPage:{screen:ErYaBookPage},
-  ShengYunBookPage:{screen:ShengYunBookPage},
-  CourseSearchPage:{screen:CourseSearchPage}, 
+  IntroBooksPage:{screen:IntroBooksPage},
   LunarCourseAnswerPage:{screen:LunarCourseAnswerPage},
+  DetailBookPage:{screen:DetailBookPage},
 
-  UniversBookPage:{screen:UniversBookPage},
-  OldBookPage:{screen:OldBookPage},
-  BigBookPage:{screen:BigBookPage},
-  ZhuangBookPage:{screen:ZhuangBookPage},
-  LunyuBookPage:{screen:LunyuBookPage},
-  MengziBookPage:{screen:MengziBookPage},
-  ZhongBookPage:{screen:ZhongBookPage},
+
 
   MyPage: { screen: MyPage },
+  MyFontConfigPage:{screen:MyFontConfigPage},
   PrivacyPage: { screen: PrivacyPage },
   AgreePage: { screen: AgreePage },
   MyRegister: { screen: MyRegister },

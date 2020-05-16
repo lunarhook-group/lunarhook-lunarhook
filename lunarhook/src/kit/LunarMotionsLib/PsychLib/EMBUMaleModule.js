@@ -6,7 +6,7 @@ import { CheckBox,Button } from 'react-native-elements'
 import TabNavigator from 'react-native-tab-navigator';  
 import { captureRef } from "react-native-view-shot";
 import ScreenConfig from '../../../config/ScreenConfig';
-import StyleConfig from '../../../config/StyleConfig';
+import {StyleConfig,FontStyleConfig} from '../../../config/StyleConfig';
 import WechatShare from '../../../config/WechatShare'
 var EMBUMaleDate=Array()
 EMBUMaleDate[1]="我觉得我父母干涉我做的任何一件事。"
@@ -159,7 +159,7 @@ class EMBUMaleModule extends React.Component {
     var checked = new Array();
     for(i=0;i<EMBUMalerandom.length;i++)
     {
-      checked[0]=undefined
+      //checked[0]=undefined
 checked[i]=""
       EMBUMalerandom[i].index=i
       EMBUMalerandom[i].key=i
@@ -181,11 +181,13 @@ checked[i]=""
   check(){
     //if(__DEV__)
 //    {return true}
-    for(i=0;i<EMBUMale.length;i++)
+    for(i=0;i<this.state.EMBUMale.length;i++)
     {
-      if(undefined != EMBUMale[i] && this.state.checked[i]==="")
+      if(undefined != this.state.EMBUMale[i] && this.state.checked[i]==="")
       {
-        alert("请检查题目："+(i))
+              Alert.alert("","请检查题目："+(i+1), [
+          {text: '确定'}
+        ])
         return false;
       }
     }
@@ -369,11 +371,11 @@ checked[i]=""
               <Text style={styles.list}></Text>
               <Text style={styles.list}>第{item.index+1}题:{item.q}</Text>
               <View style = {styles.dateContainer}>
-              <CheckBox containerStyle={styles.CheckBox} title = {item.a} checked={this.state.checked[Number(item.key+1)]===item.ret_a}  onPress={()=>this.updateIndex(Number(item.key+1),item.ret_a)}/>
-              <CheckBox containerStyle={styles.CheckBox} title = {item.b} checked={this.state.checked[Number(item.key+1)]===item.ret_b}  onPress={()=>this.updateIndex(Number(item.key+1),item.ret_b)}/>
-              <CheckBox containerStyle={styles.CheckBox} title = {item.c} checked={this.state.checked[Number(item.key+1)]===item.ret_c}  onPress={()=>this.updateIndex(Number(item.key+1),item.ret_c)}/>
-              <CheckBox containerStyle={styles.CheckBox} title = {item.d} checked={this.state.checked[Number(item.key+1)]===item.ret_d}  onPress={()=>this.updateIndex(Number(item.key+1),item.ret_d)}/>
-              <CheckBox containerStyle={styles.CheckBox} title = {item.e} checked={this.state.checked[Number(item.key+1)]===item.ret_e}  onPress={()=>this.updateIndex(Number(item.key+1),item.ret_e)}/>
+              <CheckBox containerStyle={styles.CheckBox} title = {item.a} checked={this.state.checked[Number(item.key)]===item.ret_a}  onPress={()=>this.updateIndex(Number(item.key),item.ret_a)}/>
+              <CheckBox containerStyle={styles.CheckBox} title = {item.b} checked={this.state.checked[Number(item.key)]===item.ret_b}  onPress={()=>this.updateIndex(Number(item.key),item.ret_b)}/>
+              <CheckBox containerStyle={styles.CheckBox} title = {item.c} checked={this.state.checked[Number(item.key)]===item.ret_c}  onPress={()=>this.updateIndex(Number(item.key),item.ret_c)}/>
+              <CheckBox containerStyle={styles.CheckBox} title = {item.d} checked={this.state.checked[Number(item.key)]===item.ret_d}  onPress={()=>this.updateIndex(Number(item.key),item.ret_d)}/>
+              <CheckBox containerStyle={styles.CheckBox} title = {item.e} checked={this.state.checked[Number(item.key)]===item.ret_e}  onPress={()=>this.updateIndex(Number(item.key),item.ret_e)}/>
 
               </View>
               <Text></Text>

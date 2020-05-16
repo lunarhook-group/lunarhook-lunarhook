@@ -14,7 +14,7 @@ import { Grid, WingBlank, WhiteSpace, SegmentedControl, Toast } from '@ant-desig
 import RouteConfig from '../config/RouteConfig';
 import IconConfig from '../config/IconConfig';
 import ScreenConfig from '../config/ScreenConfig';
-import StyleConfig from '../config/StyleConfig';
+import {FontStyleConfig} from '../config/StyleConfig';
 import WechatShare from '../config/WechatShare'
 import shareimage from '../config/shareimage'
 import { HistoryArrayGroup } from '../config/StorageModule'
@@ -42,6 +42,7 @@ class LunarCourseConfigPage extends React.Component {
             unselectedItems: []
         }
         LunarCourseConfigPageController = this
+        StyleConfig = FontStyleConfig.buildstyle()
     }
     async recover() {
         var CourseSelectMode = CourseConfig.getCourseRandom()
@@ -53,7 +54,7 @@ class LunarCourseConfigPage extends React.Component {
             //obj.isSelect = element.isSelect
             arr.push(element);
         })
-        await HistoryArrayGroup.save("CourseConfigselectmode", "国学经典")
+        
         console.log("LunarCourseConfigPage", typeof (arr), arr)
         var selectmode = CourseConfig.getCourseSelectMode()
         this.setState({
@@ -61,11 +62,14 @@ class LunarCourseConfigPage extends React.Component {
             selectedItems: arr.filter((item, index) => item.isSelect),
             unselectedItems: arr.filter((item, index) => !item.isSelect), selectmode: selectmode, selectmodetitle: ""
         })
+        await HistoryArrayGroup.save("CourseConfigselectmode", "国学经典")
     }
 
     componentDidMount() {
-        this.recover()
+     
+        const result = this.recover()
         this.refreshlist()
+
     }
     static navigationOptions = ({ navigation }) => {
         const { navigate } = navigation;

@@ -1,21 +1,23 @@
 
 
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableOpacity, Alert, Text, RefreshControl, Image, ScrollView, Platform } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Alert, Text, NativeModules, Image, ScrollView, Platform } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import { InputItem, WhiteSpace, List, Icon, WingBlank, Button, Switch } from '@ant-design/react-native';
 import IconConfig from '../config/IconConfig'
 import ScreenConfig from '../config/ScreenConfig';
-import StyleConfig from '../config/StyleConfig';
+import {FontStyleConfig} from '../config/StyleConfig';
 import UserModule from '../config/UserModule'
 import { HistoryArrayGroup } from '../config/StorageModule'
 import { DevTimeManager } from '../net/NetApi'
-
+import {appinfo,appname} from '../config/appinfo'
 let MyPagethis = undefined
 class MyPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      version : "",
+      appname : "",
       islogin: false,
       passtype: "password",
       mobile: "", password: "", logindisable: true, networkstate: true, checked: false, sync: false
@@ -27,19 +29,26 @@ class MyPage extends React.Component {
         checked: value,
       });
     }; MyPagethis = this
-
+    var NativePlumber = NativeModules.NativePlumber;
+    NativePlumber.PlumberGetAppVersion((error,appname,appver) => {
+      this.state.appname = appname
+      this.state.version = appver
+      this.forceUpdate()
+    })
   }
   UNSAFE_componentWillMount() {
-    console.log("MyPage", "componentWillMount")
+    //console.log("MyPage", "componentWillMount")
     this.LoginCheck()//这里迅速检测登陆状态
     this.timer = setInterval(() => {
       this.LoginCheck()
     }, DevTimeManager["MyPageTick"]);
+    MyPagethis = this
   }
   componentWillUnmount() {
     console.log("MyPage", "componentWillUnmount")
     ScreenConfig.DeviceToastClear()
     this.timer && clearInterval(this.timer)
+    MyPagethis = undefined
   }
   RSYNC() {
     this.LoginCheck(true)
@@ -71,7 +80,6 @@ class MyPage extends React.Component {
 
     return {
 
-      //headerLeft:(<Button title="万年历" onPress={  () => navigate('MainPage')  }/>),
       headerRight:()=> (<Icon name="bars" style={{ paddingRight: 30 }} onPress={() => MyPagethis.setState({ sync: !MyPagethis.state.sync })} />),
       title: RouteConfig["MyPage"].name,
     }
@@ -134,10 +142,12 @@ class MyPage extends React.Component {
   }
 
   rendersync() {
-    if (true == MyPagethis.state.sync) {
+    if (true == MyPagethis.state.sync && this.state.islogin) {
       return (
         <View>
           <Button type="primary" disabled={!this.state.islogin} onPress={() => this.RSYNC()}>同步</Button>
+          <WhiteSpace size="xl" />
+          <Button type="primary" disabled={!this.state.islogin} onPress={() => this.props.navigation.navigate("MyFontConfigPage")}>字体大小</Button>
           <WhiteSpace size="xl" />
           <WhiteSpace size="xl" />
           <List.Item
@@ -148,6 +158,16 @@ class MyPage extends React.Component {
               />
             }
           >{this.state.checked ? "强制同步" : "检测同步"}</List.Item>
+        </View>
+      )
+    }
+    else if (true == MyPagethis.state.sync){
+      return (
+        <View>
+          <WhiteSpace size="xl" />
+          <Button type="primary"  onPress={() => this.props.navigation.navigate("MyFontConfigPage")}>字体大小</Button>
+          <WhiteSpace size="xl" />
+
         </View>
       )
     }
@@ -260,8 +280,10 @@ class MyPage extends React.Component {
           <WhiteSpace size="xl" />
           <WhiteSpace size="xl" />
           <Text style={{ textAlign: "center", marginBottom: 20, }} type="warning" onPress={() => this.props.navigation.navigate("MyUpdateRegister")}>-忘记密码-</Text>
+          <Text style={{ textAlign: "center", marginBottom: 20, }} > {this.state.appname+ " " +  this.state.version}</Text>
           {this.showprivary()}
-
+          <WhiteSpace size="xl" />
+            {this.rendersync()}
         </View>
       </ScrollView>
       )
@@ -307,7 +329,7 @@ var styles = StyleSheet.create({
     //marginLeft: 10,
     //paddingLeft:10,
     textAlign: 'center',
-    fontSize: 15,
+    fontSize:FontStyleConfig.getFontApplySize()+ 15,
     justifyContent: 'center', //虽然样式中设置了 justifyContent: 'center'，但无效  
     alignItems: 'center',
   },
@@ -322,11 +344,6 @@ var styles = StyleSheet.create({
     justifyContent: 'center', //虽然样式中设置了 justifyContent: 'center'，但无效 
     //textAlign:'center', 
     //textDecorationLine:'underline'
-  },
-  menufont: {
-    fontSize: 15,
-    color: '#333333',
-    height: 25
   },
   inputpicker: {
 

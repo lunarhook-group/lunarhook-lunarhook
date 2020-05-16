@@ -11,6 +11,7 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Feather from 'react-native-vector-icons/Feather'
 import Fontisto from 'react-native-vector-icons/Fontisto'
+import EvilIcons from 'react-native-vector-icons/EvilIcons'
 
 const buttonsize = 28
 const midsize = 28
@@ -84,6 +85,11 @@ class IconConfig extends React.Component {
   static IconScreen = (<Ionicons name="ios-images" size={size} color={blue} />)
   static IconDetail = (<Ionicons name="ios-more" size={size} color={orange} />)
   static IconLunarCourse = (<MaterialCommunityIcons name="lightbulb-on-outline" size={size} color={green} />)
+  static IconLunarCourseIntro = (<MaterialCommunityIcons name="amazon-alexa" size={size} color={green} />)
+  static IconLunarCourseBlue = (<MaterialCommunityIcons name="lightbulb-on-outline" size={size} color={blue} />)
+  static IconLunarCourseRed = (<MaterialCommunityIcons name="lightbulb-on-outline" size={size} color={fire} />)
+  static IconLunarCourseRedO = (<MaterialCommunityIcons name="lightbulb-on-outline" size={size} color={orange} />)
+  static IconLunarCourseGold = (<MaterialCommunityIcons name="lightbulb-on-outline" size={size} color={gold} />)
   static IconKit = (<FontAwesome name="wpexplorer" size={size} color={startblue} />)
   static IconThreechanges = (<MaterialCommunityIcons name="google-circles-communities" size={buttonsize} color="#06F" />)
   static IconSixCourse = (<Foundation name="die-six" size={buttonsize} color={blue} />)
@@ -151,6 +157,7 @@ class IconConfig extends React.Component {
   static IconShuoWen = (<FontAwesome name="language" size={buttonsize} color={green}/>)
   static IconErYa = (<FontAwesome name="language" size={buttonsize} color={blue}/>)
   static IconShengYun = (<FontAwesome name="language" size={buttonsize} color={fire}/>)
+  static IconZiWei = (<FontAwesome5 name="connectdevelop" size={buttonsize} color={orange}/>)  
   //static IconUniversBook= (<MaterialCommunityIcons name="comment-arrow-left" size={buttonsize} color={LightPink}/>)
   //static IconUniversBook= (<FontAwesome5 name="schlix" size={buttonsize} color={black}/>)
   static IconUniversBook= (<FontAwesome name="language" size={buttonsize} color={gold}/>)
@@ -162,11 +169,17 @@ class IconConfig extends React.Component {
   static IconZhongYongBook= (<FontAwesome name="language" size={buttonsize} color={Coral}/>)
   static IconBigBook= (<FontAwesome name="language" size={buttonsize} color={fire}/>)
 
+
+
+  static IconBookMedic = (<FontAwesome5 name="medrt" size={buttonsize} color={green}/>) 
   static IconShiJingBook= (<FontAwesome name="language" size={buttonsize} color={LightPink}/>)
   static IconShangShuBook= (<FontAwesome name="language" size={buttonsize} color={orange}/>)
   static IconLijiBook= (<FontAwesome name="language" size={buttonsize} color={green}/>)
   static IconChunQiuBook= (<FontAwesome name="language" size={buttonsize} color={darkgold}/>)
 
+  static IconFontSmall = (<EvilIcons name="minus" size={buttonsize} color={green}/>)
+  static IconFontLarge= (<EvilIcons name="plus" size={buttonsize} color={green}/>)
+  static IconFontDefault = (<EvilIcons name="refresh" size={size} color={green}/>)
   static colorgreen = green
   static colorclaygreen = claygreen
   static colorred = red

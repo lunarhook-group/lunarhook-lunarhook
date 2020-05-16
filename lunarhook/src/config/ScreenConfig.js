@@ -2,40 +2,6 @@
 import React, {Component} from 'react';
 import {PixelRatio,Platform,Dimensions} from 'react-native';
 import { Portal, Toast } from '@ant-design/react-native'
-
-
-export const W = Dimensions.get('window').width;
-export const H = Dimensions.get('window').height;
-export const WIDTH = getOrientationWidth();
-export const HEIGHT = getOrientationHeight();
-export const BOOKMARK_WIDTH = WIDTH / 9 * 2;
-export const BOOKMARK_HEIGHT = BOOKMARK_WIDTH / 3 * 4;
-
-export const IMG_WIDTH = WIDTH / 16 * 3;
-export const IMG_HEIGHT = IMG_WIDTH / 3 * 4;
-export const IMG_MARGIN = WIDTH / 40;
-
-export const filterWidth = WIDTH / 3 * 2;
-export const cateItemWidth = filterWidth / 4;
-export const cateItemHeight = cateItemWidth / 2;
-export const cateItemMargin = cateItemWidth / 8;
-
-export function getOrientationWidth() {
-    if (W > H) {
-        return H
-    } else {
-        return W
-    }
-}
-
-export function getOrientationHeight() {
-    if (W > H) {
-        return W
-    } else {
-        return H
-    }
-}
-
 const screenW = Dimensions.get('window').width;
 const  screenH = Dimensions.get('window').height;
 // iPhoneX
@@ -47,7 +13,7 @@ const RX_HEIGHT = 896;
 // iPhoneRX 该尺寸目前不用适配
 const XS_WIDTH = 375;
 const XS_HEIGHT = 812;
-export class ScreenConfig extends React.Component {
+class ScreenConfig extends React.Component {
     Toastkey = undefined;
     __navigationMenuFontsize()
     {   return 11}

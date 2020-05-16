@@ -11,6 +11,7 @@ import ScreenConfig from '../../../config/ScreenConfig';
 import {HistoryArrayGroup} from '../../../config/StorageModule'
 import UserModule from '../../../config/UserModule'
 import { dateAdd } from '../solar2lunar/chinese-lunar';
+import {StyleConfig,FontStyleConfig} from '../../../config/StyleConfig';
 //import FingerprintScanner from 'react-native-fingerprint-scanner';
 //import Fingerprintstyles from '../../../fingerprint/Application.container.styles';
 //import FingerprintPopup from '../../../fingerprint/FingerprintPopup.component';
@@ -220,6 +221,18 @@ changeViewLayout(e,data) {
 
 }
 
+onPress(item){
+  const { navigate } = this.props.navigation;
+  if(10==item.ret.length)
+  {
+    navigate('ziweiMainPage', item.url)
+  }
+  if(8==item.ret.length)
+  {
+    navigate('EightrandomMainPage', item.url)
+  }
+}
+
   render() {
     this.animationIsRunning=false
     this.rowTranslateAnimatedValues = {};
@@ -288,18 +301,18 @@ changeViewLayout(e,data) {
                     ref={ref => { this.refs[data.item.id] = ref }}
                      >
                 <Card style={{ width: width - 20,paddingLeft:10 } } >
-                  <TouchableOpacity onPress={() => navigate('EightrandomMainPage', data.item.url)}>
+                  <TouchableOpacity onPress={()=>{this.onPress(data.item)}}>
                     <Card.Header
-                      title={<Text style={{fontSize:14}}>{data.item.ret}</Text>}
+                      title={<Text style={{fontSize:FontStyleConfig.getFontApplySize()+14}}>{data.item.ret}</Text>}
                       //thumbStyle={{ width: 30, height: 30 }}
                       thumb={true == data.item.star ? IconConfig.IconStar : IconConfig.IconUStar}
-                      extra={data.item.time} />
+                      extra={<Text style={{fontSize:FontStyleConfig.getFontApplySize()+14}}>{data.item.time}</Text>} />
                     <Card.Body>
                       <View >
-                        <Text style={{ marginLeft: 16,marginRight:16}}>{data.item.name}:{data.item.tip}</Text>
+                        <Text style={{fontSize:FontStyleConfig.getFontApplySize()+14, marginLeft: 16,marginRight:16}}>{data.item.name}:{data.item.tip}</Text>
                       </View>
                     </Card.Body>
-                    <Card.Footer content="" extra={data.item.birth} />
+                    <Card.Footer content="" extra={<Text style={{fontSize:FontStyleConfig.getFontApplySize()+14}}>{data.item.birth}</Text>}/>
                   </TouchableOpacity>
                 </Card>
                 </Animated.View>
@@ -314,7 +327,7 @@ changeViewLayout(e,data) {
         <WhiteSpace size="xl" />
         <WhiteSpace size="xl" />
         <WhiteSpace size="xl" />
-        <Text style={{fontSize:11,color:"#DDDDDD",textAlign:"center"}}>--end--</Text>
+        <Text style={{fontSize:FontStyleConfig.getFontApplySize()+11,color:"#DDDDDD",textAlign:"center"}}>--end--</Text>
         <WhiteSpace size="xl" />
       </View>
  

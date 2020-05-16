@@ -14,7 +14,7 @@ import { Grid, WingBlank, WhiteSpace, SegmentedControl, Toast } from '@ant-desig
 import RouteConfig from '../config/RouteConfig';
 import IconConfig from '../config/IconConfig';
 import ScreenConfig from '../config/ScreenConfig';
-import StyleConfig from '../config/StyleConfig';
+import {FontStyleConfig} from '../config/StyleConfig';
 import WechatShare from '../config/WechatShare'
 import shareimage from '../config/shareimage'
 import { HistoryArrayGroup } from '../config/StorageModule'
@@ -42,6 +42,7 @@ class kitConfigPage extends React.Component {
             unselectedItems: []
         }
         kitConfigPageController = this
+        StyleConfig = FontStyleConfig.buildstyle()
     }
     async recover() {
         var itemsrandom = KitConfig.getitemsrandom()
@@ -53,7 +54,7 @@ class kitConfigPage extends React.Component {
             //obj.isSelect = element.isSelect
             arr.push(element);
         })
-        await HistoryArrayGroup.save("kitConfigselectmode", "职业性格")
+        
         console.log("kitConfigPage", typeof (arr), arr)
         var selectmode = KitConfig.getselectmode()
         this.setState({
@@ -61,6 +62,7 @@ class kitConfigPage extends React.Component {
             selectedItems: arr.filter((item, index) => item.isSelect),
             unselectedItems: arr.filter((item, index) => !item.isSelect), selectmode: selectmode, selectmodetitle: ""
         })
+        await HistoryArrayGroup.save("kitConfigselectmode", "职业性格")
     }
 
     componentDidMount() {

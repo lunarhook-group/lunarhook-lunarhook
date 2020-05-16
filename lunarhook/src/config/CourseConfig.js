@@ -24,6 +24,8 @@ var CourseRandom = [];
 CourseSelectMode = [
   {title: '国学经典',isSelect: true},
   {title: '经史子集',isSelect: true},
+  {title: '蒙童幼学',isSelect: true},
+  {title: '医药经典',isSelect: true}
   //{title: '逻辑思维',isSelect: true},
   //{title: '数理逻辑',isSelect: true},
   //{title: '人工智能',isSelect: true},
@@ -31,21 +33,34 @@ CourseSelectMode = [
 
  Coursealllist['国学经典'] = [
   {title: '导读',isSelect: true},
-  {title: '小学',isSelect: true},
+  {title: '蒙学',isSelect: false},
+  {title: '小学',isSelect: false},
   {title: '三玄',isSelect: true},
   {title: '四书',isSelect: true},
   {title: '五经',isSelect: true},
+  {title: '医药经典',isSelect: false},
 
+]
+Coursealllist['医药经典'] = [
+  {title: '导读',isSelect: false},
+  {title: '蒙学',isSelect: false},
+  {title: '小学',isSelect: false},
+  {title: '三玄',isSelect: true},
+  {title: '四书',isSelect: false},
+  {title: '五经',isSelect: false},
+  {title: '中医',isSelect: true},
 ]
  Coursealllist['经史子集'] = [
 
   {title: '四书',isSelect: true},
   {title: '五经',isSelect: true},
 ]
-/*
- Coursealllist['逻辑思维'] = [
 
+ Coursealllist['蒙童幼学'] = [
+  {title: '蒙学',isSelect: true},
+  {title: '小学',isSelect: true},
 ]
+/*
  Coursealllist['数理逻辑'] = [
 
 ]
@@ -57,45 +72,55 @@ CourseSelectMode = [
 
 CourseRandom['全部'] = [
   {title: '全部',isSelect: true},
+  {title: '蒙童幼学',isSelect: true},
   {title: '小学三玄',isSelect: true},
   {title: '四书五经',isSelect: true},
-  //{title: '逻辑思维',isSelect: true},
+  {title: '医药经典',isSelect: true},
   //{title: '数理逻辑',isSelect: true},
   //{title: '人工智能',isSelect: true},
 ]
 CourseRandom['国学经典'] = [
-  {title: '全部',isSelect: true},
+  {title: '全部',isSelect: false},
+  {title: '蒙童幼学',isSelect: false},
   {title: '小学三玄',isSelect: true},
   {title: '四书五经',isSelect: true},
+  {title: '医药经典',isSelect: false},
   //{title: '逻辑思维',isSelect: false},
   //{title: '数理逻辑',isSelect: false},
  // {title: '人工智能',isSelect: false},
 ]
 CourseRandom['经史子集'] = [
-  {title: '全部',isSelect: true},
-  {title: '小学三玄',isSelect: true},
+  {title: '全部',isSelect: false},
+  {title: '蒙童幼学',isSelect: false},
+  {title: '小学三玄',isSelect: false},
   {title: '四书五经',isSelect: true},
+  {title: '医药经典',isSelect: false},
  // {title: '逻辑思维',isSelect: false},
  // {title: '数理逻辑',isSelect: false},
   //{title: '人工智能',isSelect: false},
 ]
+
+CourseRandom['蒙童幼学'] = [
+  {title: '全部',isSelect: false},
+  {title: '蒙童幼学',isSelect: true},
+  {title: '小学三玄',isSelect: false},
+  {title: '四书五经',isSelect: false},
+  {title: '医药经典',isSelect: false},
+  //{title: '小学三玄',isSelect: false},
+  //{title: '四书五经',isSelect: false},
+  //{title: '逻辑思维',isSelect: true},
+  //{title: '数理逻辑',isSelect: false},
+  //{title: '人工智能',isSelect: false},
+]
+
+CourseRandom['医药经典'] = [
+  {title: '全部',isSelect: false},
+  {title: '蒙童幼学',isSelect: false},
+  {title: '小学三玄',isSelect: false},
+  {title: '四书五经',isSelect: false},
+  {title: '医药经典',isSelect: true},
+]
 /*
-CourseRandom['逻辑思维'] = [
-  {title: '全部',isSelect: true},
-  {title: '小学三玄',isSelect: false},
-  {title: '四书五经',isSelect: false},
-  {title: '逻辑思维',isSelect: true},
-  {title: '数理逻辑',isSelect: false},
-  {title: '人工智能',isSelect: false},
-]
-CourseRandom['数理逻辑'] = [
-  {title: '全部',isSelect: true},
-  {title: '小学三玄',isSelect: false},
-  {title: '四书五经',isSelect: false},
-  {title: '逻辑思维',isSelect: false},
-  {title: '数理逻辑',isSelect: true},
-  {title: '人工智能',isSelect: false},
-]
 CourseRandom['人工智能'] = [
   {title: '全部',isSelect: true},
   {title: '小学三玄',isSelect: false},
@@ -109,8 +134,8 @@ CourseRandom['人工智能'] = [
 
   channel(){
       /*
-      delete CourseRandom['周易命理'];
-      delete Coursealllist['周易命理'];
+      delete CourseRandom['周易八卦'];
+      delete Coursealllist['周易八卦'];
       for(var key in CourseRandom){
         var element = CourseRandom[key]
         var T = new Array()
@@ -142,7 +167,7 @@ CourseRandom['人工智能'] = [
         for(var i in CourseSelectMode)
         {
           
-          if (CourseSelectMode[i].title!="周易命理" )
+          if (CourseSelectMode[i].title!="周易八卦" )
           {
             T.push(CourseSelectMode[i])
           }

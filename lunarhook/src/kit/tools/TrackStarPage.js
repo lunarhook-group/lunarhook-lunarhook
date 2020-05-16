@@ -7,12 +7,12 @@ import { Accordion, DatePicker, List, Grid, WhiteSpace, Provider, PickerView } f
 import RouteConfig from '../../config/RouteConfig';
 import IconConfig from '../../config/IconConfig';
 import ScreenConfig from '../../config/ScreenConfig';
-import StyleConfig from '../../config/StyleConfig';
 import WechatShare from '../../config/WechatShare'
 import shareimage from '../../config/shareimage'
 import { HistoryArrayGroup } from '../../config/StorageModule'
 import {SixrandomModule} from '../UniversechangesLib/SixrandomLib/SixrandomModule'
 import TrackMagnetometer from './TrackMagnetometer'
+import {StyleConfig,FontStyleConfig} from '../../config/StyleConfig';
 var Gridh = ScreenConfig.__screenW()/3
 var curDatenow = new Date()
 var curyear = curDatenow.getFullYear()
@@ -966,7 +966,7 @@ var styles = StyleSheet.create({
   {
     lineHeight: 24,
     textAlign: 'center',
-    fontSize: 15,
+    fontSize:FontStyleConfig.getFontApplySize()+ 15,
     justifyContent: 'center', //虽然样式中设置了 justifyContent: 'center'，但无效  
     alignItems: 'center',
   }, dateContainer: {

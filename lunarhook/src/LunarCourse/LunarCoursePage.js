@@ -5,44 +5,58 @@ import TabNavigator from 'react-native-tab-navigator';
 import {Tabs, Grid ,Accordion,WhiteSpace} from '@ant-design/react-native';
 import RouteConfig from '../config/RouteConfig'
 import ScreenConfig from '../config/ScreenConfig';
-import StyleConfig from '../config/StyleConfig';
+import {StyleConfig,FontStyleConfig} from '../config/StyleConfig';
 import {HistoryArrayGroup} from '../config/StorageModule'
 import CourseConfig from '../config/CourseConfig'
 
 const intro = [
+  
+  {icon: RouteConfig['IntroBooksPage'].icon,text: RouteConfig['IntroBooksPage'].name,url:RouteConfig['IntroBooksPage'].route},
   {icon: RouteConfig['IntroAncientPage'].icon,text: RouteConfig['IntroAncientPage'].name,url:RouteConfig['IntroAncientPage'].route},
   {icon: RouteConfig['IntroThreePage'].icon,text: RouteConfig['IntroThreePage'].name,url:RouteConfig['IntroThreePage'].route},
   {icon: RouteConfig['LunarCourseAnswerPage'].icon,text: RouteConfig['LunarCourseAnswerPage'].name,url:RouteConfig['LunarCourseAnswerPage'].route},
 ]
 const base = [
-  {icon: RouteConfig['ShuoWenBookPage'].icon,text: RouteConfig['ShuoWenBookPage'].name,url:RouteConfig['ShuoWenBookPage'].route},
-  {icon: RouteConfig['ErYaBookPage'].icon,text: RouteConfig['ErYaBookPage'].name,url:RouteConfig['ErYaBookPage'].route},
+  {icon: RouteConfig['ShuoWenBookPage'].icon,text: RouteConfig['ShuoWenBookPage'].name,url:RouteConfig['ShuoWenBookPage'].route,index:{ text: "ShuoWenBookPage" }},
+  {icon: RouteConfig['ErYaBookPage'].icon,text: RouteConfig['ErYaBookPage'].name,url:RouteConfig['ErYaBookPage'].route,index:{ text: "ErYaBookPage" }},
 
-  {icon: RouteConfig['ShengYunBookPage'].icon,text: RouteConfig['ShengYunBookPage'].name,url:RouteConfig['ShengYunBookPage'].route},
-  //{icon: RouteConfig['yinyunPage'].icon,text: RouteConfig['yinyunPage'].name,url:RouteConfig['yinyunPage'].route},
+  {icon: RouteConfig['ShengYunBookPage'].icon,text: RouteConfig['ShengYunBookPage'].name,url:RouteConfig['ShengYunBookPage'].route,index:{ text: "ShengYunBookPage" }},
+  //{icon: RouteConfig['yinyunPage'].icon,text: RouteConfig['yinyunPage'].name,url:RouteConfig['yinyunPage'].route,index:{ text: "AncientQianZiWenPage" }},
 ]
 
 const three = [
-  {icon: RouteConfig['UniversBookPage'].icon,text: RouteConfig['UniversBookPage'].name,url:RouteConfig['UniversBookPage'].route},
-  {icon: RouteConfig['OldBookPage'].icon,text: RouteConfig['OldBookPage'].name,url:RouteConfig['OldBookPage'].route},
-  {icon: RouteConfig['ZhuangBookPage'].icon,text: RouteConfig['ZhuangBookPage'].name,url:RouteConfig['ZhuangBookPage'].route},
+  {icon: RouteConfig['UniversBookPage'].icon,text: RouteConfig['UniversBookPage'].name,url:RouteConfig['UniversBookPage'].route,index:{ text: "UniversBookPage" }},
+  {icon: RouteConfig['OldBookPage'].icon,text: RouteConfig['OldBookPage'].name,url:RouteConfig['OldBookPage'].route,index:{ text: "OldBookPage" }},
+  {icon: RouteConfig['ZhuangBookPage'].icon,text: RouteConfig['ZhuangBookPage'].name,url:RouteConfig['ZhuangBookPage'].route,index:{ text: "ZhuangBookPage" }},
 ]
 
 const four = [
-  {icon: RouteConfig['LunyuBookPage'].icon,text: RouteConfig['LunyuBookPage'].name,url:RouteConfig['LunyuBookPage'].route},
-  {icon: RouteConfig['MengziBookPage'].icon,text: RouteConfig['MengziBookPage'].name,url:RouteConfig['MengziBookPage'].route},
-  {icon: RouteConfig['ZhongBookPage'].icon,text: RouteConfig['ZhongBookPage'].name,url:RouteConfig['ZhongBookPage'].route},
-  {icon: RouteConfig['BigBookPage'].icon,text: RouteConfig['BigBookPage'].name,url:RouteConfig['BigBookPage'].route},
+  {icon: RouteConfig['LunyuBookPage'].icon,text: RouteConfig['LunyuBookPage'].name,url:RouteConfig['LunyuBookPage'].route,index:{ text: "LunyuBookPage" }},
+  {icon: RouteConfig['MengziBookPage'].icon,text: RouteConfig['MengziBookPage'].name,url:RouteConfig['MengziBookPage'].route,index:{ text: "MengziBookPage" }},
+  {icon: RouteConfig['ZhongBookPage'].icon,text: RouteConfig['ZhongBookPage'].name,url:RouteConfig['ZhongBookPage'].route,index:{ text: "ZhongBookPage" }},
+  {icon: RouteConfig['BigBookPage'].icon,text: RouteConfig['BigBookPage'].name,url:RouteConfig['BigBookPage'].route,index:{ text: "BigBookPage" }},
 ]
 
 const five = [
-  {icon: RouteConfig['UniversBookPage'].icon,text: RouteConfig['UniversBookPage'].name,url:RouteConfig['UniversBookPage'].route},
-  {icon: RouteConfig['ShijingBookPage'].icon,text: RouteConfig['ShijingBookPage'].name,url:RouteConfig['ShijingBookPage'].route},
-  {icon: RouteConfig['ShangshuBookPage'].icon,text: RouteConfig['ShangshuBookPage'].name,url:RouteConfig['ShangshuBookPage'].route},
-  {icon: RouteConfig['LijiBookPage'].icon,text: RouteConfig['LijiBookPage'].name,url:RouteConfig['LijiBookPage'].route},
-  {icon: RouteConfig['ChunqiuBookPage'].icon,text: RouteConfig['ChunqiuBookPage'].name,url:RouteConfig['ChunqiuBookPage'].route},
+  {icon: RouteConfig['UniversBookPage'].icon,text: RouteConfig['UniversBookPage'].name,url:RouteConfig['UniversBookPage'].route,index:{ text: "UniversBookPage" }},
+  {icon: RouteConfig['ShijingBookPage'].icon,text: RouteConfig['ShijingBookPage'].name,url:RouteConfig['ShijingBookPage'].route,index:{ text: "ShijingBookPage" }},
+  {icon: RouteConfig['ShangshuBookPage'].icon,text: RouteConfig['ShangshuBookPage'].name,url:RouteConfig['ShangshuBookPage'].route,index:{ text: "ShangshuBookPage" }},
+  {icon: RouteConfig['LijiBookPage'].icon,text: RouteConfig['LijiBookPage'].name,url:RouteConfig['LijiBookPage'].route,index:{ text: "LijiBookPage" }},
+  {icon: RouteConfig['ChunqiuBookPage'].icon,text: RouteConfig['ChunqiuBookPage'].name,url:RouteConfig['ChunqiuBookPage'].route,index:{ text: "ChunqiuBookPage" }},
+]
+const Meng = [
+  {icon: RouteConfig['AncientSanZiJingPage'].icon,text: RouteConfig['AncientSanZiJingPage'].name,url:RouteConfig['AncientSanZiJingPage'].route,index:{ text: "AncientSanZiJingPage" }},
+  {icon: RouteConfig['AncientBaiJiaXingPage'].icon,text: RouteConfig['AncientBaiJiaXingPage'].name,url:RouteConfig['AncientBaiJiaXingPage'].route,index:{ text: "AncientBaiJiaXingPage" }},
+  {icon: RouteConfig['AncientQianZiWenPage'].icon,text: RouteConfig['AncientQianZiWenPage'].name,url:RouteConfig['AncientQianZiWenPage'].route,index:{ text: "AncientQianZiWenPage" }},
 ]
 
+const yi = [
+  {icon: RouteConfig['HuangDiNeiJingPage'].icon,text: RouteConfig['HuangDiNeiJingPage'].name,url:RouteConfig['HuangDiNeiJingPage'].route,index:{ text: "HuangDiNeiJingPage" }},
+  //{icon: RouteConfig['BenCaoGangMuPage'].icon,text: RouteConfig['BenCaoGangMuPage'].name,url:RouteConfig['BenCaoGangMuPage'].route,index:{ text: "BenCaoGangMuPage" }},
+  //{icon: RouteConfig['LunShangHanPage'].icon,text: RouteConfig['LunShangHanPage'].name,url:RouteConfig['LunShangHanPage'].route,index:{ text: "LunShangHanPage" }},
+  
+  
+]
 
 var w = ScreenConfig.__screenW()
 var coln=4
@@ -173,7 +187,16 @@ class LunarCoursePage extends React.Component {
     }
     this.setState({ datahistory: datahistory,tabs:tabs })
     this.props.navigation.setParams({text:"refresh"})
-    navigate(el.url)
+    if(undefined!=el.index)
+    {
+     
+      var param =  JSON.parse(JSON.stringify(el.index))
+      navigate(el.url,param)
+    }
+    else{
+      navigate(el.url)
+    }
+   
   }
   onclick(el, navigate)
   {
@@ -219,7 +242,7 @@ class LunarCoursePage extends React.Component {
           renderItem={(el, index) => {
             return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
               {el.icon}
-              <Text style={{ textAlign: "center", fontSize: 12 }}>{el.text}</Text>
+              <Text style={{ textAlign: "center", fontSize:FontStyleConfig.getFontApplySize()+ 12 }}>{el.text}</Text>
             </View>)
           }}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
@@ -235,7 +258,7 @@ class LunarCoursePage extends React.Component {
           renderItem={(el, index) => {
             return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
               {el.icon}
-              <Text style={{ textAlign: "center", fontSize: 12 }}>{el.text}</Text>
+              <Text style={{ textAlign: "center", fontSize:FontStyleConfig.getFontApplySize()+ 12 }}>{el.text}</Text>
             </View>)
           }}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
@@ -250,7 +273,7 @@ class LunarCoursePage extends React.Component {
           renderItem={(el, index) => {
             return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
               {el.icon}
-              <Text style={{ textAlign: "center", fontSize: 12 }}>{el.text}</Text>
+              <Text style={{ textAlign: "center", fontSize:FontStyleConfig.getFontApplySize()+ 12 }}>{el.text}</Text>
             </View>)
           }}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
@@ -265,7 +288,7 @@ class LunarCoursePage extends React.Component {
           renderItem={(el, index) => {
             return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
               {el.icon}
-              <Text style={{ textAlign: "center", fontSize: 12 }}>{el.text}</Text>
+              <Text style={{ textAlign: "center", fontSize:FontStyleConfig.getFontApplySize()+ 12 }}>{el.text}</Text>
             </View>)
           }}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
@@ -280,6 +303,15 @@ class LunarCoursePage extends React.Component {
           hasLine={true}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
         /></Accordion.Panel >)
+        contentlist["蒙学"] = (
+          <Accordion.Panel header={RouteConfig['MengBookPage'].name}  key={RouteConfig['MengBookPage'].name}>
+            <Grid
+              data={Meng}
+              columnNum={coln}
+              isCarousel={false}
+              hasLine={true}
+              onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
+            /></Accordion.Panel >)
         /*
     contentlist["五经"] = (
       <Accordion.Panel header={RouteConfig['FiveExtPage'].name} key={RouteConfig['FiveExtPage'].name}>
@@ -291,12 +323,23 @@ class LunarCoursePage extends React.Component {
           renderItem={(el, index) => {
             return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
               {el.icon}
-              <Text style={{ textAlign: "center", fontSize: 12 }}>{el.text}</Text>
+              <Text style={{ textAlign: "center", fontSize:FontStyleConfig.getFontApplySize()+ 12 }}>{el.text}</Text>
             </View>)
           }}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
         /></Accordion.Panel >)
-        */
+       
+               */
+          contentlist["中医"] = (
+            <Accordion.Panel header={RouteConfig['ChineseMedicationPage'].name}  key={RouteConfig['ChineseMedicationPage'].name}>
+              <Grid
+                data={yi}
+                columnNum={coln}
+                isCarousel={false}
+                hasLine={true}
+                onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
+              /></Accordion.Panel >)
+
     if ("关注" == tab.title) {
         return (
           <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
@@ -307,6 +350,7 @@ class LunarCoursePage extends React.Component {
       return (
         <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
           {(function (handler) {
+            try{
               var alllist = CourseConfig.getCoursealllist()
               var sel = alllist[handler.state.selectmode]
               var curalllist = JSON.parse(JSON.stringify(sel))
@@ -316,6 +360,8 @@ class LunarCoursePage extends React.Component {
                 delete contentlist["周易八卦"]
                 delete contentlist["塔罗占星"]
               }
+              delete contentlist["蒙童幼学"]
+              delete contentlist["医药经典"]
               curalllist.forEach(element=>{
                 if(undefined!=contentlist[element.title])
                 {
@@ -323,6 +369,9 @@ class LunarCoursePage extends React.Component {
                 }
                 
               })
+            }catch{
+              return []
+            }
 
               return content
             })(this)    
@@ -345,20 +394,23 @@ class LunarCoursePage extends React.Component {
         </Accordion>
       )
     } 
-    else if ("逻辑思维" == tab.title) {
+
+    else if ("蒙童幼学" == tab.title) {
       return (
         <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["关注"]}
+          {contentlist["蒙学"]}
         </Accordion>
       )
     } 
-    else if ("数理逻辑" == tab.title) {
+        
+    else if ("医药经典" == tab.title) {
       return (
         <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["关注"]}
+          { contentlist["中医"]}
         </Accordion>
       )
     } 
+    /*
     else if ("人工智能" == tab.title) {
       return (
         <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
@@ -366,6 +418,7 @@ class LunarCoursePage extends React.Component {
         </Accordion>
       )
     } 
+    */
   };
   
   render(){
@@ -386,7 +439,7 @@ class LunarCoursePage extends React.Component {
           
           <ScrollView>
           <View style={{ flex: 2 }} ref="tabs">
-            <Tabs tabs={this.state.tabs} page={"全部"}  tabBarPosition="top" >
+            <Tabs tabs={this.state.tabs} page={"全部"}  tabBarPosition="top"  tabBarTextStyle={{ textAlign: "center", fontSize:FontStyleConfig.getFontApplySize()+ 14 }}>
               {this.renderContent}
             </Tabs>
           </View>
@@ -438,17 +491,4 @@ class LunarCoursePage extends React.Component {
               )
     }
   };
-var styles = StyleSheet.create ({
-
-   button:{
-    height: 50,
-    backgroundColor:'transparent',
-   justifyContent:'center',
-   borderRadius: 4,
-    },
-  dateContainer: {
-    justifyContent:'space-between',
-    flexDirection: 'row',
-  },
-});
 module.exports=LunarCoursePage;  

@@ -5,7 +5,7 @@ import TabNavigator from 'react-native-tab-navigator';
 import {Tabs, Grid ,Accordion,WhiteSpace} from '@ant-design/react-native';
 import RouteConfig from '../config/RouteConfig'
 import ScreenConfig from '../config/ScreenConfig';
-import StyleConfig from '../config/StyleConfig';
+import {StyleConfig,FontStyleConfig} from '../config/StyleConfig';
 import IconConfig from '../config/IconConfig'
 import {HistoryArrayGroup} from '../config/StorageModule'
 import MasterConfig from '../config/MasterConfig'
@@ -13,13 +13,13 @@ import MasterConfig from '../config/MasterConfig'
 const intro = [
 
   //{icon: RouteConfig['MasterSearchPage'].icon,text: RouteConfig['MasterSearchPage'].name,url:RouteConfig['MasterSearchPage'].route},
-  {icon: IconConfig.IconStar,text:"MBTI3",url:""},
-  {icon:IconConfig.IconStar,text:"MBTI4",url:""},
+  {icon: IconConfig.IconStar,text:"MBTI L1",url:""},
+  {icon:IconConfig.IconStar,text:"MBTI L2",url:""},
 
 ]
 const MBTI = [
-  {icon: IconConfig.IconStar,text:"MBTI3",url:""},
-  {icon:IconConfig.IconStar,text:"MBTI4",url:""},
+  {icon: IconConfig.IconStar,text:"MBTI L1",url:""},
+  {icon:IconConfig.IconStar,text:"MBTI L2",url:""},
   //{icon: RouteConfig['ErYaBookPage'].icon,text: RouteConfig['ErYaBookPage'].name,url:RouteConfig['ErYaBookPage'].route},
 
   //{icon: RouteConfig['ShengYunBookPage'].icon,text: RouteConfig['ShengYunBookPage'].name,url:RouteConfig['ShengYunBookPage'].route},
@@ -27,8 +27,8 @@ const MBTI = [
 ]
 
 const Univers = [
-  {icon: IconConfig.IconStar,text:"MBTI3",url:""},
-  {icon:IconConfig.IconStar,text:"MBTI4",url:""},
+  {icon: IconConfig.IconStar,text:"Five L1",url:""},
+  {icon:IconConfig.IconStar,text:"Five L2",url:""},
 ]
 
 
@@ -200,7 +200,7 @@ class LunarMasterPage extends React.Component {
           renderItem={(el, index) => {
             return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
               {el.icon}
-              <Text style={{ textAlign: "center", fontSize: 12 }}>{el.text}</Text>
+              <Text style={{ textAlign: "center", fontSize:FontStyleConfig.getFontApplySize()+ 12 }}>{el.text}</Text>
             </View>)
           }}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
@@ -216,7 +216,7 @@ class LunarMasterPage extends React.Component {
           renderItem={(el, index) => {
             return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
               {el.icon}
-              <Text style={{ textAlign: "center", fontSize: 12 }}>{el.text}</Text>
+              <Text style={{ textAlign: "center", fontSize:FontStyleConfig.getFontApplySize()+ 12 }}>{el.text}</Text>
             </View>)
           }}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
@@ -231,7 +231,7 @@ class LunarMasterPage extends React.Component {
           renderItem={(el, index) => {
             return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
               {el.icon}
-              <Text style={{ textAlign: "center", fontSize: 12 }}>{el.text}</Text>
+              <Text style={{ textAlign: "center", fontSize:FontStyleConfig.getFontApplySize()+ 12 }}>{el.text}</Text>
             </View>)
           }}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
@@ -246,7 +246,7 @@ class LunarMasterPage extends React.Component {
           renderItem={(el, index) => {
             return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
               {el.icon}
-              <Text style={{ textAlign: "center", fontSize: 12 }}>{el.text}</Text>
+              <Text style={{ textAlign: "center", fontSize:FontStyleConfig.getFontApplySize()+ 12 }}>{el.text}</Text>
             </View>)
           }}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}

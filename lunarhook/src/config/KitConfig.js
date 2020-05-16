@@ -24,7 +24,7 @@ var itemsrandom = [];
 
   init(){
 selectmode = [
-  {title: '周易命理',isSelect: true},
+  {title: '周易八卦',isSelect: true},
   {title: '心理测试',isSelect: true},
   {title: '焦虑抑郁',isSelect: true},
   {title: '儿童少年',isSelect: true},
@@ -41,7 +41,7 @@ selectmode = [
   {title: '工具助手',isSelect: true},
   {title: '大道易德',isSelect: true},
 ]
- alllist['周易命理'] = [
+ alllist['周易八卦'] = [
   {title: '周易八卦',isSelect: true},
   {title: '大道易德',isSelect: true},
   {title: '性格测评',isSelect: true},
@@ -98,7 +98,7 @@ itemsrandom['全部'] = [
   {title: '大道易德',isSelect: true},
   {title: '工具助手',isSelect: true},
 ]
-itemsrandom['周易命理'] = [
+itemsrandom['周易八卦'] = [
     {title: '全部',isSelect: true},
     {title: '周易八卦',isSelect: true},
     {title: '大道易德',isSelect: true},
@@ -162,8 +162,8 @@ itemsrandom['职业性格'] = [
 
   channel(){
 
-      delete itemsrandom['周易命理'];
-      delete alllist['周易命理'];
+      delete itemsrandom['周易八卦'];
+      delete alllist['周易八卦'];
       for(var key in itemsrandom){
         var element = itemsrandom[key]
         var T = new Array()
@@ -195,7 +195,7 @@ itemsrandom['职业性格'] = [
         for(var i in selectmode)
         {
           
-          if (selectmode[i].title!="周易命理" )
+          if (selectmode[i].title!="周易八卦" )
           {
             T.push(selectmode[i])
           }

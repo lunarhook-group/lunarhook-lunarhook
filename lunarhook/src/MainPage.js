@@ -1,13 +1,13 @@
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView, Animated, AppRegistry, FlatList, Image, Dimensions,DeviceEventEmitter,TouchableOpacity, Platform } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Animated, AppRegistry, FlatList, Image, Dimensions,DeviceEventEmitter,TouchableOpacity, Platform ,PermissionsAndroid} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import { Calendar, CalendarList, LocaleConfig } from 'react-native-calendars';
 import { Modal } from '@ant-design/react-native';
 import RouteConfig from './config/RouteConfig';
 import IconConfig from './config/IconConfig';
 import ScreenConfig from './config/ScreenConfig';
-import StyleConfig from './config/StyleConfig';
+import {FontStyleConfig} from './config/StyleConfig';
 import NetModule from './net/NetModule'
 import { appinfo, appname } from './config/appinfo'
 import {SixrandomModule} from './kit/UniversechangesLib/SixrandomLib/SixrandomModule'
@@ -35,6 +35,7 @@ var imgtime = new Array()
 var infotime = new Array()
 
 var infotimedetail = new Array()
+//var StyleConfig = undefined
 
 
 let MainPagethis = undefined
@@ -46,13 +47,13 @@ class MainPage extends React.Component {
     var imgindex = imgtime[curtimelucky[1]]
     var day = new Date();
     var sel = this.getDateFormat(day)
-    var info = UniversechangesConfig.GetInfo(wanNianLiInfo)
+    //var info = UniversechangesConfig.GetInfo(wanNianLiInfo)
 
     var timelucky = UniversechangesConfig.gettimelucky(wanNianLiInfo.info.gzDate)
     this.state = {
       wanNianLiInfo: wanNianLiInfo,
       selected: sel,
-      info: info,
+      //info: info,
       timelucky: timelucky,
       imgindex: imgindex,
       fadeInOpacity: new Animated.Value(0),
@@ -63,6 +64,7 @@ class MainPage extends React.Component {
       NetModule._handleWebSocketSetup()
     }
     this.onDayPress = this.onDayPress.bind(this);
+    StyleConfig = FontStyleConfig.buildstyle()
     MainPagethis = this;
   };
   static navigationOptions = ({ navigation }) => {
@@ -84,6 +86,7 @@ class MainPage extends React.Component {
     }
   };
   UNSAFE_componentWillMount() {
+
     imgtime["子"] = require('../img/time/1.jpg')
     imgtime["丑"] = require('../img/time/2.jpg')
     imgtime["寅"] = require('../img/time/3.jpg')
@@ -167,15 +170,15 @@ class MainPage extends React.Component {
   }
   renderItem(item) {
     return (
-      <View style={styles.lists}>
-        <Text style={styles.rowhigth}>{item.item}</Text>
+      <View style={StyleConfig.list}>
+        <Text style={StyleConfig.list}>{item.item}</Text>
       </View>
     );
   }
   renderItemTimeLucky(item) {
     return (
-      <View style={styles.columelist}>
-        <Text style={styles.columehigth}>{item.item}</Text>
+      <View style={StyleConfig.columelist}>
+        <Text style={StyleConfig.columehigth}>{item.item}</Text>
       </View>
     );
   }
@@ -202,7 +205,7 @@ class MainPage extends React.Component {
     if ("" != infoindexdetail) {
       return (
         <View style={styles.dateContainer}>
-          <Text style={styles.list}>
+          <Text style={StyleConfig.list}>
             {infoindexdetail}
           </Text>
         </View>
@@ -262,6 +265,24 @@ class MainPage extends React.Component {
       </TabNavigator >
     )
   }
+  async requestCameraPermission() {
+    try {
+     const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.CAMERA,PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+      {
+       'title': '乾坤爻',
+       'message': '探索功能需要相册读写权限'
+      }
+     )
+     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      console.log("You can use the camera")
+     } else {
+      console.log("Camera permission denied")
+     }
+    } catch (err) {
+     console.warn(err)
+    }
+   }
 
   privacycheck()
   {
@@ -293,10 +314,17 @@ class MainPage extends React.Component {
           
         }
       })
+
+     this.requestCameraPermission()
     }
   }
 
   render() {
+    if(undefined!=this.props.navigation.state.params && "refresh"===this.props.navigation.state.params.text)
+    {
+      this.props.navigation.state.params.text = ""
+      StyleConfig = FontStyleConfig.buildstyle()
+    }
     this.privacycheck()
     const { navigate } = this.props.navigation;
     var wanNianLiInfo = this.state.wanNianLiInfo;
@@ -308,6 +336,7 @@ class MainPage extends React.Component {
     var imgindex = imgtime[curtimelucky[1]]
 
     var infoindex = infotime[curtimelucky[1]]
+    var info = UniversechangesConfig.GetInfo(wanNianLiInfo)
     for (var j in this.state.timelucky) {
       if (this.state.timelucky[j].indexOf(this.state.wanNianLiInfo.info.gzTime) != -1) {
         curtimelucky = this.state.timelucky[j];
@@ -353,52 +382,55 @@ class MainPage extends React.Component {
               </Animated.View>
             </Card.Body>
           </Card>
+
+          <WingBlank>
           <Animated.View style={{ opacity: this.state.fadeInOpacity , backgroundColor: '#ffffff', }}>
             <View style={styles.dateContainer}>
-              <Text style={styles.list}>
+              <Text style={StyleConfig.list}>
                 {curgztime} {infoindexdetail}
               </Text>
-              <Text style={styles.list}>
+              <Text style={StyleConfig.list}>
                 {infoindex}
               </Text></View>
           </Animated.View>
           <View style={styles.dateContainer}>
-            <Text style={styles.list}>
+            <Text style={StyleConfig.list}>
               {wanNianLiInfo.info.Year}年{wanNianLiInfo.info.Month}月{wanNianLiInfo.info.Date}日 星期{wanNianLiInfo.info.cnDay}
             </Text>
-            <Text style={styles.list}>
+            <Text style={StyleConfig.list}>
               {wanNianLiInfo.info.gzYear}年{wanNianLiInfo.info.lMonth}月{wanNianLiInfo.info.lDate} ({wanNianLiInfo.info.animal})
         </Text>
           </View>
-          <Text style={styles.list}>{wanNianLiInfo.six_random_date[2]}</Text>
-          <Text style={styles.list}>{wanNianLiInfo.six_random_date[3]}</Text>
-          <Text style={styles.list}>{wanNianLiInfo.six_random_date[4]}</Text>
+          <Text style={StyleConfig.list}>{wanNianLiInfo.six_random_date[2]}</Text>
+          <Text style={StyleConfig.list}>{wanNianLiInfo.six_random_date[3]}</Text>
+          <Text style={StyleConfig.list}>{wanNianLiInfo.six_random_date[4]}</Text>
           <FlatList
-            data={this.state.info}
+            data={info}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItem}
           />
-          <Text style={styles.list}>
+          <Text style={StyleConfig.list}>
           </Text>
-          <Text style={styles.list}>十二吉时:{curtimelucky}
+          <Text style={StyleConfig.list}>十二吉时:{curtimelucky}
           </Text>
 
           <FlatList
-            style={{ paddingLeft: 10, paddingRight: 10, backgroundColor: 'white', }}
+            style={{backgroundColor: 'white'}}
             data={this.state.timelucky}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderItemTimeLucky}
             columnWrapperStyle={{ justifyContent: 'space-around', alignItems: 'stretch', backgroundColor: 'white', }}
             numColumns={12}
           />
-          <Text style={styles.list}>
+          <Text style={StyleConfig.list}>
           </Text>
-          <Text style={styles.list}>
+          <Text style={StyleConfig.list}>
           </Text>
-          <Text style={styles.list}>
+          <Text style={StyleConfig.list}>
           </Text>
-          <Text style={styles.list}>
+          <Text style={StyleConfig.list}>
           </Text>
+          </WingBlank>
         </ScrollView>
               {this.renderTabbar()}
       </View>
@@ -446,13 +478,6 @@ class MainPage extends React.Component {
 };
 var styles = StyleSheet.create({
 
-  button: {
-    backgroundColor: 'white',
-    height: 50,
-    backgroundColor: 'transparent',
-    justifyContent: 'center',
-    borderRadius: 4,
-  },
   dateContainer: {
     backgroundColor: "#ffffff",
     justifyContent: 'space-between',
@@ -469,52 +494,9 @@ var styles = StyleSheet.create({
     borderColor: 'white',
     //height:2000,
   },
-  rowhigth: {
-    lineHeight: 25,
-  },
-  columehigth: {
-    backgroundColor: 'white',
-    //marginLeft:12,
-    //marginTop:15 ,
-    //textAlign:'left',
-    //alignItems:'stretch',
-    //justifyContent: 'space-between',
-    width: 20,
-    height: 150,
-  },
-  columelist: {
-    //paddingLeft:12,
-    //paddingRight:12,
-    //marginLeft:0,
-    justifyContent: 'space-between', //虽然样式中设置了 justifyContent: 'center'，但无效 
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-    backgroundColor: 'white',
-  },
-  list: {
-    backgroundColor: '#ffffff', 
-    height: 30,
-    paddingLeft: 15,
-    paddingRight: 15,
-    justifyContent: 'center', //虽然样式中设置了 justifyContent: 'center'，但无效 
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-  },
-  lists: {
-    backgroundColor: '#ffffff', 
-    paddingLeft: 15,
-    paddingRight: 15,
-    justifyContent: 'center', //虽然样式中设置了 justifyContent: 'center'，但无效 
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-  },
-  button: {
-    backgroundColor: 'white',
-    height: 50,
-    backgroundColor: 'transparent',
-    justifyContent: 'center',
-    borderRadius: 4,
-  },
+
+
+
   dateContainer: {
     backgroundColor: '#ffffff', 
     justifyContent: 'space-between',

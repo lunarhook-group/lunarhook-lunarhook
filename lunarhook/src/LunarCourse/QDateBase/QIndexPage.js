@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {StyleSheet,View, Text,ScrollView,TouchableOpacity,RefreshControl,FlatList,Dimensions} from 'react-native';
 import RouteConfig from '../../config/RouteConfig'
-import ThreePageModule from './ThreePageModule'
+import AllQPageModule from './AllQPageModule'
 import {ErYaBookPageModule,ErYaBookModule} from './ErYaBookPageModule'
 import {ShuoWenBookPageModule} from './ShuoWenBookPageModule'
 import {OldBookPageModule} from './OldBookPageModule'
@@ -13,7 +13,10 @@ import {ShengYunBookPageModule} from './ShengYunBookPageModule'
 import {UniversBookPageModule} from './UniversBookPageModule'
 import {LunyuBookPageModule} from './LunyuBookPageModule'
 import {MengziBookPageModule} from './MengziBookPageModule'
-
+import {SanZiJingPageModule} from './SanZiJingPageModule'
+import {BaiIiaXingPageModule} from './BaiIiaXingPageModule'
+import {QianZiWenPageModule} from './QianZiWenPageModule'
+import {HuangDiBookPageModule} from './HuangDiBookPageModule'
 class QIndexPage extends React.Component {
   constructor(props) {
       super(props);
@@ -25,78 +28,41 @@ class QIndexPage extends React.Component {
         title: RouteConfig["QIndexPage"].titlename,
       }
     }
+    GetBookType(ctype)
+    {
+      var type = new Array()
+      type["三字经"] = SanZiJingPageModule
+      type["百家姓"] = BaiIiaXingPageModule
+      type["千字文"] = QianZiWenPageModule
+      type["易经"] = UniversBookPageModule
+      type["老子"] = OldBookPageModule
+      type["道德经"] = type["老子"]
+      type["庄子"] = ZhuangBookPageModule
+      type["说文"] = ShuoWenBookPageModule
+      type["尔雅"] = ErYaBookModule
+      type["声律启蒙"] = ShengYunBookPageModule
+      type["论语"] = LunyuBookPageModule
+      type["孟子"] = MengziBookPageModule
+      type["大学"] = BigBookPageModule
+      type["中庸"] = ZhongBookPageModule
+      type["黄帝内经"] = HuangDiBookPageModule
+
+      var booktype = new Array()
+      booktype = booktype.concat(type[ctype])
+      return booktype
+    }
     GetThreeQIndex()
     {}
     GetShuoWenQIndex()
     {}
-    GetMengziBookPage()
-    {
-      var MengziBook = new Array()
-      MengziBook = MengziBook.concat(MengziBookPageModule)
-      return MengziBook
-
-    }
-    GetLunyuBookPage()
-    {
-      var LunyuBook = new Array()
-      LunyuBook = LunyuBook.concat(LunyuBookPageModule)
-      return LunyuBook
-
-    }
-    GetUniversBook()
-    {
-      var UniversBook = new Array()
-      UniversBook = UniversBook.concat(UniversBookPageModule)
-      return UniversBook
-
-    }
+    
     GetAllQIndex()
     {
       var AllIndex = new Array()
-      AllIndex = AllIndex.concat(ThreePageModule)
+      AllIndex = AllIndex.concat(AllQPageModule)
       return AllIndex
     }
-    GetZhuangBook(){
-      var ZhuangBook = new Array()
-      ZhuangBook = ZhuangBook.concat(ZhuangBookPageModule)
-      return ZhuangBook;
-    }
-    GetBigBook()
-    {
-      var BigBook = new Array()
-      BigBook = BigBook.concat(BigBookPageModule)
-      return BigBook;
-    }
-    GetOldBook()
-    {
-      var OldBook = new Array()
-      OldBook = OldBook.concat(OldBookPageModule)
-      return OldBook;
-    }
-    GetErYaBook()
-    {
-      var ErYaBook = new Array()
-      ErYaBook = ErYaBook.concat(ErYaBookModule)
-      return ErYaBook;
-    }
-    GetZhongBook()
-    {
-      var ZhongBook = new Array()
-      ZhongBook = ZhongBook.concat(ZhongBookPageModule)
-      return ZhongBook;
-    }
-    GetShuoWenBook()
-    {
-      var ShuoWenBook = new Array()
-      ShuoWenBook = ShuoWenBook.concat(ShuoWenBookPageModule)
-      return ShuoWenBook;
-    }
-    GetShengYunBook()
-    {
-      var ShengYunBook = new Array()
-      ShengYunBook = ShengYunBook.concat(ShengYunBookPageModule)
-      return ShengYunBook;
-    }
+    
     FindArray(text,book)
     {
       var list = new Array()
