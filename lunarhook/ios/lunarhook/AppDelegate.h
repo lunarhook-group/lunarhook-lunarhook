@@ -6,8 +6,8 @@
  */
 #import <React/RCTBridgeDelegate.h>
 #import <UIKit/UIKit.h>
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import "WXApi.h"
+@interface AppDelegate : UIResponder <UIApplicationDelegate, RCTBridgeDelegate, WXApiDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
 @end

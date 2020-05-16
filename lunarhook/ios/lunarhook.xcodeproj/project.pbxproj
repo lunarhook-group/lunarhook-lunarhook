@@ -24,6 +24,12 @@
 		830DA175EE9BEA3C78123C37 /* libPods-lunarhook-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 911DE5A9D1878050C058DF36 /* libPods-lunarhook-tvOS.a */; };
 		88CD25941EF443DCB0F484C8 /* antoutline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17BB37A807254838A8B62111 /* antoutline.ttf */; };
 		C78BD44DE24172571DF5268B /* libPods-lunarhook-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B4985C44632A039B867370 /* libPods-lunarhook-tvOSTests.a */; };
+		CBA1CC2B2470487900C8FC09 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA1CC2A2470487900C8FC09 /* SystemConfiguration.framework */; };
+		CBA1CC2D2470488E00C8FC09 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA1CC2C2470488E00C8FC09 /* WebKit.framework */; };
+		CBA1CC2F2470489900C8FC09 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA1CC2E2470489900C8FC09 /* CoreTelephony.framework */; };
+		CBA1CC31247048A200C8FC09 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA1CC30247048A200C8FC09 /* libsqlite3.0.tbd */; };
+		CBA1CC33247048AD00C8FC09 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA1CC32247048AD00C8FC09 /* libc++.tbd */; };
+		CBA1CC35247048B800C8FC09 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA1CC34247048B800C8FC09 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +79,12 @@
 		911DE5A9D1878050C058DF36 /* libPods-lunarhook-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lunarhook-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14A92AA7E84F81EF2B42486 /* Pods-lunarhook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lunarhook.release.xcconfig"; path = "Target Support Files/Pods-lunarhook/Pods-lunarhook.release.xcconfig"; sourceTree = "<group>"; };
 		B8B4985C44632A039B867370 /* libPods-lunarhook-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lunarhook-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBA1CC2A2470487900C8FC09 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CBA1CC2C2470488E00C8FC09 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		CBA1CC2E2470489900C8FC09 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		CBA1CC30247048A200C8FC09 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		CBA1CC32247048AD00C8FC09 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		CBA1CC34247048B800C8FC09 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D122F7307F85F5ECA0CA12AC /* Pods-lunarhook-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lunarhook-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-lunarhook-tvOS/Pods-lunarhook-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -92,6 +104,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA1CC35247048B800C8FC09 /* libz.tbd in Frameworks */,
+				CBA1CC33247048AD00C8FC09 /* libc++.tbd in Frameworks */,
+				CBA1CC31247048A200C8FC09 /* libsqlite3.0.tbd in Frameworks */,
+				CBA1CC2F2470489900C8FC09 /* CoreTelephony.framework in Frameworks */,
+				CBA1CC2D2470488E00C8FC09 /* WebKit.framework in Frameworks */,
+				CBA1CC2B2470487900C8FC09 /* SystemConfiguration.framework in Frameworks */,
 				78D8DCFD87FB559099134166 /* libPods-lunarhook.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +177,12 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBA1CC34247048B800C8FC09 /* libz.tbd */,
+				CBA1CC32247048AD00C8FC09 /* libc++.tbd */,
+				CBA1CC30247048A200C8FC09 /* libsqlite3.0.tbd */,
+				CBA1CC2E2470489900C8FC09 /* CoreTelephony.framework */,
+				CBA1CC2C2470488E00C8FC09 /* WebKit.framework */,
+				CBA1CC2A2470487900C8FC09 /* SystemConfiguration.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				21AD47C7E89D32B33DEE78BB /* libPods-lunarhook.a */,

@@ -31,7 +31,7 @@ class WechatError extends Error {
   }
 
 }
-
+let WechatSharethis = null
 class WechatShare extends React.Component {
 
 
@@ -39,32 +39,30 @@ class WechatShare extends React.Component {
     super(props);
     this.version = ""
     this.app = ""
-    this.state = {
-      apiVersion: 'waiting...',
-      isWXAppSupportApi: 'waiting...',
-      isWXAppInstalled: 'waiting...',
-      init:false,
-    };
+    this.apiVersion = null,
+    this.isWXAppInstalled = false,
+    this.wxAppInstallUrl = null,
+    this.isWXAppSupportApi = false,
+    this.init = false
     var NativePlumber = NativeModules.NativePlumber;
     NativePlumber.PlumberGetAppVersion((error,appname,appver) => {
       this.app = appname
       this.version = appver
     })
-	
+    WechatSharethis = this
   }
-  init() {
-    if(false==this.state.init){
+  async initWcchatshart() {
+    if(false==WechatSharethis.init){
       try {
         var keys = AppRegistry.getAppKeys();
-        console.log("wechatshare",appinfo[keys[0]],keys,appname)
-        var ret = WeChat.registerApp(appinfo[keys[0]], 'universalLink');
-  
-          apiVersion=WeChat.getApiVersion(),
-          //wxAppInstallUrl:  WeChat.getWXAppInstallUrl(),
-          isWXAppSupportApi= WeChat.isWXAppSupportApi(),
-          isWXAppInstalled= WeChat.isWXAppInstalled()
-          this.setState({init:true})
-        //console.log(this.state);
+        var str = appinfo[keys[0]]
+        console.log("wechatshare",str,keys,appname)
+          WeChat.registerApp(str,"https://www.lunarhook.com/Uni_lunarhook/");
+          WechatSharethis.apiVersion = await WeChat.getApiVersion();
+          WechatSharethis.wxAppInstallUrl = Platform.OS === 'ios' ? await WeChat.getWXAppInstallUrl(): null;
+          WechatSharethis.isWXAppSupportApi = await WeChat.isWXAppSupportApi();
+          WechatSharethis.isWXAppInstalled = await WeChat.isWXAppInstalled();
+          WechatSharethis.init = true;
       } catch (e) {
         console.error(e);
       }
@@ -74,7 +72,7 @@ class WechatShare extends React.Component {
   }
 
   WechatLogin() {
-    this.init()
+    WechatSharethis.initWcchatshart()
     return new Promise(function (resolve, reject) {
       console.log("WCOAuth");
     WeChat.sendAuthRequest('snsapi_userinfo').then(responseCode => {
@@ -154,13 +152,13 @@ class WechatShare extends React.Component {
     }
   openWechat()
   {
-    this.init()
+    WechatSharethis.initWcchatshart()
     WeChat.openWXApp();
   }
   /*
   shareimagetotimeline(imageUrl,ds)
 	{
-    this.init()
+    WechatSharethis.initWcchatshart()
     return new Promise(resolve => { 
 		WeChat.isWXAppInstalled()
     .then((isInstalled) => {
@@ -208,7 +206,7 @@ class WechatShare extends React.Component {
   }
 	shareimagetofriend(imageUrl,ds)
 	{
-    this.init()
+    WechatSharethis.initWcchatshart()
     return new Promise(resolve => { 
       WeChat.isWXAppInstalled()
       .then((isInstalled) => {
@@ -273,29 +271,29 @@ class WechatShare extends React.Component {
   }
   WechaShareShareLocalImage(imageUrl,type)
   {
-    this.init()
+    WechatSharethis.initWcchatshart()
     return new Promise(resolve => { 
       WeChat.isWXAppInstalled()
       .then((isInstalled) => {
-        console.log(imageUrl)
+        //console.log(imageUrl)
         if (isInstalled) {
           try {
-              WeChat.ShareLocalImage({
-                imageUrl: "file://"+imageUrl,
-                scene:type
-              }).then(Response=>{
-                  console.log(Response,imageUrl)
-                  resolve("success")
-              }).catch (err => {
-                console.log(err,imageUrl)
-                resolve("failed")
+              ret = WeChat.shareLocalImage({
+                imageUrl:imageUrl,
+                scene:type,
+              })
+
+              ret.then(T=>{
+                console.log(T)
+              }).then(null,R=>{
+                console.log(R)
               })
             }
-            catch(e)
-            {
-              console.log(e,imageUrl)
-              resolve("failed")
-            }
+          catch(e)
+          {
+            console.log(e)
+          }
+          resolve("ok")
         }
         else {
             Alert.alert('没有安装微信', '请先安装微信客户端在进行登录', [
@@ -312,12 +310,12 @@ class WechatShare extends React.Component {
         if("ttl"==sw)
         {
           //this.shareimagetotimeline(img,ds).then(v=>(resolve(v)))
-          this.WechaShareShareLocalImage(img,0).then(v=>(resolve(v)))
+          this.WechaShareShareLocalImage(img,1).then(v=>(resolve(v)))
         }
         else if("session"==sw)
         {
           //this.shareimagetofriend(img,ds).then(v=>(resolve(v)))
-          this.WechaShareShareLocalImage(img,1).then(v=>(resolve(v)))
+          this.WechaShareShareLocalImage(img,0).then(v=>(resolve(v)))
         }
         else if("wechatcollect"==sw)
         {
