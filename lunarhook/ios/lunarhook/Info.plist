@@ -34,7 +34,7 @@
 			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx88d194568817e0cc</string>
+				<string>wxae6d3fb9b27ce6f6</string>
 			</array>
 		</dict>
 		<dict>
@@ -44,7 +44,7 @@
 			<string>qq</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tencent101522489</string>
+				<string>tencent101522493</string>
 			</array>
 		</dict>
 	</array>
@@ -104,6 +104,8 @@
 	<string>需要获取您的详细位置信息用于详细的日历太阳时计算</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>需要获取您的详细位置信息用于详细的日历太阳时计算</string>
+	<key>NSMicrophoneUsageDescription </key>
+	<string></string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>保存截图需要访问相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
