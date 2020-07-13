@@ -13,6 +13,7 @@ import shareimage from '../config/shareimage'
 import { HistoryArrayGroup } from '../config/StorageModule'
 import KitConfig from '../config/KitConfig'
 var w = ScreenConfig.__screenW()
+var H = ScreenConfig.__screenH()
 var coln = 3
 if (w > 320 && Platform.OS === 'ios') {
   coln = 4
@@ -28,11 +29,14 @@ const data = [
   { icon: RouteConfig['ziweiNewPage'].icon, text: RouteConfig['ziweiNewPage'].name, url: RouteConfig['ziweiNewPage'].route },
   { icon: RouteConfig['TrackStarPage'].icon, text: RouteConfig['TrackStarPage'].name, url: RouteConfig['TrackStarPage'].route },
 ]
-const data1 = [
+const Tarot = [
   { icon: RouteConfig['TarotPage'].icon, text: RouteConfig['TarotPage'].name, url: RouteConfig['TarotPage'].route },
   { icon: RouteConfig['TarotVenusPage'].icon, text: RouteConfig['TarotVenusPage'].name, url: RouteConfig['TarotVenusPage'].route },
   { icon: RouteConfig['TarotStarofDavidPage'].icon, text: RouteConfig['TarotStarofDavidPage'].name, url: RouteConfig['TarotStarofDavidPage'].route },
   { icon: RouteConfig['TarotCeltsPage'].icon, text: RouteConfig['TarotCeltsPage'].name, url: RouteConfig['TarotCeltsPage'].route },
+]
+const data1 = [
+  { icon: RouteConfig['ChangesuniversePage'].icon, text: RouteConfig['ChangesuniversePage'].name, url: RouteConfig['ChangesuniversePage'].route },
   { icon: RouteConfig['GamblePage'].icon, text: RouteConfig['GamblePage'].name, url: RouteConfig['GamblePage'].route },
   { icon: RouteConfig['StarInfoPage'].icon, text: RouteConfig['StarInfoPage'].name, url: RouteConfig['StarInfoPage'].route },
 ]
@@ -218,6 +222,7 @@ class kitPage extends React.Component {
         }
       });
     }
+    /*
     else if ("wechat" == el.url) {
       Alert.alert('请关注公众号\n大道易德\n', '', [
         //{text: '打开微信', onPress: () =>{}},
@@ -225,6 +230,7 @@ class kitPage extends React.Component {
         { text: '取消', onPress: () => { } }
       ])
     }
+    */
     else if ("openqrcode" == el.url) {
       this.setState({ shareimage: true == this.state.shareimage ? false : true })
     }
@@ -260,6 +266,7 @@ class kitPage extends React.Component {
     this.props.navigation.setParams({ text: "refresh" })
     navigate(el.url)
   }
+  /*
   showshare() {
     if (this.state.shareimage) {
       return (
@@ -271,6 +278,13 @@ class kitPage extends React.Component {
       )
     }
   }
+  */
+  renderItemel(el, index) {
+    return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
+      {el.icon}
+      <Text style={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 14 }}>{el.text}</Text>
+    </View>)
+  }
   renderContent = (tab, index) => {
     console.log("renderContentfunc", tab, index)
     const { navigate } = this.props.navigation;
@@ -280,12 +294,7 @@ class kitPage extends React.Component {
         <Grid
           data={this.state.datahistory}
           columnNum={coln}
-          renderItem={(el, index) => {
-            return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
-              {el.icon}
-              <Text style={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 12 }}>{el.text}</Text>
-            </View>)
-          }}
+          renderItem={this.renderItemel}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
         /></Accordion.Panel >
     )
@@ -296,12 +305,7 @@ class kitPage extends React.Component {
           columnNum={coln}
           isCarousel={false}
           hasLine={true}
-          renderItem={(el, index) => {
-            return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
-              {el.icon}
-              <Text style={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 12 }}>{el.text}</Text>
-            </View>)
-          }}
+          renderItem={this.renderItemel}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
         /></Accordion.Panel >)
     contentlist["心理测评"] = (
@@ -311,12 +315,7 @@ class kitPage extends React.Component {
           columnNum={coln}
           isCarousel={false}
           hasLine={true}
-          renderItem={(el, index) => {
-            return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
-              {el.icon}
-              <Text style={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 12 }}>{el.text}</Text>
-            </View>)
-          }}
+          renderItem={this.renderItemel}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
         /></Accordion.Panel >)
     contentlist["情感家庭"] = (
@@ -326,22 +325,28 @@ class kitPage extends React.Component {
           columnNum={coln}
           isCarousel={false}
           hasLine={true}
-          renderItem={(el, index) => {
-            return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
-              {el.icon}
-              <Text style={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 12 }}>{el.text}</Text>
-            </View>)
-          }}
+          renderItem={this.renderItemel}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
         /></Accordion.Panel >)
 
-    contentlist["塔罗占星"] = (
-      <Accordion.Panel header={"塔罗占星"} key={"塔罗占星"}>
+    contentlist["星盘星座"] = (
+      <Accordion.Panel header={"星盘星座"} key={"星盘星座"}>
         <Grid
           data={data1}
           columnNum={coln}
           isCarousel={false}
           hasLine={true}
+          renderItem={this.renderItemel}
+          onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
+        /></Accordion.Panel >)
+    contentlist["塔罗牌阵"] = (
+      <Accordion.Panel header={"塔罗牌阵"} key={"塔罗牌阵"}>
+        <Grid
+          data={Tarot}
+          columnNum={coln}
+          isCarousel={false}
+          hasLine={true}
+          renderItem={this.renderItemel}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
         /></Accordion.Panel >)
     contentlist["工具助手"] = (
@@ -351,12 +356,7 @@ class kitPage extends React.Component {
           columnNum={coln}
           isCarousel={false}
           hasLine={true}
-          renderItem={(el, index) => {
-            return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
-              {el.icon}
-              <Text style={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 12 }}>{el.text}</Text>
-            </View>)
-          }}
+          renderItem={this.renderItemel}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
         /></Accordion.Panel >)
     if ("Huawei" != kitPageController.state.Channel) {
@@ -367,12 +367,7 @@ class kitPage extends React.Component {
             columnNum={coln}
             isCarousel={false}
             hasLine={true}
-            renderItem={(el, index) => {
-              return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
-                {el.icon}
-                <Text style={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 12 }}>{el.text}</Text>
-              </View>)
-            }}
+            renderItem={this.renderItemel}
             onPress={(_el: any, index: any) => { this.onBussion(_el, navigate) }}
           /></Accordion.Panel >)
       contentlist["周易八卦"] = (
@@ -382,12 +377,7 @@ class kitPage extends React.Component {
             columnNum={coln}
             isCarousel={false}
             hasLine={true}
-            renderItem={(el, index) => {
-              return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center' }}>
-                {el.icon}
-                <Text style={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 12 }}>{el.text}</Text>
-              </View>)
-            }}
+            renderItem={this.renderItemel}
             onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
           /></Accordion.Panel >)
     }
@@ -398,106 +388,133 @@ class kitPage extends React.Component {
           columnNum={coln}
           isCarousel={false}
           hasLine={true}
-          renderItem={(el, index) => {
-            return (<View style={{ alignItems: "center", flex: 1, justifyContent: 'center', }}>
-              {el.icon}
-              <Text style={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 12 }}>{el.text}</Text>
-            </View>)
-          }}
+          renderItem={this.renderItemel}
           onPress={(_el: any, index: any) => { this.onPress(_el, navigate) }}
         /></Accordion.Panel >)
     if ("关注" == tab.title) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["关注"]}
-        </Accordion>
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["关注"]}
+          </Accordion></ScrollView>
       )
     } else if ("全部" == tab.title) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {(function (handler) {
-            var alllist = KitConfig.getalllist()
-            var sel = alllist[handler.state.selectmode]
-            var curalllist = JSON.parse(JSON.stringify(sel))
-            var content = new Array()
-            if ("Huawei" == kitPageController.state.Channel) {
-              delete contentlist["大道易德"]
-              delete contentlist["周易八卦"]
-              delete contentlist["塔罗占星"]
-            }
-            curalllist.forEach(element => {
-              if (undefined != contentlist[element.title]) {
-                content.push(contentlist[element.title])
+        <ScrollView style={Styles.container}>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {(function (handler) {
+              var alllist = KitConfig.getalllist()
+              var sel = alllist[handler.state.selectmode]
+              var curalllist = JSON.parse(JSON.stringify(sel))
+              var content = new Array()
+              if ("Huawei" == kitPageController.state.Channel) {
+                delete contentlist["大道易德"]
+                delete contentlist["周易八卦"]
+                delete contentlist["塔罗牌阵"]
+                delete contentlist["星盘星座"]
               }
+              curalllist.forEach(element => {
+                if (undefined != contentlist[element.title]) {
+                  content.push(contentlist[element.title])
+                }
 
-            })
+              })
 
-            return content
-          })(this)
-          }
+              return content
+            })(this)
+            }
 
-        </Accordion>
+          </Accordion>
+          <WhiteSpace size="xl" />
+          <WhiteSpace size="xl" />
+          <WhiteSpace size="xl" />
+          <WhiteSpace size="xl" />
+        </ScrollView>
       )
     } else if ("儿童少年" == tab.title) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["儿童少年"]}
-        </Accordion>
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["儿童少年"]}
+          </Accordion></ScrollView>
       )
     } else if ("情感家庭" == tab.title) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["情感家庭"]}
-        </Accordion>
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["情感家庭"]}
+          </Accordion></ScrollView>
       )
     } else if ("心理学" == tab.title) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["性格测评"]}
-          {contentlist["心理测评"]}
-          {contentlist["情感家庭"]}
-          {contentlist["儿童少年"]}
-        </Accordion>
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["性格测评"]}
+            {contentlist["心理测评"]}
+            {contentlist["情感家庭"]}
+            {contentlist["儿童少年"]}
+
+          </Accordion>
+          <WhiteSpace size="xl" />
+          <WhiteSpace size="xl" />
+          <WhiteSpace size="xl" />
+          <WhiteSpace size="xl" /></ScrollView>
       )
     } else if ("性格测评" == tab.title) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["性格测评"]}
-        </Accordion>
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["性格测评"]}
+          </Accordion></ScrollView>
       )
     } else if ("抑郁焦虑" == tab.title) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["心理测评"]}
-        </Accordion>
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["心理测评"]}
+          </Accordion></ScrollView>
       )
     }
     else if ("周易八卦" == tab.title && "Huawei" != kitPageController.state.Channel) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["周易八卦"]}
-        </Accordion>
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["周易八卦"]}
+          </Accordion></ScrollView>
       )
     }
-    else if ("塔罗占星" == tab.title) {
+    else if ("塔罗牌阵" == tab.title) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["塔罗占星"]}
-        </Accordion>
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["塔罗牌阵"]}
+          </Accordion></ScrollView>
       )
     }
+    else if ("星盘星座" == tab.title && "Huawei" != kitPageController.state.Channel) {
+      return (
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["星盘星座"]}
+          </Accordion></ScrollView>
+      )
+    }
+    /*
     else if ("大道易德" == tab.title && "Huawei" != kitPageController.state.Channel) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["大道易德"]}
-        </Accordion>
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["大道易德"]}
+          </Accordion></ScrollView>
       )
     }
+    */
     else if ("工具助手" == tab.title) {
       return (
-        <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
-          {contentlist["工具助手"]}
-        </Accordion>
+        <ScrollView>
+          <Accordion onChange={this.onChange} activeSections={this.state.activeSections}>
+            {contentlist["工具助手"]}
+          </Accordion></ScrollView>
       )
     }
   };
@@ -514,57 +531,49 @@ class kitPage extends React.Component {
 
     return (
       <View style={Styles.container}>
-        <ScrollView>
-          <View style={{ flex: 2 }} ref="tabs">
-            <Tabs tabs={this.state.tabs} page={"全部"} tabBarPosition="top" tabBarTextStyle={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 14 }}>
-              {this.renderContent}
-            </Tabs>
-          </View>
-          <WhiteSpace size="xl" />
-          {this.showshare()}
-          <WhiteSpace size="xl" />
-          <WhiteSpace size="xl" />
-          <WhiteSpace size="xl" />
-          <Text></Text>
-        </ScrollView>
-        <TabNavigator tabBarStyle={{ height: ScreenConfig.getTabBarHeight(), backgroundColor: '#ffffff', }}>
-          {function () {
-            if (Platform.OS === 'android') {
-              return (<TabNavigator.Item
-                title={RouteConfig["service"].name}
-                renderIcon={() => RouteConfig["service"].icon}
-                //renderSelectedIcon={() => IconConfig.IconDvinationSel}
-                onPress={() => kitPageController.onBussion("service", navigate)}
-                titleStyle={StyleConfig.menufont}>
-              </TabNavigator.Item>)
+
+
+        <Tabs tabs={this.state.tabs} page={"全部"} tabBarPosition="top" tabBarTextStyle={{ textAlign: "center", fontSize: FontStyleConfig.getFontApplySize() + 14, }}>
+          {this.renderContent}
+        </Tabs>
+        <View>
+          <TabNavigator style={{ height: ScreenConfig.getTabBarHeight() }} tabBarStyle={{ height: ScreenConfig.getTabBarHeight(), backgroundColor: '#ffffff', }}>
+            <TabNavigator.Item
+              title={RouteConfig["kitExplorationPage"].name}
+              renderIcon={() => RouteConfig["kitExplorationPage"].icon}
+              //renderSelectedIcon={() => IconConfig.IconDvinationSel}
+              onPress={() => navigate(RouteConfig["kitExplorationPage"].route)}
+              titleStyle={StyleConfig.menufont}>
+            </TabNavigator.Item>
+            {function () {
+              if (Platform.OS === 'android' || Platform.OS === 'ios') {
+                return (<TabNavigator.Item
+                  title={RouteConfig["service"].name}
+                  renderIcon={() => RouteConfig["service"].icon}
+                  //renderSelectedIcon={() => IconConfig.IconDvinationSel}
+                  onPress={() => kitPageController.onBussion("service", navigate)}
+                  titleStyle={StyleConfig.menufont}>
+                </TabNavigator.Item>)
+              }
+            }()
             }
-          }()
-          }
-          <TabNavigator.Item
-            title={RouteConfig["SearchPage"].name}
-            renderIcon={() => RouteConfig["SearchPage"].icon}
-            //renderSelectedIcon={() => IconConfig.IconDvinationSel}
-            onPress={() => navigate(RouteConfig["SearchPage"].route)}
-            titleStyle={StyleConfig.menufont}>
-          </TabNavigator.Item>
-        </TabNavigator >
+            <TabNavigator.Item
+              title={RouteConfig["SearchPage"].name}
+              renderIcon={() => RouteConfig["SearchPage"].icon}
+              //renderSelectedIcon={() => IconConfig.IconDvinationSel}
+              onPress={() => navigate(RouteConfig["SearchPage"].route)}
+              titleStyle={StyleConfig.menufont}>
+            </TabNavigator.Item>
+          </TabNavigator >
+        </View>
       </View>)
   }
 };
 var Styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-  },
-  button: {
-    height: 50,
-    backgroundColor: 'transparent',
-    justifyContent: 'center',
-    borderRadius: 4,
-  },
-  dateContainer: {
-    justifyContent: 'space-between',
-    flexDirection: 'row',
+    backgroundColor: '#ffffff',
+
   },
 });
 module.exports = kitPage;  

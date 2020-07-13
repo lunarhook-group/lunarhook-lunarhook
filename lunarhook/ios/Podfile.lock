@@ -184,21 +184,25 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-cameraroll (1.7.2):
+  - react-native-cameraroll (4.0.0):
     - React
   - react-native-compass-heading (1.0.2):
     - React
-  - react-native-fingerprint-scanner (5.0.0):
+  - react-native-fingerprint-scanner (6.0.0):
     - React
   - react-native-geolocation (2.0.2):
     - React
-  - react-native-safe-area-context (3.0.2):
+  - react-native-safe-area-context (3.1.1):
+    - React
+  - react-native-segmented-control (2.1.0):
     - React
   - react-native-shake (3.4.0):
     - React
+  - react-native-slider (3.0.0):
+    - React
   - react-native-view-shot (3.1.2):
     - React
-  - react-native-viewpager (4.0.0):
+  - react-native-viewpager (4.1.0):
     - React
   - React-RCTActionSheet (0.61.5):
     - React-Core/RCTActionSheetHeaders (= 0.61.5)
@@ -241,7 +245,9 @@ PODS:
     - React
   - RNCMaskedView (0.1.10):
     - React
-  - RNDeviceInfo (5.6.1):
+  - RNCPicker (1.6.5):
+    - React
+  - RNDeviceInfo (5.6.2):
     - React
   - RNExitApp (1.1.0):
     - React
@@ -251,7 +257,7 @@ PODS:
     - React
   - RNReanimated (1.9.0):
     - React
-  - RNScreens (2.8.0):
+  - RNScreens (2.9.0):
     - React
   - RNSound (0.11.0):
     - React
@@ -262,7 +268,7 @@ PODS:
     - React
   - RNSwisseph (0.0.17):
     - React
-  - RNVectorIcons (6.6.0):
+  - RNVectorIcons (7.0.0):
     - React
   - Yoga (1.14.0)
 
@@ -289,7 +295,9 @@ DEPENDENCIES:
   - react-native-fingerprint-scanner (from `../node_modules/react-native-fingerprint-scanner`)
   - "react-native-geolocation (from `../node_modules/@react-native-community/geolocation`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - "react-native-segmented-control (from `../node_modules/@react-native-community/segmented-control`)"
   - react-native-shake (from `../node_modules/react-native-shake`)
+  - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
   - react-native-view-shot (from `../node_modules/react-native-view-shot`)
   - "react-native-viewpager (from `../node_modules/@react-native-community/viewpager`)"
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -306,6 +314,7 @@ DEPENDENCIES:
   - RNAudio (from `../node_modules/react-native-audio`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - "RNCPicker (from `../node_modules/@react-native-community/picker`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNExitApp (from `../node_modules/react-native-exit-app`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -363,8 +372,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/geolocation"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-segmented-control:
+    :path: "../node_modules/@react-native-community/segmented-control"
   react-native-shake:
     :path: "../node_modules/react-native-shake"
+  react-native-slider:
+    :path: "../node_modules/@react-native-community/slider"
   react-native-view-shot:
     :path: "../node_modules/react-native-view-shot"
   react-native-viewpager:
@@ -395,6 +408,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/async-storage"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNCPicker:
+    :path: "../node_modules/@react-native-community/picker"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
   RNExitApp:
@@ -435,14 +450,16 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-cameraroll: 06e60780a4e6e7bb9a588eca72506744cf6e133b
+  react-native-cameraroll: ae0a7c0cc8462508855707ff623b1e789b692865
   react-native-compass-heading: 18742617bdb9e06ce104bd3b90f0dc700b791fd1
-  react-native-fingerprint-scanner: 3e8c46641b5751a31f45e66789d4b6f342be5e6d
+  react-native-fingerprint-scanner: ac6656f18c8e45a7459302b84da41a44ad96dbbe
   react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
-  react-native-safe-area-context: b11a34881faac509cad5578726c98161ad4d275c
+  react-native-safe-area-context: 344b969c45af3d8464d36e8dea264942992ef033
+  react-native-segmented-control: 4ce904755f67bf17d5250d265d57e40db045ac34
   react-native-shake: de052eaa3eadc4a326b8ddd7ac80c06e8d84528c
+  react-native-slider: 12bd76d3d568c9c5500825db54123d44b48e4ad4
   react-native-view-shot: 4475fde003fe8a210053d1f98fb9e06c1d834e1c
-  react-native-viewpager: 859f14262726819ab9bc993838511289edec46f2
+  react-native-viewpager: 6f8c102e8081d70259252b254143b4193a9fb4cb
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -456,18 +473,19 @@ SPEC CHECKSUMS:
   RNAudio: cae2991f2dccb75163f260b60da8051717b959fa
   RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNDeviceInfo: b6e650fbd234732c759544218657d549b4339038
+  RNCPicker: 55b9b4240d0a9eba8733d02616775d4040de2e7d
+  RNDeviceInfo: ed8557a8bd6443cbc0ab5d375e6808a38a279744
   RNExitApp: c4e052df2568b43bec8a37c7cd61194d4cfee2c3
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNI18n: e2f7e76389fcc6e84f2c8733ea89b92502351fd8
   RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
-  RNScreens: 62211832af51e0aebcf6e8c36bcf7dd65592f244
+  RNScreens: c526239bbe0e957b988dacc8d75ac94ec9cb19da
   RNSound: da030221e6ac7e8290c6b43f2b5f2133a8e225b0
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNSwisseph: 74fa73befd5d9ca79ba8e7030b4340023c12ecfd
-  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
+  RNVectorIcons: da6fe858f5a65d7bbc3379540a889b0b12aa5976
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
 PODFILE CHECKSUM: 854330b9af2e10ab82507e5c089555700bbaa112
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

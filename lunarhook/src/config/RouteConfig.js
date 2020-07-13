@@ -34,7 +34,8 @@ RouteConfig={
        
         
     //工具是优先解决需求的工具，尽量免费
-    "kitPage":{"name":"探索","route":"kitPage","titlename":"鹿鸣测评","icon":IconConfig.IconKit},
+    "kitPage":{"name":"探索","route":"kitPage","titlename":"探索","icon":IconConfig.IconKit},
+        "kitExplorationPage":{"name":"呦呦鹿鸣","route":"kitPage","titlename":"呦呦鹿鸣","icon":IconConfig.IconKit},
         //周易工具
         "UniversechangesPage":{"name":"周易测评","route":"UniversechangesPage","icon":IconConfig.IconUniversechanges},
             "CalendarPage":{"name":"浑天甲子历","route":"UniversechangesPage","icon":IconConfig.CalendarIcon},
@@ -57,11 +58,11 @@ RouteConfig={
                 "taiyiNewPage":{"name":"太乙神数","route":"taiyiNewPage","icon":IconConfig.Icontaiyi},
                 "taiyiMainPage":{"name":"太乙神数","route":"taiyiMainPage","icon":IconConfig.Icontaiyi},
                 "taiyiHistoryPage":{"name":"太乙神数历史","route":"taiyiHistoryPage","icon":IconConfig.IconDetail},
-        "ziweiNewPage":{"name":"紫薇斗数","route":"ziweiNewPage","icon":IconConfig.IconZiWei},
-        "ziweiMainPage":{"name":"紫薇斗数","route":"ziweiMainPage","icon":IconConfig.IconZiWei},
+        "ziweiNewPage":{"name":"紫微斗数","route":"ziweiNewPage","icon":IconConfig.IconZiWei},
+        "ziweiMainPage":{"name":"紫微斗数","route":"ziweiMainPage","icon":IconConfig.IconZiWei},
         "ziweiHistoryPage":{"name":"紫薇历史","route":"ziweiHistoryPage","icon":IconConfig.IconDetail},
         //星座星盘
-        "ChangesuniversePage":{"name":"占星星盘","route":"ChangesuniversePage","icon":IconConfig.IconChangesuniverse},
+        "ChangesuniversePage":{"name":"古典星盘","route":"ChangesuniversePage","icon":IconConfig.IconChangesuniverseSel},
             "StarInfoPage":{"name":"星座知识","route":"StarInfoPage","icon":IconConfig.IconStarInfo},
                 "GamblePage":{"name":"星座骰子","route":"GamblePage","icon":IconConfig.IconGamble},       
                 "AstroPage":{"name":"星盘人格","route":"AstroPage","icon":IconConfig.AstroPage},
@@ -112,23 +113,24 @@ RouteConfig={
         "relationshipcalcpage":{"name":"亲戚关系查询","route":"relationshipcalcpage","icon":IconConfig.IconLunarCourse},
         "SloganShare":{"name":"SLOGAN\n国风开屏语","titlename":"国风开屏语","route":"SloganShare","icon":IconConfig.IconSloganShare},
         "NamePage":{"name":"智能生辰\n五行起名","titlename":"智能生辰五行起名","route":"NamePage","icon":IconConfig.IconNamePage},
-        "NameModule":{"name":"名字五行查询","titlename":"名字五行查询","route":"NameModule","icon":IconConfig.IconNameSearchPage},
+        "NameModule":{"name":"姓名\n五行查询","titlename":"名字五行查询","route":"NameModule","icon":IconConfig.IconNameSearchPage},
         //心理咨询录音工具
         "ConsultantAudioRecord":{"name":"咨询录音","route":"ConsultantAudioRecord","icon":IconConfig.ConfigIcon},
         "permutationcombination":{"name":"排列组合计算器","route":"permutationcombination","icon":IconConfig.ConfigIcon},
-        "LunarCoursePageTab":{"name":"思想","route":"LunarCoursePageTab","titlename":"思无邪","icon":IconConfig.IconLunarCourse},
+        "LunarCoursePageTab":{"name":"思想","route":"LunarCoursePageTab","titlename":"思想","icon":IconConfig.IconLunarCourse},
        
     
         //课程是进一步提高成本，解决问题的方法，合理收费
-        "LunarCoursePage":{"name":"思无邪","route":"LunarCoursePage","titlename":"无邪书院","icon":IconConfig.IconLunarCourse},
+        "LunarCoursePage":{"name":"思无邪","route":"LunarCoursePage","titlename":"思想","icon":IconConfig.IconLunarCourse},
+        "LunarCoursePageFake":{"name":"思想","route":"LunarCoursePageFake","titlename":"思想","icon":IconConfig.IconLunarCourse},
         "LunarCourseConfigPage":{"name":"课程配置","route":"LunarCourseConfigPage","icon":IconConfig.IconSubmit},
-        "LunarMasterConfigPage":{"name":"训练大师配置","route":"LunarMasterConfigPage","icon":IconConfig.IconSubmit},
+        "LunarMasterConfigPage":{"name":"课程训练配置","route":"LunarMasterConfigPage","icon":IconConfig.IconSubmit},
         "CourseSearchPage":{"name":"说文助手","route":"CourseSearchPage","titlename":"说文解字","icon":IconConfig.IconSearch},
         "CourseSearchPageFake":{"name":"说文助手","route":"CourseSearchPage","titlename":"说文解字","icon":IconConfig.IconSearch},
         "LunarCourseAnswerPage":{"name":"答疑解惑","route":"LunarCourseAnswerPage","titlename":"答疑解惑","icon":IconConfig.IconAnswerIntro},
         "LunarCourseAnswerPageFake":{"name":"答疑解惑","route":"LunarCourseAnswerPage","titlename":"答疑解惑","icon":IconConfig.IconAnswerIntro},
-        "LunarMasterPage":{"name":"训练大师","route":"LunarMasterPage","titlename":"训练大师","icon":IconConfig.IconMaster},
-        "LunarMasterPageFake":{"name":"训练大师","route":"LunarMasterPage","titlename":"训练大师","icon":IconConfig.IconMaster},
+        "LunarMasterPage":{"name":"课程训练","route":"LunarMasterPage","titlename":"课程训练","icon":IconConfig.IconMaster},
+        "LunarMasterPageFake":{"name":"课程训练","route":"LunarMasterPage","titlename":"课程训练","icon":IconConfig.IconMaster},
   
         "ReadPage":{"name":"阅读","route":"ReadPage","titlename":"阅读","icon":IconConfig.IconLunarCourse},     
         "service":{"name":"服务支持","route":"service","icon":IconConfig.Service},     
@@ -138,7 +140,7 @@ RouteConfig={
         "IntroPage":{"name":"导读","titlename":"导读","route":"","icon":IconConfig.IconShuoWenIntro},
         "IntroAncientPage":{"name":"小学介绍","titlename":"小学","route":"IntroAncientPage","icon":IconConfig.IconShuoWenIntro},
         "IntroThreePage":{"name":"三玄介绍","titlename":"三玄","route":"IntroThreePage","icon":IconConfig.IconThreeIntro},
-        "IntroBooksPage":{"name":"思无邪","titlename":"思无邪","route":"IntroBooksPage","icon":IconConfig.IconLunarCourseIntro},
+        "IntroBooksPage":{"name":"思想介绍","titlename":"思想介绍","route":"IntroBooksPage","icon":IconConfig.IconLunarCourseIntro},
         
         
         "MengBookPage":{"name":"蒙学","route":"DetailBookPage","icon":IconConfig.IconLunarCourse},  
@@ -154,43 +156,53 @@ RouteConfig={
             "UniversBookPage":{"name":"易经","titlename":"易经","route":"DetailBookPage","icon":IconConfig.IconUniversBook},
             "OldBookPage":{"name":"老子","titlename":"道德经","route":"DetailBookPage","icon":IconConfig.IconOldBook},
             "ZhuangBookPage":{"name":"庄子","titlename":"庄子","route":"DetailBookPage","icon":IconConfig.IconZhuangBook},
-        "FourExtPage":{"name":"四书","titlename":"四书","route":"","icon":IconConfig.IconThreeIntro},
+        "FourExtPage":{"name":"四书五经","titlename":"四书五经","route":"","icon":IconConfig.IconThreeIntro},
             "LunyuBookPage":{"name":"论语","titlename":"论语","route":"DetailBookPage","icon":IconConfig.IconLunYuBook},
             "MengziBookPage":{"name":"孟子","titlename":"孟子","route":"DetailBookPage","icon":IconConfig.IconMengZiBook},
             "ZhongBookPage":{"name":"中庸","titlename":"中庸","route":"DetailBookPage","icon":IconConfig.IconZhongYongBook},
             "BigBookPage":{"name":"大学","titlename":"大学","route":"DetailBookPage","icon":IconConfig.IconBigBook},
-        "FiveExtPage":{"name":"五经","titlename":"五经","route":"","icon":IconConfig.IconThreeIntro}, 
-            "ShijingBookPage":{"name":"诗经","route":"","icon":IconConfig.IconShiJingBook},
-            "ShangshuBookPage":{"name":"尚书","route":"","icon":IconConfig.IconShangShuBook},
-            "LijiBookPage":{"name":"礼记","route":"","icon":IconConfig.IconLijiBook},
-            "ChunqiuBookPage":{"name":"春秋","route":"","icon":IconConfig.IconChunQiuBook},
+            "ShangshuBookPage":{"name":"尚书","titlename":"尚书","route":"DetailBookPage","icon":IconConfig.IconShangShuBook},
+            "LijiBookPage":{"name":"礼记","titlename":"礼记","route":"DetailBookPage","icon":IconConfig.IconLijiBook},
         "ChineseMedicationPage":{"name":"医药经典","titlename":"医药经典","route":"","icon":IconConfig.IconBookMedic}, 
-            "HuangDiNeiJingPage":{"name":"黄帝内经","titlename":"黄帝内经","route":"DetailBookPage","icon":IconConfig.IconBookMedic},
-            "BenCaoGangMuPage":{"name":"本草纲目","route":"DetailBookPage","icon":IconConfig.IconLunarCourse},
-            "LunShangHanPage":{"name":"论伤寒","route":"DetailBookPage","icon":IconConfig.IconLunarCourse},
-        "BingFaPage":{"name":"兵家法家","titlename":"兵家法家","route":"","icon":IconConfig.IconThreeIntro}, 
+            //皇帝内景，难经，论伤寒，本草纲目，考虑早期内容主要以思考为主，只入选论黄帝内经，难经
+            "HuangDiNeiJingSuWenPage":{"name":"素问","titlename":"黄帝内经·素问","route":"DetailBookPage","icon":IconConfig.IconBookMedicRed},
+            "HuangDiNeiJingLingShuPage":{"name":"灵枢","titlename":"黄帝内经·灵枢","route":"DetailBookPage","icon":IconConfig.IconBookMedicBlue},
+            "nanjingPage":{"name":"难经","titlename":"难经","route":"DetailBookPage","icon":IconConfig.IconBookMedicGreen},
+            //"BenCaoGangMuPage":{"name":"本草纲目","route":"DetailBookPage","icon":IconConfig.IconLunarCourse},
+            //"LunShangHanPage":{"name":"论伤寒","route":"DetailBookPage","icon":IconConfig.IconLunarCourse},
+        "BingFaPage":{"name":"谋略","titlename":"谋略","route":"DetailBookPage","icon":IconConfig.IconThreeIntro}, 
+            "sanshiliujiPage":{"name":"三十六计","titlename":"三十六计","route":"DetailBookPage","icon":IconConfig.IconJiBook},
+            /*
+            兵家，法家，也应该入选以思考思维为主的内容，是否扩大，以后商量
             "guiguziPage":{"name":"鬼谷子","route":"","icon":IconConfig.IconLunarCourse},
-            "guanziPage":{"name":"管子","route":"","icon":IconConfig.IconLunarCourse},
             "hanfeiziPage":{"name":"韩非子","route":"","icon":IconConfig.IconLunarCourse},
+            "BaizhanPage":{"name":"百战奇略","route":"","icon":IconConfig.IconLunarCourse},
             "liutaosanluePage":{"name":"六韬三略","route":"","icon":IconConfig.IconLunarCourse},
             "sunzibingfaPage":{"name":"孙子兵法","route":"","icon":IconConfig.IconLunarCourse},
-            "sanshiliujiPage":{"name":"三十六计","route":"","icon":IconConfig.IconLunarCourse},
+            */
+        "CePage":{"name":"策论","titlename":"策论","route":"","icon":IconConfig.IconThreeIntro}, 
+            "zhanguoPage":{"name":"战国策","titlename":"战国策","route":"DetailBookPage","icon":IconConfig.IconLunarCourseIntroRed},
+            "guanziPage":{"name":"管子","titlename":"管子","route":"DetailBookPage","icon":IconConfig.IconLunarCourseIntroGold},
+            "gongsunlongziPage":{"name":"公孙龙子","titlename":"公孙龙子","route":"DetailBookPage","icon":IconConfig.IconLunarCourseIntroOrange},
+            "sushuPage":{"name":"素书","titlename":"素书","route":"DetailBookPage","icon":IconConfig.IconLunarCourseIntroBlue},
+            "fanjingPage":{"name":"反经","titlename":"反经","route":"DetailBookPage","icon":IconConfig.IconLunarCourseIntroClaygreen},
+            
+           
         "PoemPage":{"name":"唐诗宋词","titlename":"唐诗宋词","route":"","icon":IconConfig.IconThreeIntro},      
-            "zhanguoPage":{"name":"唐诗三百首","route":"","icon":IconConfig.IconLunarCourse},
-            "zhanguoPage":{"name":"宋词三百首","route":"","icon":IconConfig.IconLunarCourse},
-            "zhanguoPage":{"name":"元曲三百首","route":"","icon":IconConfig.IconLunarCourse},
-            "zhanguoPage":{"name":"纳兰词","route":"","icon":IconConfig.IconLunarCourse},
-        "QinPage":{"name":"先秦经典","titlename":"先秦经典","route":"","icon":IconConfig.IconThreeIntro}, 
-            "zhanguoPage":{"name":"战国策","route":"","icon":IconConfig.IconLunarCourse},
-            "sushuPage":{"name":"素书","route":"","icon":IconConfig.IconLunarCourse},
             "chuciPage":{"name":"楚辞","route":"","icon":IconConfig.IconLunarCourse},
-        "OtherPage":{"name":"其他","titlename":"其他","route":"","icon":IconConfig.IconThreeIntro}, 
+            //"zhanguoPage":{"name":"唐诗三百首","route":"","icon":IconConfig.IconLunarCourse},
+            //"zhanguoPage":{"name":"宋词三百首","route":"","icon":IconConfig.IconLunarCourse},
+            //"zhanguoPage":{"name":"元曲三百首","route":"","icon":IconConfig.IconLunarCourse},
+            //"zhanguoPage":{"name":"纳兰词","route":"","icon":IconConfig.IconLunarCourse},
+
+        // "OtherPage":{"name":"其他","titlename":"其他","route":"","icon":IconConfig.IconThreeIntro}, 
+        /*    幼学琼林、增广贤文内容很好，但是和思想思维并不符合，是延伸
             "zhanguoPage":{"name":"增广贤文","route":"","icon":IconConfig.IconLunarCourse},
             "zhanguoPage":{"name":"颜氏家训","route":"","icon":IconConfig.IconLunarCourse},
             "zhanguoPage":{"name":"幼学琼林","route":"","icon":IconConfig.IconLunarCourse},
             "zhanguoPage":{"name":"古文观止","route":"","icon":IconConfig.IconLunarCourse},
             "zhanguoPage":{"name":"山海经","route":"","icon":IconConfig.IconLunarCourse},
-
+        */
 
 
     "MyPage":{"name":"我的","card":"管理","route":"MyPage","icon":IconConfig.IconPerson},

@@ -9,6 +9,7 @@ import { Card, Button, Modal, WingBlank, WhiteSpace, List, SwipeAction, Icon } f
 import { HistoryArrayGroup } from '../config/StorageModule'
 import Search from 'react-native-search-box';
 import UserModule from '../config/UserModule'
+import {StyleConfig,FontStyleConfig} from '../config/StyleConfig';
 import { string } from 'prop-types';
 const { width, height } = Dimensions.get('window');
 
@@ -194,7 +195,7 @@ class SearchPage extends React.Component {
     {
       return(
         <View>
-          <Text style={{fontSize:18,color:"#AAAAAA",textAlign:"center"}}>历史关键字</Text>
+          <Text style={{fontSize:FontStyleConfig.getFontApplySize()+18,color:"#AAAAAA",textAlign:"center"}}>历史关键字</Text>
         </View>
       )
     }
@@ -261,10 +262,10 @@ class SearchPage extends React.Component {
                      >
                                <TouchableHighlight
       onPress={() => navigate(data.item.urlto, data.item.url)}>
-        <Card style={{ width: width - 20 ,paddingLeft:10,fontSize:14 }}>
+        <Card style={{ width: width - 20 ,paddingLeft:10,fontSize:FontStyleConfig.getFontApplySize()+14 }}>
 
           <Card.Header
-            title={<Text style={{fontSize:14}}>{data.item.ret}</Text>}
+            title={<Text style={{fontSize:FontStyleConfig.getFontApplySize()+14}}>{data.item.ret}</Text>}
             //thumbStyle={{ width: 30, height: 30 }}
             thumb={true == data.item.star ? IconConfig.IconStar : IconConfig.IconUStar}
             extra={data.item.time}
@@ -288,7 +289,7 @@ class SearchPage extends React.Component {
         <WhiteSpace size="xl" />
         {this.showTips()}
         <WhiteSpace size="xl" />
-        <Text style={{fontSize:11,color:"#DDDDDD",textAlign:"center"}}>--end--</Text>
+        <Text style={{fontSize:FontStyleConfig.getFontApplySize()+11,color:"#DDDDDD",textAlign:"center"}}>--end--</Text>
     </View>)}
 
 }
@@ -308,17 +309,7 @@ var styles = StyleSheet.create ({
     //textAlign:'center', 
     //textDecorationLine:'underline'
   },
-    vb_text: {  
-    color: '#333333',  
-    fontFamily: 'Times',  
-    margin: 10,  
-    fontSize: 12,         
-    textAlign: 'auto',  
-    lineHeight: 22,     //行高  
-    fontStyle: 'italic',    //设置文字：normal：正常体；italic：斜体  
-    fontWeight: 'bold', //设置粗体字，'normal' /*default*/, 'bold', '100', '200', '300', '400', '500', '600', '700', '800', '900'  
-    textDecorationLine: 'underline line-through',//下划线和删除线的样式：['none' /*default*/, 'underline', 'line-through', 'underline line-through'  
-  },
+    
   delete:{
     color:"#d8fffa",
     marginLeft:30,

@@ -18,6 +18,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* lunarhookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* lunarhookTests.m */; };
+		316E193224BC90D90099D987 /* BackgroundTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316E193124BC90D90099D987 /* BackgroundTasks.framework */; };
 		67B7E394CA6879BFF875E0F6 /* libPods-lunarhookTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8110873811E27CF267587CFB /* libPods-lunarhookTests.a */; };
 		754DD6F72EBA4DA9B752A371 /* antfill.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E389C5F59CF4855B8CBCBD0 /* antfill.ttf */; };
 		78D8DCFD87FB559099134166 /* libPods-lunarhook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AD47C7E89D32B33DEE78BB /* libPods-lunarhook.a */; };
@@ -72,6 +73,8 @@
 		2D02E47B1E0B4A5D006451C7 /* lunarhook-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lunarhook-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* lunarhook-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "lunarhook-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E389C5F59CF4855B8CBCBD0 /* antfill.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = antfill.ttf; path = "../node_modules/@ant-design/icons-react-native/fonts/antfill.ttf"; sourceTree = "<group>"; };
+		316E192F24BC8E980099D987 /* lunarhook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = lunarhook.entitlements; path = lunarhook/lunarhook.entitlements; sourceTree = "<group>"; };
+		316E193124BC90D90099D987 /* BackgroundTasks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BackgroundTasks.framework; path = System/Library/Frameworks/BackgroundTasks.framework; sourceTree = SDKROOT; };
 		36FBEA9FC23546A79C26FDF4 /* libRNSimpleCompass.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSimpleCompass.a; sourceTree = "<group>"; };
 		7164A4AE754DB8762DF26C21 /* Pods-lunarhookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lunarhookTests.debug.xcconfig"; path = "Target Support Files/Pods-lunarhookTests/Pods-lunarhookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		74CB9A2D9E3C2AA26E227D5D /* Pods-lunarhook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lunarhook.debug.xcconfig"; path = "Target Support Files/Pods-lunarhook/Pods-lunarhook.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 				CBA1CC35247048B800C8FC09 /* libz.tbd in Frameworks */,
 				CBA1CC33247048AD00C8FC09 /* libc++.tbd in Frameworks */,
 				CBA1CC31247048A200C8FC09 /* libsqlite3.0.tbd in Frameworks */,
+				316E193224BC90D90099D987 /* BackgroundTasks.framework in Frameworks */,
 				CBA1CC2F2470489900C8FC09 /* CoreTelephony.framework in Frameworks */,
 				CBA1CC2D2470488E00C8FC09 /* WebKit.framework in Frameworks */,
 				CBA1CC2B2470487900C8FC09 /* SystemConfiguration.framework in Frameworks */,
@@ -161,6 +165,7 @@
 		13B07FAE1A68108700A75B9A /* lunarhook */ = {
 			isa = PBXGroup;
 			children = (
+				316E192F24BC8E980099D987 /* lunarhook.entitlements */,
 				0A89E2F92385375B009A8657 /* plumber.h */,
 				0A89E2FA2385375B009A8657 /* plumber.m */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -177,6 +182,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				316E193124BC90D90099D987 /* BackgroundTasks.framework */,
 				CBA1CC34247048B800C8FC09 /* libz.tbd */,
 				CBA1CC32247048AD00C8FC09 /* libc++.tbd */,
 				CBA1CC30247048A200C8FC09 /* libsqlite3.0.tbd */,
@@ -766,6 +772,7 @@
 			baseConfigurationReference = 74CB9A2D9E3C2AA26E227D5D /* Pods-lunarhook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = lunarhook/lunarhook.entitlements;
 				CURRENT_PROJECT_VERSION = 157;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = JD2G9A573K;
@@ -775,6 +782,7 @@
 				);
 				INFOPLIST_FILE = lunarhook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -791,6 +799,7 @@
 			baseConfigurationReference = B14A92AA7E84F81EF2B42486 /* Pods-lunarhook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = lunarhook/lunarhook.entitlements;
 				CURRENT_PROJECT_VERSION = 157;
 				DEVELOPMENT_TEAM = JD2G9A573K;
 				HEADER_SEARCH_PATHS = (
@@ -799,6 +808,7 @@
 				);
 				INFOPLIST_FILE = lunarhook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

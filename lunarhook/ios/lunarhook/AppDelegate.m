@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import <UIKit/UIKit.h>
+#import <BackgroundTasks/BackgroundTasks.h>
 #import <Foundation/Foundation.h>
 #import <ifaddrs.h>
 #import <arpa/inet.h>
@@ -15,7 +16,13 @@
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
 
+@interface AppDelegate (){
+    NSInteger count;
+}
+@property(strong, nonatomic)NSTimer *mTimer;
+@property(assign, nonatomic)UIBackgroundTaskIdentifier backIden;
 
+@end
 @implementation AppDelegate
 UIBackgroundTaskIdentifier backgroundTask;
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
@@ -58,7 +65,12 @@ UIBackgroundTaskIdentifier backgroundTask;
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+    [self registerBgTask];
   return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [self endBack];
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
@@ -70,44 +82,88 @@ UIBackgroundTaskIdentifier backgroundTask;
 #endif
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-        backgroundTask = [application beginBackgroundTaskWithExpirationHandler: ^{
-             // 如果超时这个block将被调用
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (backgroundTask != UIBackgroundTaskInvalid)
-                 {
-                     // do whatever needs to be done
-                     [application endBackgroundTask:backgroundTask];
-                     backgroundTask = UIBackgroundTaskInvalid;
-                 }
-             });
-         }];
-         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-             
-             // Do the work!
-             [NSThread sleepForTimeInterval:5];
-             NSLog(@"Time remaining: %f",[application backgroundTimeRemaining]);
-             [NSThread sleepForTimeInterval:5];
-             NSLog(@"Time remaining: %f",[application backgroundTimeRemaining]);
-             [NSThread sleepForTimeInterval:5];
-             NSLog(@"Time remaining: %f",[application backgroundTimeRemaining]);
-             
-             while(1)
-             {
-                 [NSThread sleepForTimeInterval:5];
-                 NSLog(@"Time remaining: %f",[application backgroundTimeRemaining]);
-             }
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (backgroundTask != UIBackgroundTaskInvalid)
-                 {
-                     // if you don't call endBackgroundTask, the OS will exit your app.
-                     [application endBackgroundTask:backgroundTask];
-                     backgroundTask = UIBackgroundTaskInvalid;
-                 }
-             });
-         });
-         NSLog(@"Reached the end of ApplicationDidEnterBackground - I'm done!");
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {    _mTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(countAction) userInfo:nil repeats:YES];
+  [[NSRunLoop currentRunLoop] addTimer:_mTimer forMode:NSRunLoopCommonModes];
+  [self beginTask];
+  [self scheduleAppRefresh];
 }
 
+//计时
+-(void)countAction{
+    NSLog(@"%li",count++);
+  if ([UIApplication sharedApplication].backgroundTimeRemaining < 60) {
+  [[UIApplication sharedApplication] endBackgroundTask:self.backIden];
+  self.backIden = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+      [[UIApplication sharedApplication] endBackgroundTask:self.backIden];
+      self.backIden = UIBackgroundTaskInvalid;
+  }];
+  }
+}
+
+//申请后台
+-(void)beginTask
+{
+    _backIden = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [self endBack];
+    }];
+}
+
+//注销后台
+-(void)endBack
+{
+    NSLog(@"end=============");
+    [[UIApplication sharedApplication] endBackgroundTask:_backIden];
+    _backIden = UIBackgroundTaskInvalid;
+}
+
+
+- (void)registerBgTask {
+    
+    if (@available(iOS 13.0, *)) {
+        BOOL registerFlag = [[BGTaskScheduler sharedScheduler] registerForTaskWithIdentifier:@"com.lunarhook.kRefreshTaskId" usingQueue:nil launchHandler:^(__kindof BGTask * _Nonnull task) {
+            [self handleAppRefresh:task];
+        }];
+        if (registerFlag) {
+            NSLog(@"注册成功");
+        } else {
+            NSLog(@"注册失败");
+        }
+    } else {
+        // Fallback on earlier versions
+    }
+    
+    if (@available(iOS 13.0, *)) {
+        [[BGTaskScheduler sharedScheduler] registerForTaskWithIdentifier:@"com.lunarhook.kCleanTaskId" usingQueue:nil launchHandler:^(__kindof BGTask * _Nonnull task) {
+            [self handleAppRefresh:task];
+        }];
+    } else {
+        // Fallback on earlier versions
+    }
+}
+
+- (void)scheduleAppRefresh {
+    
+    if (@available(iOS 13.0, *)) {
+        BGAppRefreshTaskRequest *request = [[BGAppRefreshTaskRequest alloc] initWithIdentifier:@"com.lunarhook.kRefreshTaskId"];
+        // 最早15分钟后启动后台任务请求
+        request.earliestBeginDate = [NSDate dateWithTimeIntervalSinceNow:15.0 * 60];
+        NSError *error = nil;
+        [[BGTaskScheduler sharedScheduler] submitTaskRequest:request error:&error];
+        if (error) {
+            NSLog(@"错误信息：%@", error);
+        }
+        
+    } else {
+        // Fallback on earlier versions
+    }
+}
+- (void)handleAppRefresh:(BGAppRefreshTask *)appRefreshTask  API_AVAILABLE(ios(13.0)){
+    
+    [self scheduleAppRefresh];
+    
+    NSLog(@"App刷新====================================================================");
+
+}
 
 @end

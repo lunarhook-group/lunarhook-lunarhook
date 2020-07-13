@@ -1,17 +1,17 @@
 import 'react-native-gesture-handler'
 import { AppRegistry } from 'react-native';
 import React, { Component } from 'react';
-import { Provider } from '@ant-design/react-native';
-import { Text, View, Alert, NativeModules, TouchableOpacity } from 'react-native';
-import ScreenConfig from './src/config/ScreenConfig'
-import RouteConfig from './src/config/RouteConfig'
+import { Provider} from '@ant-design/react-native';
+import { View,  Alert,NativeModules, TouchableOpacity } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation-tabs'
-import { setJSExceptionHandler, getJSExceptionHandler } from './src/config/ExceptionModule';
-import MainPage from './src/MainPage';
+import {setJSExceptionHandler,getJSExceptionHandler} from './src/config/ExceptionModule';
+import ScreenConfig from './src/config/ScreenConfig'
 import slogan from './src/slogan'
+import MainPage from './src/MainPage';
 import SearchPage from './src/tools/SearchPage'
+
 import ExplorationPage from './src/exploration/TreeHole/ExplorationPage'
 import ExplorationDetailPage from './src/exploration/TreeHole/ExplorationDetailPage'
 import ExplorationAnswerPage from './src/exploration/TreeHole/ExplorationAnswerPage'
@@ -25,9 +25,7 @@ import LunarConsultantListPage from './src/exploration/LunarcommunityLib/LunarCo
 import ConsultantDetailPage from './src/exploration/LunarcommunityLib/ConsultantDetailPage'
 import ConsultantChatPage from './src/exploration/LunarcommunityLib/ConsultantChatPage'
 
-import kitPage from './src/kit/kitPage';
-import kitConfigPage from './src/kit/kitConfigPage';
-//import UniversechangesPage from './src/kit/UniversechangesLib/UniversechangesPage';
+
 import SixrandomNewPage from './src/kit/UniversechangesLib/SixrandomLib/SixrandomNewPage';
 import SixrandomFullInfoPage from './src/kit/UniversechangesLib/SixrandomLib/SixrandomFullInfoPage'
 import SixrandomHistoryPage from './src/kit/UniversechangesLib/SixrandomLib/SixrandomHistoryPage';
@@ -36,66 +34,60 @@ import EightrandomMainPage from './src/kit/UniversechangesLib/EightrandomLib/Eig
 import EightrandomHistoryPage from './src/kit/UniversechangesLib/EightrandomLib/EightrandomHistoryPage'
 import NumberMainPage from './src/kit/UniversechangesLib/NumberLib/NumberMainPage'
 import NumberMotionNewPage from './src/kit/NumberMotionsLib/NumberMotionNewPage'
+import kitPage from './src/kit/kitPage'
+import kitConfigPage from './src/kit/kitConfigPage';
+import PsychTestPage from './src/kit/LunarMotionsLib/PsychTestPage'
+  import MBTIModule from './src/kit/LunarMotionsLib/PsychLib/MBTIModule'
+  import EnneagramModule from './src/kit/LunarMotionsLib/PsychLib/EnneagramModule'
+  import HollandModule from './src/kit/LunarMotionsLib/PsychLib/HollandModule'
+  import BIGFIVEModule from './src/kit/LunarMotionsLib/PsychLib/BIGFIVEModule'
+  import DISCModule from './src/kit/LunarMotionsLib/PsychLib/DISCModule'
+  import AMSModule from './src/kit/LunarMotionsLib/PsychLib/AMSModule'
+  import SCL90Module from './src/kit/LunarMotionsLib/PsychLib/SCL90Module'
+  import SDSModule from './src/kit/LunarMotionsLib/PsychLib/SDSModule'
+  import SESModule from './src/kit/LunarMotionsLib/PsychLib/SESModule'
+  import SASModule from './src/kit/LunarMotionsLib/PsychLib/SASModule'
+  import PLCCModule from './src/kit/LunarMotionsLib/PsychLib/PLCCModule'
+  import LASModule from './src/kit/LunarMotionsLib/PsychLib/LASModule'
+  import OlsonModule from './src/kit/LunarMotionsLib/PsychLib/OlsonModule'
+  import FESModule from './src/kit/LunarMotionsLib/PsychLib/FESModule'
+  import SADModule from './src/kit/LunarMotionsLib/PsychLib/SADModule'
+  import ECRModule from './src/kit/LunarMotionsLib/PsychLib/ECRModule'
+  import PANASModule from './src/kit/LunarMotionsLib/PsychLib/PANASModule'
+  import MORALSModule from './src/kit/LunarMotionsLib/PsychLib/MORALSModule'
+  import ITSModule from './src/kit/LunarMotionsLib/PsychLib/ITSModule'
+  import IASModule from './src/kit/LunarMotionsLib/PsychLib/IASModule'
+  import FADModule from './src/kit/LunarMotionsLib/PsychLib/FADModule'
+  import EPQModule from './src/kit/LunarMotionsLib/PsychLib/EPQModule'
+  import PDPModule from './src/kit/LunarMotionsLib/PsychLib/PDPModule'
+  import EMBUFemaleModule from './src/kit/LunarMotionsLib/PsychLib/EMBUFemaleModule'
+  import EMBUMaleModule from './src/kit/LunarMotionsLib/PsychLib/EMBUMaleModule'
+  import CARSModule from './src/kit/LunarMotionsLib/PsychLib/CARSModule'
+  import GATBModule from './src/kit/LunarMotionsLib/PsychLib/GATBModule'
+  import PROFModule from './src/kit/LunarMotionsLib/PsychLib/PROFModule'
+  import MHTModule from './src/kit/LunarMotionsLib/PsychLib/MHTModule'
+  import MHRSPModule from './src/kit/LunarMotionsLib/PsychLib/MHRSPModule'
   
-import ThreechangesPage from './src/kit/ThreechangesLib/ThreechangesPage';
+  
 import SixCourseNewPage from './src/kit/ThreechangesLib/sixcourse/SixCourseNewPage'
-import SixCourseMainPage from './src/kit/ThreechangesLib/sixcourse/SixCourseMainPage'
-import SixCourseHistoryPage from './src/kit/ThreechangesLib/sixcourse/SixCourseHistoryPage'
+  import SixCourseMainPage from './src/kit/ThreechangesLib/sixcourse/SixCourseMainPage'
+  import SixCourseHistoryPage from './src/kit/ThreechangesLib/sixcourse/SixCourseHistoryPage'
 import qimenNewPage from './src/kit/ThreechangesLib/qimen/qimenNewPage'
-import qimenMainPage from './src/kit/ThreechangesLib/qimen/qimenMainPage'
-import qimenHistoryPage from './src/kit/ThreechangesLib/qimen/qimenHistoryPage'
+  import qimenMainPage from './src/kit/ThreechangesLib/qimen/qimenMainPage'
+  import qimenHistoryPage from './src/kit/ThreechangesLib/qimen/qimenHistoryPage'
 import taiyiNewPage from './src/kit/ThreechangesLib/taiyi/taiyiNewPage'
-import taiyiMainPage from './src/kit/ThreechangesLib/taiyi/taiyiMainPage'
-import taiyiHistoryPage from './src/kit/ThreechangesLib/taiyi/taiyiHistoryPage'
+  import taiyiMainPage from './src/kit/ThreechangesLib/taiyi/taiyiMainPage'
+  import taiyiHistoryPage from './src/kit/ThreechangesLib/taiyi/taiyiHistoryPage'
 import ChangesuniversePage from './src/kit/ChangesuniverseLib/ChangesuniversePage'
-import GamblePage from './src/kit/ChangesuniverseLib/GambleLib/GamblePage'
-import StarInfoPage from './src/kit/ChangesuniverseLib/GambleLib/StarInfoPage'
+  import GamblePage from './src/kit/ChangesuniverseLib/GambleLib/GamblePage'
+    import StarInfoPage from './src/kit/ChangesuniverseLib/GambleLib/StarInfoPage'
+    import TarotPage from './src/kit/ChangesuniverseLib/TarotLib/TarotPage'
+    import TarotVenusPage from './src/kit/ChangesuniverseLib/TarotLib/TarotVenusPage'
+    import TarotStarofDavidPage from './src/kit/ChangesuniverseLib/TarotLib/TarotStarofDavidPage'
+    import TarotCeltsPage from './src/kit/ChangesuniverseLib/TarotLib/TarotCeltsPage'
 import ziweiHistoryPage from './src/kit/ziwei/ziweiHistoryPage'
 import ziweiMainPage from './src/kit/ziwei/ziweiMainPage'
 import ziweiNewPage from './src/kit/ziwei/ziweiNewPage'
-//import AstroPage from './src/kit/ChangesuniverseLib/AstroLib/AstroPage'
-import TarotPage from './src/kit/ChangesuniverseLib/TarotLib/TarotPage'
-import TarotVenusPage from './src/kit/ChangesuniverseLib/TarotLib/TarotVenusPage'
-import TarotStarofDavidPage from './src/kit/ChangesuniverseLib/TarotLib/TarotStarofDavidPage'
-import TarotCeltsPage from './src/kit/ChangesuniverseLib/TarotLib/TarotCeltsPage'
-import PsychTestPage from './src/kit/LunarMotionsLib/PsychTestPage'
-import MBTIModule from './src/kit/LunarMotionsLib/PsychLib/MBTIModule'
-import EnneagramModule from './src/kit/LunarMotionsLib/PsychLib/EnneagramModule'
-import HollandModule from './src/kit/LunarMotionsLib/PsychLib/HollandModule'
-import BIGFIVEModule from './src/kit/LunarMotionsLib/PsychLib/BIGFIVEModule'
-import DISCModule from './src/kit/LunarMotionsLib/PsychLib/DISCModule'
-import AMSModule from './src/kit/LunarMotionsLib/PsychLib/AMSModule'
-import SCL90Module from './src/kit/LunarMotionsLib/PsychLib/SCL90Module'
-import SDSModule from './src/kit/LunarMotionsLib/PsychLib/SDSModule'
-import SESModule from './src/kit/LunarMotionsLib/PsychLib/SESModule'
-import SASModule from './src/kit/LunarMotionsLib/PsychLib/SASModule'
-import PLCCModule from './src/kit/LunarMotionsLib/PsychLib/PLCCModule'
-import LASModule from './src/kit/LunarMotionsLib/PsychLib/LASModule'
-import OlsonModule from './src/kit/LunarMotionsLib/PsychLib/OlsonModule'
-import SADModule from './src/kit/LunarMotionsLib/PsychLib/SADModule'
-import ECRModule from './src/kit/LunarMotionsLib/PsychLib/ECRModule'
-import PANASModule from './src/kit/LunarMotionsLib/PsychLib/PANASModule'
-import MORALSModule from './src/kit/LunarMotionsLib/PsychLib/MORALSModule'
-import ITSModule from './src/kit/LunarMotionsLib/PsychLib/ITSModule'
-import IASModule from './src/kit/LunarMotionsLib/PsychLib/IASModule'
-import FADModule from './src/kit/LunarMotionsLib/PsychLib/FADModule'
-import EPQModule from './src/kit/LunarMotionsLib/PsychLib/EPQModule'
-import PDPModule from './src/kit/LunarMotionsLib/PsychLib/PDPModule'
-import EMBUFemaleModule from './src/kit/LunarMotionsLib/PsychLib/EMBUFemaleModule'
-import EMBUMaleModule from './src/kit/LunarMotionsLib/PsychLib/EMBUMaleModule'
-import CARSModule from './src/kit/LunarMotionsLib/PsychLib/CARSModule'
-import GATBModule from './src/kit/LunarMotionsLib/PsychLib/GATBModule'
-import PROFModule from './src/kit/LunarMotionsLib/PsychLib/PROFModule'
-import MHTModule from './src/kit/LunarMotionsLib/PsychLib/MHTModule'
-import MHRSPModule from './src/kit/LunarMotionsLib/PsychLib/MHRSPModule'
-
-import relationshipcalcpage from './src/kit/tools/relationship/main';
-import ConsultantAudioRecord from './src/kit/tools/ConsultantTools/ConsultantAudioRecord'
-import permutationcombination from './src/kit/tools/permutation-combination'
-import SloganShare from './src/kit/tools/SloganShare'
-import NamePage from './src/kit/tools/NamePage'
-import NameModule from './src/kit/tools/NameModule'
-import TrackStarPage from './src/kit/tools/TrackStarPage'
 
 import LunarCoursePage from './src/LunarCourse/LunarCoursePage';
 import LunarMasterPage from './src/LunarCourse/LunarMasterPage'
@@ -108,6 +100,11 @@ import IntroAncientPage from './src/LunarCourse/Intro/IntroAncientPage'
 import IntroThreePage from './src/LunarCourse/Intro/IntroThreePage'
 import DetailBookPage from './src/LunarCourse/DetailBookPage'
 
+
+import SloganShare from './src/kit/tools/SloganShare'
+import NamePage from './src/kit/tools/NamePage'
+import NameModule from './src/kit/tools/NameModule'
+import TrackStarPage from './src/kit/tools/TrackStarPage'
 import MyPage from './src/Myconfig/MyPage'
 import AgreePage from './src/Myconfig/AgreePage'
 import PrivacyPage from './src/Myconfig/PrivacyPage'
@@ -228,20 +225,36 @@ const ExplorationTab = createBottomTabNavigator(
     //swipeEnabled:true,
   })
 
-
   const LunarCoursePageTab = createBottomTabNavigator(
     {
-      LunarCoursePage: LunarCoursePage,
-
-
-
-     CourseSearchPageFake:createStackNavigator(
-      { "CourseSearchPageFake": "说文助手" },
-      {
-        navigationOptions: ({ navigation }) => ({
-          title: RouteConfig["CourseSearchPage"].name,
-        })
-      }),
+      LunarCoursePageFake:createStackNavigator(
+        { "LunarCoursePage": LunarCoursePage },
+        {
+          navigationOptions: ({ navigation }) => ({
+            title: RouteConfig["LunarCoursePage"].name,
+          })
+        }),
+  
+      //LunarCoursePage: LunarCoursePage,
+  
+  
+      CourseSearchPageFake:createStackNavigator(
+        { "CourseSearchPageFake": "说文助手" },
+        {
+          navigationOptions: ({ navigation }) => ({
+            title: RouteConfig["CourseSearchPage"].name,
+          })
+        }),
+        /*
+      LunarCourseAnswerPageFake: createStackNavigator(
+        { "LunarCourseAnswerPageFake": "答疑解惑" },
+        {
+          navigationOptions: ({ navigation }) => ({
+            title: RouteConfig["LunarCourseAnswerPage"].name,
+          })
+        }),
+        
+        */
       LunarMasterPageFake:createStackNavigator(
         { "LunarMasterPageFake": "训练大师" },
         {
@@ -249,16 +262,6 @@ const ExplorationTab = createBottomTabNavigator(
             title: RouteConfig["LunarMasterPage"].name,
           })
         }),
-      /*
-    LunarCourseAnswerPageFake: createStackNavigator(
-      { "LunarCourseAnswerPageFake": "答疑解惑" },
-      {
-        navigationOptions: ({ navigation }) => ({
-          title: RouteConfig["LunarCourseAnswerPage"].name,
-        })
-      }),
-      */
-        
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({
@@ -290,7 +293,15 @@ const ExplorationTab = createBottomTabNavigator(
       navigationOptions: ({ navigation }) => ({
   
             //title: RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].titlename + " - " + RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].name,
-            title: RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].titlename
+            title: RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].titlename,
+            headerRight: ()=>(
+              <TouchableOpacity
+                style={{ padding: 10 ,alignContent:"center",alignItems:"baseline"}}
+                //onPress={() => navigate('Search')}
+                onPress={() => navigation.navigate(RouteConfig['LunarCourseConfigPage'].route)}
+              >
+                {RouteConfig['LunarCourseConfigPage'].icon}
+              </TouchableOpacity>),
       }),
       tabBarOptions: {
         activeTintColor: '#000000',
@@ -299,9 +310,7 @@ const ExplorationTab = createBottomTabNavigator(
         showIcon: true,
         labelStyle: {
           backgroundColor: '#ffffff',
-          fontSize: 12,
           color: '#000000',
-          //height: 60,
         },
         Style: {
           backgroundColor: '#ffffff',
@@ -371,7 +380,6 @@ const lunarhook = createStackNavigator({
   EightrandomNewPage: { screen: EightrandomNewPage },
   EightrandomHistoryPage: { screen: EightrandomHistoryPage },
   NumberMotionNewPage:{screen:NumberMotionNewPage},
-  ThreechangesPage: { screen: ThreechangesPage },
   SixCourseNewPage: { screen: SixCourseNewPage },
   SixCourseMainPage: { screen: SixCourseMainPage },
   SixCourseHistoryPage: { screen: SixCourseHistoryPage },
@@ -421,8 +429,8 @@ const lunarhook = createStackNavigator({
   PROFModule:{screen:PROFModule},
   MHTModule:{screen:MHTModule},
   MHRSPModule:{screen:MHRSPModule},
-  relationshipcalcpage: { screen: relationshipcalcpage },
-  ConsultantAudioRecord: ConsultantAudioRecord,
+  //relationshipcalcpage: { screen: relationshipcalcpage },
+  //ConsultantAudioRecord: ConsultantAudioRecord,
   SloganShare: { screen: SloganShare },
   NamePage:{screen:NamePage},
   NameModule:{screen:NameModule},
