@@ -37,9 +37,9 @@ class ScreenConfig extends React.Component {
       if (this.isIphoneX()) {
         return 49 + 44;
       } else if (Platform.OS === 'ios') {
-          return 49
+          return 59
       } else {
-          return 49 + 5
+          return 49 + 20
       }
     }
     getFontheight()
