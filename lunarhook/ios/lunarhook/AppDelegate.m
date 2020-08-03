@@ -7,7 +7,6 @@
 
 #import "AppDelegate.h"
 #import <UIKit/UIKit.h>
-#import <BackgroundTasks/BackgroundTasks.h>
 #import <Foundation/Foundation.h>
 #import <ifaddrs.h>
 #import <arpa/inet.h>
@@ -15,14 +14,14 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
+#import "KeepBG.h"
 
-@interface AppDelegate (){
-    NSInteger count;
-}
-@property(strong, nonatomic)NSTimer *mTimer;
-@property(assign, nonatomic)UIBackgroundTaskIdentifier backIden;
-
+@interface AppDelegate()
+  @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundTaskIdentifier;
 @end
+static NSString *const kBgTaskName = @"com.lunarhook.KeepBG";
+
+
 @implementation AppDelegate
 UIBackgroundTaskIdentifier backgroundTask;
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
@@ -65,12 +64,18 @@ UIBackgroundTaskIdentifier backgroundTask;
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-    [self registerBgTask];
+
+  
+  [[KeepBG sharedInstance] registerBgTask];
+  [KeepBG sharedInstance].needRunInBackground = YES;
   return YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [self endBack];
+    [[UIApplication sharedApplication] endBackgroundTask: self.backgroundTaskIdentifier];
+    if ([KeepBG sharedInstance].needRunInBackground) {
+        [[KeepBG sharedInstance].player pause];
+    }
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
@@ -83,87 +88,17 @@ UIBackgroundTaskIdentifier backgroundTask;
 }
 
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {    _mTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(countAction) userInfo:nil repeats:YES];
-  [[NSRunLoop currentRunLoop] addTimer:_mTimer forMode:NSRunLoopCommonModes];
-  [self beginTask];
-  [self scheduleAppRefresh];
-}
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+  [[KeepBG sharedInstance] scheduleAppRefresh];
+  NSLog(@"%s：应用进入后台DidEnterBackground", __FUNCTION__);
+  self.backgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithName:kBgTaskName expirationHandler:^{
 
-//计时
--(void)countAction{
-    NSLog(@"%li",count++);
-  if ([UIApplication sharedApplication].backgroundTimeRemaining < 60) {
-  [[UIApplication sharedApplication] endBackgroundTask:self.backIden];
-  self.backIden = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-      [[UIApplication sharedApplication] endBackgroundTask:self.backIden];
-      self.backIden = UIBackgroundTaskInvalid;
-  }];
-  }
-}
-
-//申请后台
--(void)beginTask
-{
-    _backIden = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-        [self endBack];
-    }];
-}
-
-//注销后台
--(void)endBack
-{
-    NSLog(@"end=============");
-    [[UIApplication sharedApplication] endBackgroundTask:_backIden];
-    _backIden = UIBackgroundTaskInvalid;
+   if ([KeepBG sharedInstance].needRunInBackground) {
+       [[KeepBG sharedInstance].player play];
+   }
+}];
 }
 
 
-- (void)registerBgTask {
-    
-    if (@available(iOS 13.0, *)) {
-        BOOL registerFlag = [[BGTaskScheduler sharedScheduler] registerForTaskWithIdentifier:@"com.lunarhook.kRefreshTaskId" usingQueue:nil launchHandler:^(__kindof BGTask * _Nonnull task) {
-            [self handleAppRefresh:task];
-        }];
-        if (registerFlag) {
-            NSLog(@"注册成功");
-        } else {
-            NSLog(@"注册失败");
-        }
-    } else {
-        // Fallback on earlier versions
-    }
-    
-    if (@available(iOS 13.0, *)) {
-        [[BGTaskScheduler sharedScheduler] registerForTaskWithIdentifier:@"com.lunarhook.kCleanTaskId" usingQueue:nil launchHandler:^(__kindof BGTask * _Nonnull task) {
-            [self handleAppRefresh:task];
-        }];
-    } else {
-        // Fallback on earlier versions
-    }
-}
-
-- (void)scheduleAppRefresh {
-    
-    if (@available(iOS 13.0, *)) {
-        BGAppRefreshTaskRequest *request = [[BGAppRefreshTaskRequest alloc] initWithIdentifier:@"com.lunarhook.kRefreshTaskId"];
-        // 最早15分钟后启动后台任务请求
-        request.earliestBeginDate = [NSDate dateWithTimeIntervalSinceNow:15.0 * 60];
-        NSError *error = nil;
-        [[BGTaskScheduler sharedScheduler] submitTaskRequest:request error:&error];
-        if (error) {
-            NSLog(@"错误信息：%@", error);
-        }
-        
-    } else {
-        // Fallback on earlier versions
-    }
-}
-- (void)handleAppRefresh:(BGAppRefreshTask *)appRefreshTask  API_AVAILABLE(ios(13.0)){
-    
-    [self scheduleAppRefresh];
-    
-    NSLog(@"App刷新====================================================================");
-
-}
 
 @end

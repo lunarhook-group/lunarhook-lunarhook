@@ -19,6 +19,9 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* lunarhookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* lunarhookTests.m */; };
 		316E193224BC90D90099D987 /* BackgroundTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316E193124BC90D90099D987 /* BackgroundTasks.framework */; };
+		31C5AE8924D8071E00020792 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C5AE8824D8071E00020792 /* AVFoundation.framework */; };
+		31C5AE8C24D8081200020792 /* KeepBG.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C5AE8A24D8081200020792 /* KeepBG.m */; };
+		31C5AE8E24D8082D00020792 /* SomethingJustLikeThis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 31C5AE8D24D8082D00020792 /* SomethingJustLikeThis.mp3 */; };
 		67B7E394CA6879BFF875E0F6 /* libPods-lunarhookTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8110873811E27CF267587CFB /* libPods-lunarhookTests.a */; };
 		754DD6F72EBA4DA9B752A371 /* antfill.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E389C5F59CF4855B8CBCBD0 /* antfill.ttf */; };
 		78D8DCFD87FB559099134166 /* libPods-lunarhook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AD47C7E89D32B33DEE78BB /* libPods-lunarhook.a */; };
@@ -75,6 +78,10 @@
 		2E389C5F59CF4855B8CBCBD0 /* antfill.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = antfill.ttf; path = "../node_modules/@ant-design/icons-react-native/fonts/antfill.ttf"; sourceTree = "<group>"; };
 		316E192F24BC8E980099D987 /* lunarhook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = lunarhook.entitlements; path = lunarhook/lunarhook.entitlements; sourceTree = "<group>"; };
 		316E193124BC90D90099D987 /* BackgroundTasks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BackgroundTasks.framework; path = System/Library/Frameworks/BackgroundTasks.framework; sourceTree = SDKROOT; };
+		31C5AE8824D8071E00020792 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		31C5AE8A24D8081200020792 /* KeepBG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeepBG.m; path = lunarhook/KeepBG.m; sourceTree = "<group>"; };
+		31C5AE8B24D8081200020792 /* KeepBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeepBG.h; path = lunarhook/KeepBG.h; sourceTree = "<group>"; };
+		31C5AE8D24D8082D00020792 /* SomethingJustLikeThis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SomethingJustLikeThis.mp3; path = lunarhook/SomethingJustLikeThis.mp3; sourceTree = "<group>"; };
 		36FBEA9FC23546A79C26FDF4 /* libRNSimpleCompass.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSimpleCompass.a; sourceTree = "<group>"; };
 		7164A4AE754DB8762DF26C21 /* Pods-lunarhookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lunarhookTests.debug.xcconfig"; path = "Target Support Files/Pods-lunarhookTests/Pods-lunarhookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		74CB9A2D9E3C2AA26E227D5D /* Pods-lunarhook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lunarhook.debug.xcconfig"; path = "Target Support Files/Pods-lunarhook/Pods-lunarhook.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31C5AE8924D8071E00020792 /* AVFoundation.framework in Frameworks */,
 				CBA1CC35247048B800C8FC09 /* libz.tbd in Frameworks */,
 				CBA1CC33247048AD00C8FC09 /* libc++.tbd in Frameworks */,
 				CBA1CC31247048A200C8FC09 /* libsqlite3.0.tbd in Frameworks */,
@@ -175,6 +183,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				31C5AE8B24D8081200020792 /* KeepBG.h */,
+				31C5AE8A24D8081200020792 /* KeepBG.m */,
+				31C5AE8D24D8082D00020792 /* SomethingJustLikeThis.mp3 */,
 			);
 			name = lunarhook;
 			sourceTree = "<group>";
@@ -182,6 +193,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31C5AE8824D8071E00020792 /* AVFoundation.framework */,
 				316E193124BC90D90099D987 /* BackgroundTasks.framework */,
 				CBA1CC34247048B800C8FC09 /* libz.tbd */,
 				CBA1CC32247048AD00C8FC09 /* libc++.tbd */,
@@ -370,10 +382,9 @@
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "lunarhook" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -404,6 +415,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				043CEF932383044A004D502A /* xxastro5.ttf in Resources */,
+				31C5AE8E24D8082D00020792 /* SomethingJustLikeThis.mp3 in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				754DD6F72EBA4DA9B752A371 /* antfill.ttf in Resources */,
 				88CD25941EF443DCB0F484C8 /* antoutline.ttf in Resources */,
@@ -658,6 +670,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				31C5AE8C24D8081200020792 /* KeepBG.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				0A89E2FB2385375C009A8657 /* plumber.m in Sources */,
 			);
