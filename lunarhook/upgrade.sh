@@ -9,6 +9,8 @@ brew install flow
 brew install cocoapods
 brew install coreutils
 brew install maven
+brew install clang-format
+brew install dart
 brew cask install android-sdk
 brew cask install homebrew/cask-versions/adoptopenjdk8
 brew cleanup
@@ -16,7 +18,9 @@ npm config set registry https://registry.npm.taobao.org --global
 npm config set disturl https://npm.taobao.org/dist --global
 yarn global add react-native-cli
 npm install -g npm-check-updates
+git stash
 git pull
+git stash pop
 ncu -u -x react-native
 yarn global add @tarojs/cli@latest
 yarn config set registry https://registry.npm.taobao.org --global
