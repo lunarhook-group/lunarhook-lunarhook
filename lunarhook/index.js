@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler'
-import { AppRegistry } from 'react-native';
+import { AppRegistry, TouchableOpacity ,Text} from 'react-native';
 import React, { Component } from 'react';
 import { Provider} from '@ant-design/react-native';
-import { View,  Alert,NativeModules, TouchableOpacity } from 'react-native';
+import { View,  Alert,NativeModules } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation-tabs'
@@ -205,10 +205,12 @@ const ExplorationTab = createBottomTabNavigator(
         }
       }
     }),
+    
     navigationOptions: ({ navigation }) => ({
-      title: RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].titlename + " - " + RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].name,
-
+      //title: RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].titlename + " - " + RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].name,
+      title:"知否"
     }),
+    
     tabBarOptions: {
       activeTintColor: '#000000',
       inactiveTintColor: '#000000',
@@ -240,6 +242,13 @@ const MainPage = createBottomTabNavigator({
   CalendarPage: { screen: CalendarPage },
   kitPage: { screen: kitPage },
   LunarMasterPage: { screen: LunarMasterPage },
+  ExplorationTabFake:createStackNavigator(
+    { "ExplorationTabFake": "知否" },
+    {
+      navigationOptions: ({ navigation }) => ({
+        title:  RouteConfig["ExplorationTabFake"].name,
+      })
+    }),
   MyPageFake: createStackNavigator(
     { "MyPageFake": "我的" },
     {
@@ -261,6 +270,9 @@ const MainPage = createBottomTabNavigator({
 
         if ("MyPageFake" == routeName) {
           navigation.navigate("MyPage")
+        }
+        else if("ExplorationTabFake" == routeName) {
+          navigation.navigate("ExplorationTab")
         }
         else {
           console.log("tabBarOnPress", routeName)
@@ -500,6 +512,7 @@ function getActiveRouteName(navigationState) {
 }
 const LunarhookApp = () =>
   <Provider >
+        <MenuProvider>
     <AppContainer
       onNavigationStateChange={(prevState, currentState, changeaction) => {
         const currentScreen = getActiveRouteName(currentState);
@@ -516,6 +529,6 @@ const LunarhookApp = () =>
           //NativePlumber.PlumberRouting(currentScreen,"","",eventfilter)
         }
       }}
-    /></Provider>
+    /></MenuProvider></Provider>
 
 AppRegistry.registerComponent('lunarhook', () => LunarhookApp);
