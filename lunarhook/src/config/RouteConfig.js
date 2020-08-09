@@ -35,10 +35,10 @@ RouteConfig={
         
     //工具是优先解决需求的工具，尽量免费
     "kitPage":{"name":"探索","route":"kitPage","titlename":"探索","icon":IconConfig.IconKit},
-        "kitExplorationPage":{"name":"呦呦鹿鸣","route":"kitPage","titlename":"呦呦鹿鸣","icon":IconConfig.IconKit},
+        "kitExplorationPage":{"name":"呦呦鹿鸣","route":"kitExplorationPage","titlename":"呦呦鹿鸣","icon":IconConfig.IconKit},
         //周易工具
         "UniversechangesPage":{"name":"周易测评","route":"UniversechangesPage","icon":IconConfig.IconUniversechanges},
-            "CalendarPage":{"name":"浑天甲子历","route":"UniversechangesPage","icon":IconConfig.CalendarIcon},
+            "CalendarPage":{"name":"乾坤","route":"CalendarPage","icon":IconConfig.IconCalendar},
                 "SixrandomNewPage":{"name":"六爻问卦","route":"SixrandomNewPage","icon":IconConfig.SixrandomSel},
                 "SixrandomFullInfoPage":{"name":"卦象详解","route":"SixrandomFullInfoPage","icon":IconConfig.SixrandomSel},
                 "SixrandomHistoryPage":{"name":"六爻历史","route":"SixrandomHistoryPage","icon":IconConfig.IconDetail},
@@ -117,18 +117,18 @@ RouteConfig={
         //心理咨询录音工具
         "ConsultantAudioRecord":{"name":"咨询录音","route":"ConsultantAudioRecord","icon":IconConfig.ConfigIcon},
         "permutationcombination":{"name":"排列组合计算器","route":"permutationcombination","icon":IconConfig.ConfigIcon},
-        "LunarCoursePageTab":{"name":"思想","route":"LunarCoursePageTab","titlename":"思想","icon":IconConfig.IconLunarCourse},
+        "LunarCoursePageTab":{"name":"无邪书院","route":"LunarCoursePageTab","titlename":"无邪书院","icon":IconConfig.IconLunarCourse},
        
     
         //课程是进一步提高成本，解决问题的方法，合理收费
-        "LunarCoursePage":{"name":"思想","route":"LunarCoursePage","titlename":"思想","icon":IconConfig.IconLunarCourse},
+        "LunarCoursePage":{"name":"无邪书院","route":"LunarCoursePage","titlename":"无邪书院","icon":IconConfig.IconMaster},
         "LunarBooks":{"name":"无邪书院","route":"LunarCoursePage","titlename":"思无邪","icon":IconConfig.IconBooks},
         
-        "LunarCourseConfigPage":{"name":"课程配置","route":"LunarCourseConfigPage","icon":IconConfig.IconSubmit},
+        "LunarCourseConfigPage":{"name":"书院配置","route":"LunarCourseConfigPage","icon":IconConfig.IconSubmit},
         "LunarMasterConfigPage":{"name":"课程训练配置","route":"LunarMasterConfigPage","icon":IconConfig.IconSubmit},
         "CourseSearchPage":{"name":"说文助手","route":"CourseSearchPage","titlename":"说文解字","icon":IconConfig.IconSearch},
         "LunarCourseAnswerPage":{"name":"答疑解惑","route":"LunarCourseAnswerPage","titlename":"答疑解惑","icon":IconConfig.IconAnswerIntro},
-        "LunarMasterPage":{"name":"课程训练","route":"LunarMasterPage","titlename":"课程训练","icon":IconConfig.IconMaster},
+        "LunarMasterPage":{"name":"课程","route":"LunarMasterPage","titlename":"课程","icon":IconConfig.IconLunarCourse},
 
         "ReadPage":{"name":"阅读","route":"ReadPage","titlename":"阅读","icon":IconConfig.IconLunarCourse},     
         "service":{"name":"服务支持","route":"service","icon":IconConfig.Service},     
@@ -201,9 +201,12 @@ RouteConfig={
             "zhanguoPage":{"name":"古文观止","route":"","icon":IconConfig.IconLunarCourse},
             "zhanguoPage":{"name":"山海经","route":"","icon":IconConfig.IconLunarCourse},
         */
+       "fivelevel1Module":{"name":"五行掌握·感受自然","titlename":"五行掌握","route":"CourseBookPage","icon":""},      
+       "fivelevel2Module":{"name":"五行掌握·感受自然","titlename":"五行掌握","route":"CourseBookPage","icon":""},   
 
 
     "MyPage":{"name":"我的","card":"管理","route":"MyPage","icon":IconConfig.IconPerson},
+    "MyPageFake":{"name":"我的","card":"管理","route":"MyPage","icon":IconConfig.IconPerson},
     "MyFontConfigPage":{"name":"字体显示","card":"字体显示","route":"MyPage","icon":IconConfig.IconPerson},
     
     "MyRegister":{"name":"注册","card":"管理","route":"MyRegister","icon":IconConfig.IconPerson},

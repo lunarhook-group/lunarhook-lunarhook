@@ -17,6 +17,7 @@ import { HistoryArrayGroup } from './config/StorageModule'
 import RNExitApp from 'react-native-exit-app';
 HistoryArrayGroup.init()
 
+
 LocaleConfig.locales['cn'] = {
   monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
   monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
@@ -29,8 +30,8 @@ const { width, height } = Dimensions.get('window');
 var imgtime = new Array()
 var infotime = new Array()
 var infotimedetail = new Array()
-let MainPagethis = undefined
-class MainPage extends React.Component {
+let CalendarPagethis = undefined
+class CalendarPage extends React.Component {
   constructor(props) {
     super(props);
     var wanNianLiInfo = SixrandomModule.lunarsix();
@@ -47,33 +48,41 @@ class MainPage extends React.Component {
       imgindex: imgindex,
       fadeInOpacity: new Animated.Value(0),
       handler: 0,
+      otherParam:false,
     };
-    if (undefined == MainPagethis) {
-      //console.log("MainPageload")
+    if (undefined == CalendarPagethis) {
+      //console.log("CalendarPageload")
       NetModule._handleWebSocketSetup()
     }
     this.onDayPress = this.onDayPress.bind(this);
     StyleConfig = FontStyleConfig.buildstyle()
-    MainPagethis = this;
+    CalendarPagethis = this;
   };
   static navigationOptions = ({ navigation }) => {
     const { navigate } = navigation;
     var keys = AppRegistry.getAppKeys();
-    RouteConfig["MainPage"].name = appname[keys[0]]
-    //console.log("getAppKeys", RouteConfig["MainPage"].name, keys[0], appname)
+    //RouteConfig["CalendarPage"].name = appname[keys[0]]
+    //console.log("getAppKeys", RouteConfig["CalendarPage"].name, keys[0], appname)
     return {
       headerLeft: () => (<></>),
       headerRight: () => (
         <TouchableOpacity
           style={[styles.dateContainer, { paddingRight: 40 }]}
           //onPress={() => navigate('Search')}
-          onPress={() => MainPagethis.today()}>
-          {('off' == navigation.getParam('otherParam', 'off') ? (null) : IconConfig.ReCover)}
+          onPress={() => CalendarPagethis.today()}>
+          {(false == CalendarPagethis.state.otherParam) ? (null) : IconConfig.ReCover}
         </TouchableOpacity>),
-      title: RouteConfig["MainPage"].name,
+      title: RouteConfig["CalendarPage"].name,
       cardStack: { gesturesEnabled: true }
     }
   };
+
+  static ShareInstance(){
+    if(!CalendarPagethis){
+      CalendarPagethis = new CalendarPage();
+    }
+    return CalendarPagethis;
+  }
   UNSAFE_componentWillMount() {
 
     imgtime["子"] = require('../img/time/1.jpg')
@@ -141,7 +150,7 @@ class MainPage extends React.Component {
       var cur = new Date();
       cur = this.getDateFormat(cur)
       if (cur != this.state.selected) {
-        this.props.navigation.setParams({ otherParam: 'on' })
+        this.setState({otherParam:true})
       }
       //console.log("refresh calendar:",wanNianLiInfo)
     }, 1000 * 60);
@@ -235,7 +244,7 @@ class MainPage extends React.Component {
         onPress={() => navigate(RouteConfig["MyPage"].route)}
         titleStyle={StyleConfig.menufont}>
       </TabNavigator.Item>)
-
+  /*
     if ("sixrandom" == keys) {
       return (
         <TabNavigator tabBarStyle={{ height: ScreenConfig.getTabBarHeight(), backgroundColor: '#ffffff', }}>
@@ -253,6 +262,7 @@ class MainPage extends React.Component {
         {MyPage}
       </TabNavigator >
     )
+    */
   }
   async requestCameraPermission() {
     try {
@@ -430,9 +440,8 @@ class MainPage extends React.Component {
     this.state.info = UniversechangesConfig.GetInfo(this.state.wanNianLiInfo)
     var sday = this.getDateFormat(now);
     this.setState({
-      selected: sday
-    });
-    this.props.navigation.setParams({ otherParam: 'off' })
+      selected :sday
+    })
   }
   onDayPress(day) {
     var now = new Date();
@@ -448,7 +457,7 @@ class MainPage extends React.Component {
       this.setState({
         selected: day.dateString
       });
-      this.props.navigation.setParams({ otherParam: 'on' })
+      this.setState({otherParam:true})
     }
 
   }
@@ -489,4 +498,4 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
   },
 });
-module.exports = MainPage;  
+module.exports = CalendarPage;  

@@ -7,9 +7,18 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation-tabs'
 import {setJSExceptionHandler,getJSExceptionHandler} from './src/config/ExceptionModule';
+import { MenuProvider } from 'react-native-popup-menu';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu';
+import IconConfig from './src/config/IconConfig'
 import ScreenConfig from './src/config/ScreenConfig'
 import slogan from './src/slogan'
-import MainPage from './src/MainPage';
+import CalendarPage from './src/CalendarPage';
+//import MainPage from './src/MainPage';
 import SearchPage from './src/tools/SearchPage'
 
 import ExplorationPage from './src/exploration/TreeHole/ExplorationPage'
@@ -226,6 +235,79 @@ const ExplorationTab = createBottomTabNavigator(
   })
 
   
+const MainPage = createBottomTabNavigator({
+
+  CalendarPage: { screen: CalendarPage },
+  kitPage: { screen: kitPage },
+  LunarMasterPage: { screen: LunarMasterPage },
+  MyPageFake: createStackNavigator(
+    { "MyPageFake": "我的" },
+    {
+      navigationOptions: ({ navigation }) => ({
+        title: RouteConfig["MyPage"].name,
+      })
+    }),
+},
+  {
+    initialRouteName: 'kitPage',
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        //console.log("routeName",routeName)
+        return RouteConfig[routeName].icon;
+      },
+      tabBarOnPress: (nv) => {
+        const { routeName } = navigation.state;
+
+        if ("MyPageFake" == routeName) {
+          navigation.navigate("MyPage")
+        }
+        else {
+          console.log("tabBarOnPress", routeName)
+          nv.defaultHandler();
+        }
+      }
+    }),
+    navigationOptions: ({ navigation }) => ({
+      title: RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].name,
+      headerLeft: () => (<></>),
+      headerRight: () => {
+        if (undefined != navigation.state) {
+          var curpage = navigation.state.routes[navigation.state.index].routeName
+          if ("kitPage" == curpage) {
+            return (<Menu style={{ paddingRight: 20,alignContent: "center", alignItems: "baseline" }}>
+              <MenuTrigger>{RouteConfig['kitConfigPage'].icon}</MenuTrigger>
+              <MenuOptions style={{width:175 }}>
+                <MenuOption style={{flexDirection:"row",alignItems:"center"}}  onSelect={() => navigation.navigate(RouteConfig['kitConfigPage'].route)}><Text style={{includeFontPadding: false,textAlignVertical:"center",height:30}}>{RouteConfig['kitConfigPage'].icon}</Text><Text style={{marginLeft:20}}>{RouteConfig['kitConfigPage'].name}</Text></MenuOption>
+                <MenuOption style={{flexDirection:"row",alignItems:"center"}}  onSelect={() => navigation.navigate(RouteConfig["SearchPage"].route)}><Text style={{alignItems:"center",textAlignVertical:"center",height:30}}>{RouteConfig["SearchPage"].icon}</Text><Text style={{marginLeft:20}}>{RouteConfig["SearchPage"].name}</Text></MenuOption>
+                <MenuOption style={{flexDirection:"row",alignItems:"center"}} onSelect={() => kitPage.ShareInstance().onBussion("service", navigation.navigate)}><Text style={{alignItems:"center",textAlignVertical:"center",height:30}}>{RouteConfig["service"].icon}</Text><Text style={{marginLeft:20}}>{RouteConfig["service"].name}</Text></MenuOption>
+                </MenuOptions>
+            </Menu>)
+          } else if ("CalendarPage" == curpage) {
+            return (
+              <TouchableOpacity
+                style={{ paddingRight: 20, alignContent: "center", alignItems: "baseline" }}
+                //onPress={() => navigate('Search')}
+                onPress={() => CalendarPage.ShareInstance().today()}>
+                {(false == CalendarPage.ShareInstance().state.otherParam) ? IconConfig.ReCover : IconConfig.ReCover}
+              </TouchableOpacity>)
+          } else if ("LunarMasterPage" == curpage) {
+            return (
+              <TouchableOpacity
+                style={{ paddingRight: 20, alignContent: "center", alignItems: "baseline" }}
+                //onPress={() => navigate('Search')}
+                onPress={() =>navigation.navigate(RouteConfig["LunarCoursePage"].route)}>{IconConfig.IconBooks}
+              </TouchableOpacity>)
+          }else if ("MyPage" == curpage) {
+            return (<Icon name="bars" style={{ paddingRight: 30 }} onPress={() => MyPage.ShareInstance().compontupdate()} />)
+          }
+        }
+        return (<></>)
+      }
+    }),
+  }
+
+)
 
 const lunarhook = createStackNavigator({
 
@@ -264,13 +346,15 @@ const lunarhook = createStackNavigator({
 
 
   SearchPage: { screen: SearchPage },
-  kitPage: {
+  /*kitPage: {
     screen: kitPage,
     navigationOptions: ({ navigation }) => ({
       headerBackTitle: RouteConfig["kitPage"].titlename,
     })
   },
+  */
   kitConfigPage:{screen:kitConfigPage},
+
   //UniversechangesPage: { screen: UniversechangesPage },
   NumberMainPage: { screen: NumberMainPage },
   SixrandomHistoryPage: { screen: SixrandomHistoryPage },
@@ -341,7 +425,7 @@ const lunarhook = createStackNavigator({
   LunarCoursePage:{screen:LunarCoursePage} ,    
   LunarCourseConfigPage:{screen:LunarCourseConfigPage} ,
   CourseSearchPage:{screen:CourseSearchPage},
-  LunarMasterPage:{screen:LunarMasterPage},
+  //LunarMasterPage:{screen:LunarMasterPage},
   IntroAncientPage:{screen:IntroAncientPage},
   IntroThreePage:{screen:IntroThreePage},
   IntroBooksPage:{screen:IntroBooksPage},
