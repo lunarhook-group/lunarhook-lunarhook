@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler'
-import { AppRegistry, TouchableOpacity ,Text} from 'react-native';
+import { AppRegistry, TouchableOpacity, Text } from 'react-native';
 import React, { Component } from 'react';
-import { Provider} from '@ant-design/react-native';
-import { View,  Alert,NativeModules } from 'react-native';
+import { Provider } from '@ant-design/react-native';
+import { View, Alert, NativeModules } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation-tabs'
-import {setJSExceptionHandler,getJSExceptionHandler} from './src/config/ExceptionModule';
+import { setJSExceptionHandler, getJSExceptionHandler } from './src/config/ExceptionModule';
 import { MenuProvider } from 'react-native-popup-menu';
 import {
   Menu,
@@ -46,54 +46,54 @@ import NumberMotionNewPage from './src/kit/NumberMotionsLib/NumberMotionNewPage'
 import kitPage from './src/kit/kitPage'
 import kitConfigPage from './src/kit/kitConfigPage';
 import PsychTestPage from './src/kit/LunarMotionsLib/PsychTestPage'
-  import MBTIModule from './src/kit/LunarMotionsLib/PsychLib/MBTIModule'
-  import EnneagramModule from './src/kit/LunarMotionsLib/PsychLib/EnneagramModule'
-  import HollandModule from './src/kit/LunarMotionsLib/PsychLib/HollandModule'
-  import BIGFIVEModule from './src/kit/LunarMotionsLib/PsychLib/BIGFIVEModule'
-  import DISCModule from './src/kit/LunarMotionsLib/PsychLib/DISCModule'
-  import AMSModule from './src/kit/LunarMotionsLib/PsychLib/AMSModule'
-  import SCL90Module from './src/kit/LunarMotionsLib/PsychLib/SCL90Module'
-  import SDSModule from './src/kit/LunarMotionsLib/PsychLib/SDSModule'
-  import SESModule from './src/kit/LunarMotionsLib/PsychLib/SESModule'
-  import SASModule from './src/kit/LunarMotionsLib/PsychLib/SASModule'
-  import PLCCModule from './src/kit/LunarMotionsLib/PsychLib/PLCCModule'
-  import LASModule from './src/kit/LunarMotionsLib/PsychLib/LASModule'
-  import OlsonModule from './src/kit/LunarMotionsLib/PsychLib/OlsonModule'
-  import FESModule from './src/kit/LunarMotionsLib/PsychLib/FESModule'
-  import SADModule from './src/kit/LunarMotionsLib/PsychLib/SADModule'
-  import ECRModule from './src/kit/LunarMotionsLib/PsychLib/ECRModule'
-  import PANASModule from './src/kit/LunarMotionsLib/PsychLib/PANASModule'
-  import MORALSModule from './src/kit/LunarMotionsLib/PsychLib/MORALSModule'
-  import ITSModule from './src/kit/LunarMotionsLib/PsychLib/ITSModule'
-  import IASModule from './src/kit/LunarMotionsLib/PsychLib/IASModule'
-  import FADModule from './src/kit/LunarMotionsLib/PsychLib/FADModule'
-  import EPQModule from './src/kit/LunarMotionsLib/PsychLib/EPQModule'
-  import PDPModule from './src/kit/LunarMotionsLib/PsychLib/PDPModule'
-  import EMBUFemaleModule from './src/kit/LunarMotionsLib/PsychLib/EMBUFemaleModule'
-  import EMBUMaleModule from './src/kit/LunarMotionsLib/PsychLib/EMBUMaleModule'
-  import CARSModule from './src/kit/LunarMotionsLib/PsychLib/CARSModule'
-  import GATBModule from './src/kit/LunarMotionsLib/PsychLib/GATBModule'
-  import PROFModule from './src/kit/LunarMotionsLib/PsychLib/PROFModule'
-  import MHTModule from './src/kit/LunarMotionsLib/PsychLib/MHTModule'
-  import MHRSPModule from './src/kit/LunarMotionsLib/PsychLib/MHRSPModule'
-  
-  
+import MBTIModule from './src/kit/LunarMotionsLib/PsychLib/MBTIModule'
+import EnneagramModule from './src/kit/LunarMotionsLib/PsychLib/EnneagramModule'
+import HollandModule from './src/kit/LunarMotionsLib/PsychLib/HollandModule'
+import BIGFIVEModule from './src/kit/LunarMotionsLib/PsychLib/BIGFIVEModule'
+import DISCModule from './src/kit/LunarMotionsLib/PsychLib/DISCModule'
+import AMSModule from './src/kit/LunarMotionsLib/PsychLib/AMSModule'
+import SCL90Module from './src/kit/LunarMotionsLib/PsychLib/SCL90Module'
+import SDSModule from './src/kit/LunarMotionsLib/PsychLib/SDSModule'
+import SESModule from './src/kit/LunarMotionsLib/PsychLib/SESModule'
+import SASModule from './src/kit/LunarMotionsLib/PsychLib/SASModule'
+import PLCCModule from './src/kit/LunarMotionsLib/PsychLib/PLCCModule'
+import LASModule from './src/kit/LunarMotionsLib/PsychLib/LASModule'
+import OlsonModule from './src/kit/LunarMotionsLib/PsychLib/OlsonModule'
+import FESModule from './src/kit/LunarMotionsLib/PsychLib/FESModule'
+import SADModule from './src/kit/LunarMotionsLib/PsychLib/SADModule'
+import ECRModule from './src/kit/LunarMotionsLib/PsychLib/ECRModule'
+import PANASModule from './src/kit/LunarMotionsLib/PsychLib/PANASModule'
+import MORALSModule from './src/kit/LunarMotionsLib/PsychLib/MORALSModule'
+import ITSModule from './src/kit/LunarMotionsLib/PsychLib/ITSModule'
+import IASModule from './src/kit/LunarMotionsLib/PsychLib/IASModule'
+import FADModule from './src/kit/LunarMotionsLib/PsychLib/FADModule'
+import EPQModule from './src/kit/LunarMotionsLib/PsychLib/EPQModule'
+import PDPModule from './src/kit/LunarMotionsLib/PsychLib/PDPModule'
+import EMBUFemaleModule from './src/kit/LunarMotionsLib/PsychLib/EMBUFemaleModule'
+import EMBUMaleModule from './src/kit/LunarMotionsLib/PsychLib/EMBUMaleModule'
+import CARSModule from './src/kit/LunarMotionsLib/PsychLib/CARSModule'
+import GATBModule from './src/kit/LunarMotionsLib/PsychLib/GATBModule'
+import PROFModule from './src/kit/LunarMotionsLib/PsychLib/PROFModule'
+import MHTModule from './src/kit/LunarMotionsLib/PsychLib/MHTModule'
+import MHRSPModule from './src/kit/LunarMotionsLib/PsychLib/MHRSPModule'
+
+
 import SixCourseNewPage from './src/kit/ThreechangesLib/sixcourse/SixCourseNewPage'
-  import SixCourseMainPage from './src/kit/ThreechangesLib/sixcourse/SixCourseMainPage'
-  import SixCourseHistoryPage from './src/kit/ThreechangesLib/sixcourse/SixCourseHistoryPage'
+import SixCourseMainPage from './src/kit/ThreechangesLib/sixcourse/SixCourseMainPage'
+import SixCourseHistoryPage from './src/kit/ThreechangesLib/sixcourse/SixCourseHistoryPage'
 import qimenNewPage from './src/kit/ThreechangesLib/qimen/qimenNewPage'
-  import qimenMainPage from './src/kit/ThreechangesLib/qimen/qimenMainPage'
-  import qimenHistoryPage from './src/kit/ThreechangesLib/qimen/qimenHistoryPage'
+import qimenMainPage from './src/kit/ThreechangesLib/qimen/qimenMainPage'
+import qimenHistoryPage from './src/kit/ThreechangesLib/qimen/qimenHistoryPage'
 import taiyiNewPage from './src/kit/ThreechangesLib/taiyi/taiyiNewPage'
-  import taiyiMainPage from './src/kit/ThreechangesLib/taiyi/taiyiMainPage'
-  import taiyiHistoryPage from './src/kit/ThreechangesLib/taiyi/taiyiHistoryPage'
+import taiyiMainPage from './src/kit/ThreechangesLib/taiyi/taiyiMainPage'
+import taiyiHistoryPage from './src/kit/ThreechangesLib/taiyi/taiyiHistoryPage'
 import ChangesuniversePage from './src/kit/ChangesuniverseLib/ChangesuniversePage'
-  import GamblePage from './src/kit/ChangesuniverseLib/GambleLib/GamblePage'
-    import StarInfoPage from './src/kit/ChangesuniverseLib/GambleLib/StarInfoPage'
-    import TarotPage from './src/kit/ChangesuniverseLib/TarotLib/TarotPage'
-    import TarotVenusPage from './src/kit/ChangesuniverseLib/TarotLib/TarotVenusPage'
-    import TarotStarofDavidPage from './src/kit/ChangesuniverseLib/TarotLib/TarotStarofDavidPage'
-    import TarotCeltsPage from './src/kit/ChangesuniverseLib/TarotLib/TarotCeltsPage'
+import GamblePage from './src/kit/ChangesuniverseLib/GambleLib/GamblePage'
+import StarInfoPage from './src/kit/ChangesuniverseLib/GambleLib/StarInfoPage'
+import TarotPage from './src/kit/ChangesuniverseLib/TarotLib/TarotPage'
+import TarotVenusPage from './src/kit/ChangesuniverseLib/TarotLib/TarotVenusPage'
+import TarotStarofDavidPage from './src/kit/ChangesuniverseLib/TarotLib/TarotStarofDavidPage'
+import TarotCeltsPage from './src/kit/ChangesuniverseLib/TarotLib/TarotCeltsPage'
 import ziweiHistoryPage from './src/kit/ziwei/ziweiHistoryPage'
 import ziweiMainPage from './src/kit/ziwei/ziweiMainPage'
 import ziweiNewPage from './src/kit/ziwei/ziweiNewPage'
@@ -205,12 +205,12 @@ const ExplorationTab = createBottomTabNavigator(
         }
       }
     }),
-    
+
     navigationOptions: ({ navigation }) => ({
       //title: RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].titlename + " - " + RouteConfig[(navigation.state.routes[navigation.state.index]).routeName].name,
-      title:"知否"
+      title: "知否"
     }),
-    
+
     tabBarOptions: {
       activeTintColor: '#000000',
       inactiveTintColor: '#000000',
@@ -236,17 +236,17 @@ const ExplorationTab = createBottomTabNavigator(
     //swipeEnabled:true,
   })
 
-  
+
 const MainPage = createBottomTabNavigator({
 
   CalendarPage: { screen: CalendarPage },
   kitPage: { screen: kitPage },
   LunarMasterPage: { screen: LunarMasterPage },
-  ExplorationTabFake:createStackNavigator(
+  ExplorationTabFake: createStackNavigator(
     { "ExplorationTabFake": "知否" },
     {
       navigationOptions: ({ navigation }) => ({
-        title:  RouteConfig["ExplorationTabFake"].name,
+        title: RouteConfig["ExplorationTabFake"].name,
       })
     }),
   MyPageFake: createStackNavigator(
@@ -271,7 +271,7 @@ const MainPage = createBottomTabNavigator({
         if ("MyPageFake" == routeName) {
           navigation.navigate("MyPage")
         }
-        else if("ExplorationTabFake" == routeName) {
+        else if ("ExplorationTabFake" == routeName) {
           navigation.navigate("ExplorationTab")
         }
         else {
@@ -287,13 +287,14 @@ const MainPage = createBottomTabNavigator({
         if (undefined != navigation.state) {
           var curpage = navigation.state.routes[navigation.state.index].routeName
           if ("kitPage" == curpage) {
-            return (<Menu style={{ paddingRight: 20,alignContent: "center", alignItems: "baseline" }}>
+            return (<Menu style={{ paddingRight: 20, alignContent: "center", alignItems: "baseline" }}>
               <MenuTrigger>{RouteConfig['kitConfigPage'].icon}</MenuTrigger>
-              <MenuOptions style={{width:175 }}>
-                <MenuOption style={{flexDirection:"row",alignItems:"center"}}  onSelect={() => navigation.navigate(RouteConfig['kitConfigPage'].route)}><Text style={{includeFontPadding: false,textAlignVertical:"center",height:30}}>{RouteConfig['kitConfigPage'].icon}</Text><Text style={{marginLeft:20}}>{RouteConfig['kitConfigPage'].name}</Text></MenuOption>
-                <MenuOption style={{flexDirection:"row",alignItems:"center"}}  onSelect={() => navigation.navigate(RouteConfig["SearchPage"].route)}><Text style={{alignItems:"center",textAlignVertical:"center",height:30}}>{RouteConfig["SearchPage"].icon}</Text><Text style={{marginLeft:20}}>{RouteConfig["SearchPage"].name}</Text></MenuOption>
-                <MenuOption style={{flexDirection:"row",alignItems:"center"}} onSelect={() => kitPage.ShareInstance().onBussion("service", navigation.navigate)}><Text style={{alignItems:"center",textAlignVertical:"center",height:30}}>{RouteConfig["service"].icon}</Text><Text style={{marginLeft:20}}>{RouteConfig["service"].name}</Text></MenuOption>
-                </MenuOptions>
+              <MenuOptions style={{ width: 175, flex: 1 }}>
+                <MenuOption style={{ flexDirection: "row", alignItems: "center", flex: 1 }} onSelect={() => navigation.navigate(RouteConfig['kitConfigPage'].route)}><Text style={{ includeFontPadding: false, textAlignVertical: "center", height: 30, width: 20 }}>{RouteConfig['kitConfigPage'].icon}</Text><Text style={{ paddingLeft: 20 }}>{RouteConfig['kitConfigPage'].name}</Text></MenuOption>
+                <MenuOption style={{ flexDirection: "row", alignItems: "center", flex: 1 }} onSelect={() => navigation.navigate(RouteConfig["SearchPage"].route)}><Text style={{ alignItems: "center", textAlignVertical: "center", height: 30, width: 20 }}>{RouteConfig["SearchPage"].icon}</Text><Text style={{ paddingLeft: 20 }}>{RouteConfig["SearchPage"].name + "支持"}</Text></MenuOption>
+                <MenuOption style={{ flexDirection: "row", alignItems: "center", flex: 1 }} onSelect={() => kitPage.ShareInstance().onBussion("service", navigation.navigate)}><Text style={{ alignItems: "center", textAlignVertical: "center", height: 30, width: 20 }}>{RouteConfig["service"].icon}</Text><Text style={{ paddingLeft: 20 }}>{RouteConfig["service"].name}</Text></MenuOption>
+                <MenuOption style={{ flexDirection: "row", alignItems: "center", flex: 1 }} onSelect={() => kitPage.ShareInstance().setState({ less: !kitPage.ShareInstance().state.less })}><Text style={{ alignItems: "center", textAlignVertical: "center", height: 30, width: 20 }}>{IconConfig.IconFirstUserFace}</Text><Text style={{ paddingLeft: 20 }}>{"引导页面"}</Text></MenuOption>
+              </MenuOptions>
             </Menu>)
           } else if ("CalendarPage" == curpage) {
             return (
@@ -308,9 +309,9 @@ const MainPage = createBottomTabNavigator({
               <TouchableOpacity
                 style={{ paddingRight: 20, alignContent: "center", alignItems: "baseline" }}
                 //onPress={() => navigate('Search')}
-                onPress={() =>navigation.navigate(RouteConfig["LunarCoursePage"].route)}>{IconConfig.IconBooks}
+                onPress={() => navigation.navigate(RouteConfig["LunarCoursePage"].route)}>{IconConfig.IconBooks}
               </TouchableOpacity>)
-          }else if ("MyPage" == curpage) {
+          } else if ("MyPage" == curpage) {
             return (<Icon name="bars" style={{ paddingRight: 30 }} onPress={() => MyPage.ShareInstance().compontupdate()} />)
           }
         }
@@ -365,7 +366,7 @@ const lunarhook = createStackNavigator({
     })
   },
   */
-  kitConfigPage:{screen:kitConfigPage},
+  kitConfigPage: { screen: kitConfigPage },
 
   //UniversechangesPage: { screen: UniversechangesPage },
   NumberMainPage: { screen: NumberMainPage },
@@ -375,7 +376,7 @@ const lunarhook = createStackNavigator({
   EightrandomMainPage: { screen: EightrandomMainPage },
   EightrandomNewPage: { screen: EightrandomNewPage },
   EightrandomHistoryPage: { screen: EightrandomHistoryPage },
-  NumberMotionNewPage:{screen:NumberMotionNewPage},
+  NumberMotionNewPage: { screen: NumberMotionNewPage },
   SixCourseNewPage: { screen: SixCourseNewPage },
   SixCourseMainPage: { screen: SixCourseMainPage },
   SixCourseHistoryPage: { screen: SixCourseHistoryPage },
@@ -385,9 +386,9 @@ const lunarhook = createStackNavigator({
   taiyiNewPage: { screen: taiyiNewPage },
   taiyiHistoryPage: { screen: taiyiHistoryPage },
   taiyiMainPage: { screen: taiyiMainPage },
-  ziweiHistoryPage:{screen:ziweiHistoryPage},
-  ziweiMainPage:{screen:ziweiMainPage},
-  ziweiNewPage:{screen:ziweiNewPage},
+  ziweiHistoryPage: { screen: ziweiHistoryPage },
+  ziweiMainPage: { screen: ziweiMainPage },
+  ziweiNewPage: { screen: ziweiNewPage },
   ChangesuniversePage: { screen: ChangesuniversePage },
   StarInfoPage: { screen: StarInfoPage },
   GamblePage: { screen: GamblePage },
@@ -399,55 +400,55 @@ const lunarhook = createStackNavigator({
   EnneagramModule: { screen: EnneagramModule },
   MBTIModule: { screen: MBTIModule },
   HollandModule: { screen: HollandModule },
-  BIGFIVEModule:{screen:BIGFIVEModule},
-  DISCModule:{screen:DISCModule},
-  AMSModule:{screen:AMSModule},
+  BIGFIVEModule: { screen: BIGFIVEModule },
+  DISCModule: { screen: DISCModule },
+  AMSModule: { screen: AMSModule },
   SCL90Module: { screen: SCL90Module },
   SDSModule: { screen: SDSModule },
   SASModule: { screen: SASModule },
-  PLCCModule:{screen:PLCCModule},
-  SESModule:{screen:SESModule},
-  LASModule:{screen:LASModule},
-  OlsonModule:{screen:OlsonModule},
-  SADModule:{screen:SADModule},
-  ECRModule:{screen:ECRModule},
-  PANASModule:{screen:PANASModule},
-  MORALSModule:{screen:MORALSModule},
-  ITSModule:{screen:ITSModule},
-  IASModule:{screen:IASModule},
-  FADModule:{screen:FADModule},
-  EPQModule:{screen:EPQModule},
-  PDPModule:{screen:PDPModule},
-  EMBUFemaleModule:{screen:EMBUFemaleModule},
-  EMBUMaleModule:{screen:EMBUMaleModule},
-  CARSModule:{screen:CARSModule},
-  GATBModule:{screen:GATBModule},
-  PROFModule:{screen:PROFModule},
-  MHTModule:{screen:MHTModule},
-  MHRSPModule:{screen:MHRSPModule},
+  PLCCModule: { screen: PLCCModule },
+  SESModule: { screen: SESModule },
+  LASModule: { screen: LASModule },
+  OlsonModule: { screen: OlsonModule },
+  SADModule: { screen: SADModule },
+  ECRModule: { screen: ECRModule },
+  PANASModule: { screen: PANASModule },
+  MORALSModule: { screen: MORALSModule },
+  ITSModule: { screen: ITSModule },
+  IASModule: { screen: IASModule },
+  FADModule: { screen: FADModule },
+  EPQModule: { screen: EPQModule },
+  PDPModule: { screen: PDPModule },
+  EMBUFemaleModule: { screen: EMBUFemaleModule },
+  EMBUMaleModule: { screen: EMBUMaleModule },
+  CARSModule: { screen: CARSModule },
+  GATBModule: { screen: GATBModule },
+  PROFModule: { screen: PROFModule },
+  MHTModule: { screen: MHTModule },
+  MHRSPModule: { screen: MHRSPModule },
   //relationshipcalcpage: { screen: relationshipcalcpage },
   //ConsultantAudioRecord: ConsultantAudioRecord,
   SloganShare: { screen: SloganShare },
-  NamePage:{screen:NamePage},
-  NameModule:{screen:NameModule},
-  TrackStarPage:{screen:TrackStarPage},
+  NamePage: { screen: NamePage },
+  NameModule: { screen: NameModule },
+  TrackStarPage: { screen: TrackStarPage },
   //permutationcombination:permutationcombination,
 
 
-  LunarCoursePage:{screen:LunarCoursePage} ,    
-  LunarCourseConfigPage:{screen:LunarCourseConfigPage} ,
-  CourseSearchPage:{screen:CourseSearchPage},
+  LunarCoursePage: { screen: LunarCoursePage },
+  LunarCourseConfigPage: { screen: LunarCourseConfigPage },
+  CourseSearchPage: { screen: CourseSearchPage },
   //LunarMasterPage:{screen:LunarMasterPage},
-  IntroAncientPage:{screen:IntroAncientPage},
-  IntroThreePage:{screen:IntroThreePage},
-  IntroBooksPage:{screen:IntroBooksPage},
-  LunarCourseAnswerPage:{screen:LunarCourseAnswerPage},
-  DetailBookPage:{screen:DetailBookPage},
+  IntroAncientPage: { screen: IntroAncientPage },
+  IntroThreePage: { screen: IntroThreePage },
+  IntroBooksPage: { screen: IntroBooksPage },
+  LunarCourseAnswerPage: { screen: LunarCourseAnswerPage },
+  DetailBookPage: { screen: DetailBookPage },
 
 
 
   MyPage: { screen: MyPage },
-  MyFontConfigPage:{screen:MyFontConfigPage},
+  MyFontConfigPage: { screen: MyFontConfigPage },
   PrivacyPage: { screen: PrivacyPage },
   AgreePage: { screen: AgreePage },
   MyRegister: { screen: MyRegister },
@@ -512,23 +513,23 @@ function getActiveRouteName(navigationState) {
 }
 const LunarhookApp = () =>
   <Provider >
-        <MenuProvider>
-    <AppContainer
-      onNavigationStateChange={(prevState, currentState, changeaction) => {
-        const currentScreen = getActiveRouteName(currentState);
-        const prevScreen = getActiveRouteName(prevState);
+    <MenuProvider>
+      <AppContainer
+        onNavigationStateChange={(prevState, currentState, changeaction) => {
+          const currentScreen = getActiveRouteName(currentState);
+          const prevScreen = getActiveRouteName(prevState);
 
-        if (prevScreen !== currentScreen) {
-          // the line below uses the Google Analytics tracker
-          // change the tracker here to use other Mobile analytics SDK.
-          //console.log("onNavigationStateChange"," cur:",currentScreen," prev:",prevScreen," changeaction:",changeaction.type);
-          var eventfilter = ""
-          if (currentScreen == "SixrandomNewPage") {
-            //eventfilter = "SixrandomNewPage"
+          if (prevScreen !== currentScreen) {
+            // the line below uses the Google Analytics tracker
+            // change the tracker here to use other Mobile analytics SDK.
+            //console.log("onNavigationStateChange"," cur:",currentScreen," prev:",prevScreen," changeaction:",changeaction.type);
+            var eventfilter = ""
+            if (currentScreen == "SixrandomNewPage") {
+              //eventfilter = "SixrandomNewPage"
+            }
+            //NativePlumber.PlumberRouting(currentScreen,"","",eventfilter)
           }
-          //NativePlumber.PlumberRouting(currentScreen,"","",eventfilter)
-        }
-      }}
-    /></MenuProvider></Provider>
+        }}
+      /></MenuProvider></Provider>
 
 AppRegistry.registerComponent('lunarhook', () => LunarhookApp);
