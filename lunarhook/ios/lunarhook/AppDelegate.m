@@ -67,7 +67,6 @@ UIBackgroundTaskIdentifier backgroundTask;
 
   
   [[KeepBG sharedInstance] registerBgTask];
-  [KeepBG sharedInstance].needRunInBackground = YES;
   return YES;
 }
 
