@@ -25,7 +25,7 @@ PODS:
     - Folly (= 2018.10.22.00)
     - RCTRequired (= 0.61.5)
     - React-Core (= 0.61.5)
-  - RCTWeChat (1.9.12):
+  - RCTWeChat (1.1.23):
     - React
   - React (0.61.5):
     - React-Core (= 0.61.5)
@@ -184,7 +184,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-cameraroll (4.0.0):
+  - react-native-cameraroll (4.0.1):
     - React
   - react-native-compass-heading (1.0.2):
     - React
@@ -192,9 +192,9 @@ PODS:
     - React
   - react-native-geolocation (2.0.2):
     - React
-  - react-native-safe-area-context (3.1.4):
-    - React
-  - react-native-segmented-control (2.1.1):
+  - react-native-safe-area-context (3.1.8):
+    - React-Core
+  - react-native-segmented-control (2.1.2):
     - React
   - react-native-shake (3.4.0):
     - React
@@ -202,7 +202,7 @@ PODS:
     - React
   - react-native-view-shot (3.1.2):
     - React
-  - react-native-viewpager (4.1.4):
+  - react-native-viewpager (4.1.6):
     - React
   - React-RCTActionSheet (0.61.5):
     - React-Core/RCTActionSheetHeaders (= 0.61.5)
@@ -241,23 +241,23 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - RNAudio (4.3.0):
     - React
-  - RNCAsyncStorage (1.11.0):
+  - RNCAsyncStorage (1.12.0):
     - React
   - RNCMaskedView (0.1.10):
     - React
-  - RNCPicker (1.6.6):
-    - React
-  - RNDeviceInfo (5.6.3):
-    - React
+  - RNCPicker (1.8.0):
+    - React-Core
+  - RNDeviceInfo (6.2.0):
+    - React-Core
   - RNExitApp (1.1.0):
     - React
-  - RNGestureHandler (1.7.0):
+  - RNGestureHandler (1.8.0):
     - React
   - RNI18n (2.0.15):
     - React
-  - RNReanimated (1.11.0):
+  - RNReanimated (1.13.1):
     - React
-  - RNScreens (2.10.1):
+  - RNScreens (2.11.0):
     - React
   - RNSound (0.11.0):
     - React
@@ -266,9 +266,9 @@ PODS:
     - React
   - RNSVG (12.1.0):
     - React
-  - RNSwisseph (0.0.17):
+  - RNSwisseph (0.0.18):
     - React
-  - RNVectorIcons (7.0.0):
+  - RNVectorIcons (7.1.0):
     - React
   - Yoga (1.14.0)
 
@@ -442,7 +442,7 @@ SPEC CHECKSUMS:
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
-  RCTWeChat: 21edc74a8d759566d226e6fa12e7ea5ac6bf2129
+  RCTWeChat: 830f091a4b4d8842b5858e9d71201757d93333cf
   React: b6a59ef847b2b40bb6e0180a97d0ca716969ac78
   React-Core: 688b451f7d616cc1134ac95295b593d1b5158a04
   React-CoreModules: d04f8494c1a328b69ec11db9d1137d667f916dcb
@@ -450,16 +450,16 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-cameraroll: ae0a7c0cc8462508855707ff623b1e789b692865
+  react-native-cameraroll: 60ba0068826eab1c8d43146191bafd4363ea58a7
   react-native-compass-heading: 18742617bdb9e06ce104bd3b90f0dc700b791fd1
   react-native-fingerprint-scanner: ac6656f18c8e45a7459302b84da41a44ad96dbbe
   react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
-  react-native-safe-area-context: eb91fe1fb3f7b87d9c30a7f0808407d8569d539d
-  react-native-segmented-control: 05d93c1c7576b53189720012a3e8a3c23608d849
+  react-native-safe-area-context: 79fea126c6830c85f65947c223a5e3058a666937
+  react-native-segmented-control: e257b39e80733b848d7d040e07c29eee99396aff
   react-native-shake: de052eaa3eadc4a326b8ddd7ac80c06e8d84528c
   react-native-slider: e99fc201cefe81270fc9d81714a7a0f5e566b168
   react-native-view-shot: 4475fde003fe8a210053d1f98fb9e06c1d834e1c
-  react-native-viewpager: 0d85e46cfb0d2599f579be1fe04ea1759ec68ebe
+  react-native-viewpager: f44c9e21c37d4cb76d38841c8a450e3891923461
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -471,19 +471,19 @@ SPEC CHECKSUMS:
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   RNAudio: cae2991f2dccb75163f260b60da8051717b959fa
-  RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
+  RNCAsyncStorage: 2a692bcb9b69b76a2f1a95f33db057129700af64
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNCPicker: 494015f2b7ec4bee5484b6f235aa19691426dcdb
-  RNDeviceInfo: 5be12a5bfbb8da3528c43ee4373abd9c30d04616
+  RNCPicker: a724b3aa22b182697c190a8fd7b060b66119e136
+  RNDeviceInfo: eb63f95c93ff1aae15353d113c130aebc6127915
   RNExitApp: c4e052df2568b43bec8a37c7cd61194d4cfee2c3
-  RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
+  RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNI18n: e2f7e76389fcc6e84f2c8733ea89b92502351fd8
-  RNReanimated: f05ea1c5ee07891aaefee662f073f4944c87ac4d
-  RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2
+  RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
+  RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
   RNSound: da030221e6ac7e8290c6b43f2b5f2133a8e225b0
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
-  RNSwisseph: 74fa73befd5d9ca79ba8e7030b4340023c12ecfd
-  RNVectorIcons: da6fe858f5a65d7bbc3379540a889b0b12aa5976
+  RNSwisseph: 4492bebefd54286193f7f1f35c37e96cc5d059c1
+  RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
 PODFILE CHECKSUM: 854330b9af2e10ab82507e5c089555700bbaa112
